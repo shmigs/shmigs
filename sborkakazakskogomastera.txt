@@ -1,0 +1,16 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("sborka ot kazascogo mastera", "Synapse")
+local Tab = Window:NewTab("scriptiki")
+Section:NewButton("lumber tycoon", "go v doty?", function()
+loadstring(game:HttpGet'https://ataias.xyz/getScript/?ID=lt2dupething')()
+end)
+Section:NewButton("break in", "go v doty?", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RubyBoo4life/break-in-v1/main/.gitignore"))();
+end)
+Section:NewButton("Arsenal", "go v doty?", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+end)
+Section:NewButton("Counter blox protiv chiterov", "go v doty?", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pawel12d/hexagon/main/scripts/CounterBlox.lua', true))()
+end)
+
