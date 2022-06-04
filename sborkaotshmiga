@@ -1,0 +1,5397 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("sborka ot kazascogo mastera", "Synapse")
+local Tab = Window:NewTab("scriptiki")
+local Section = Tab:NewSection("Shmigq Always Come Back")
+Section:NewLabel("Main")
+Section:NewButton("lumber tycoon", "go v doty?", function()
+-- Farewell Infortality.
+-- Version: 2.82
+-- Instances:
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local ExitButton = Instance.new("TextButton")
+local MiniMazeButton = Instance.new("TextButton")
+local AutoDupe = Instance.new("TextButton")
+local StopDupe = Instance.new("TextButton")
+local TpPlanks = Instance.new("TextButton")
+local SellPlanks = Instance.new("TextButton")
+local BringWood = Instance.new("TextButton")
+local SellWood = Instance.new("TextButton")
+local NormalLand = Instance.new("TextButton")
+local StopLand = Instance.new("TextButton")
+local WayPoint = Instance.new("TextButton")
+local WayPoint_2 = Instance.new("TextButton")
+local TpGifts = Instance.new("TextButton")
+local BringUp = Instance.new("TextButton")
+local HailStone = Instance.new("TextButton")
+local Speed = Instance.new("TextButton")
+local Jpower = Instance.new("TextButton")
+local GoldAxe = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local LT2GUD = Instance.new("TextButton")
+local DupeGui = Instance.new("TextButton")
+local OpenButton = Instance.new("TextButton")
+--Properties:
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+MainFrame.Position = UDim2.new(0.0925266892, 0, 0.221343875, 0)
+MainFrame.Size = UDim2.new(0, 560, 0, 218)
+MainFrame.Active = true 
+MainFrame.Draggable = true 
+
+ExitButton.Name = "ExitButton"
+ExitButton.Parent = MainFrame
+ExitButton.BackgroundColor3 = Color3.new(0, 0, 0)
+ExitButton.BorderColor3 = Color3.new(0, 1, 0)
+ExitButton.BorderSizePixel = 3
+ExitButton.Position = UDim2.new(0, 0, -0.00917431153, 0)
+ExitButton.Size = UDim2.new(0, 47, 0, 41)
+ExitButton.Font = Enum.Font.SciFi
+ExitButton.Text = "x"
+ExitButton.TextColor3 = Color3.new(0, 1, 0)
+ExitButton.TextScaled = true
+ExitButton.TextSize = 14
+ExitButton.TextWrapped = true
+ExitButton.MouseButton1Click:connect(function()
+	MainFrame.Visible = false
+	end)
+MiniMazeButton.Name = "MiniMazeButton"
+MiniMazeButton.Parent = MainFrame
+MiniMazeButton.BackgroundColor3 = Color3.new(0, 0, 0)
+MiniMazeButton.BorderColor3 = Color3.new(0, 1, 0)
+MiniMazeButton.BorderSizePixel = 3
+MiniMazeButton.Position = UDim2.new(0.0910714269, 0, -0.00917431153, 0)
+MiniMazeButton.Size = UDim2.new(0, 50, 0, 47)
+MiniMazeButton.Font = Enum.Font.SciFi
+MiniMazeButton.Text = "-"
+MiniMazeButton.TextColor3 = Color3.new(0, 1, 0)
+MiniMazeButton.TextScaled = true
+MiniMazeButton.TextSize = 14
+MiniMazeButton.TextWrapped = true
+MiniMazeButton.MouseButton1Click:connect(function()
+	MainFrame.Visible = false
+	OpenButton.Visible = true
+end)
+AutoDupe.Name = "AutoDupe"
+AutoDupe.Parent = MainFrame
+AutoDupe.BackgroundColor3 = Color3.new(0, 0, 0)
+AutoDupe.BorderColor3 = Color3.new(0, 1, 0)
+AutoDupe.BorderSizePixel = 5
+AutoDupe.Position = UDim2.new(0.00714285765, 0, 0.426605493, 0)
+AutoDupe.Size = UDim2.new(0, 97, 0, 41)
+AutoDupe.Font = Enum.Font.SciFi
+AutoDupe.Text = "AutoDupe"
+AutoDupe.TextColor3 = Color3.new(0, 1, 0)
+AutoDupe.TextScaled = true
+AutoDupe.TextSize = 14
+AutoDupe.TextWrapped = true
+AutoDupe.MouseButton1Down:connect(function()
+Screen = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
+Scrolling = Instance.new("ScrollingFrame",Screen)
+Scrolling.Size = UDim2.new(0,300,0,500)
+Scrolling.CanvasSize = UDim2.new(0,300,3,0)
+Exit = Instance.new("TextButton", Scrolling)
+Exit.Size = UDim2.new(0,30,0,20)
+Exit.Position = UDim2.new(1,-40,0,0)
+Exit.Text = "Exit"
+DontTP = Instance.new("TextButton", Scrolling)
+DontTP.Size = UDim2.new(0,40,0,40)
+DontTP.Position = UDim2.new(1,-60,0,50)
+DontTP.Text = "Don't TP back"
+DontTP.TextWrapped = true
+DontTPVar = false
+DontTP.MouseButton1Click:connect(function()
+	DontTPVar = true
+end)
+Exit.MouseButton1Click:connect(function()
+	Screen:Destroy()
+end)
+g = 0
+Sniggle = false
+gg = {}
+function Start()
+Sniggle = true
+for i,v in pairs(game.Workspace.PlayerModels:GetChildren()) do
+	if v:FindFirstChild("Owner") and v.Owner.Value == game.Players.LocalPlayer then
+		if v:FindFirstChild("TreeClass") then
+			game:GetService("RunService").RenderStepped:wait()
+			if Scrolling:FindFirstChild(v.TreeClass.Value) then
+				if not gg[i] then
+					Scrolling[v.TreeClass.Value.." Value"].Value = Scrolling[v.TreeClass.Value.." Value"].Value+1
+					Scrolling[v.TreeClass.Value].Text = v.TreeClass.Value.." ("..Scrolling[v.TreeClass.Value.." Value"].Value..")"
+				end
+			else
+				g = g+1
+				TreeButton = Instance.new("TextButton",Scrolling)
+				TreeButton.Size = UDim2.new(0,100,0,50)
+				TreeButton.Position = UDim2.new(0,10,0,70*g)
+				TreeButton.Name = v.TreeClass.Value
+				TreeButton.Text = v.TreeClass.Value.." (1)"
+				TreeButton.MouseButton1Click:connect(function()
+					Scrolling.Visible = false
+					TP(TreeButton.Name)
+				end)
+				TreeVal = Instance.new("NumberValue",Scrolling)
+				TreeVal.Name = v.TreeClass.Value.." Value"
+				TreeVal.Value = 1
+				gg[i] = v.TreeClass.Value
+			end
+		end
+	end
+end
+end
+if not Sniggle then
+	Start()
+end
+--[[game.Workspace.PlayerModels.ChildAdded:connect(function(Item)
+	Item:WaitForChild("Owner")
+	if Item.Owner.Value == game.Players.LocalPlayer then
+		Start()
+	end
+end)]]
+game.Workspace.PlayerModels.ChildRemoved:connect(function(Item)
+	if Item:FindFirstChild("Owner") and Item.Owner.Value == game.Players.LocalPlayer and Item:FindFirstChild("TreeClass") and Scrolling[Item.TreeClass.Value.." Value"] then
+		Scrolling[Item.TreeClass.Value.." Value"].Value = Scrolling[Item.TreeClass.Value.." Value"].Value-1
+		if Scrolling[Item.TreeClass.Value.." Value"].Value == 0 then
+			Scrolling[Item.TreeClass.Value]:Destroy()
+			Scrolling[Item.TreeClass.Value.." Value"]:Destroy()
+		else
+			Scrolling[Item.TreeClass.Value].Text = Item.TreeClass.Value.." ("..Scrolling[Item.TreeClass.Value.." Value"].Value..")"
+		end
+	end
+end)
+
+function TP(Name)
+	sendNotice = game.ReplicatedStorage.Notices.SendUserNotice
+	sendNotice:Fire("Click on a whitelisted base")
+	local ButtonPress
+	ButtonPress = game.Players.LocalPlayer:GetMouse().Button1Down:Connect(function()
+		Square = game.Players.LocalPlayer:GetMouse().Target
+		if (Square.Name == "OriginSquare" or Square.Name == "Square") then
+			ButtonPress:Disconnect()
+			game.ReplicatedStorage.LoadSaveRequests.RequestSave:InvokeServer(game.Players.LocalPlayer.CurrentSaveSlot.Value)
+			local success, errorMessage = game.ReplicatedStorage.LoadSaveRequests.RequestLoad:InvokeServer(game.Players.LocalPlayer.CurrentSaveSlot.Value,game.Players.LocalPlayer)
+			if success then
+				print'Initial Reload Success'
+				sendNotice:Fire("Reload success", 0.8)
+				game.Players.LocalPlayer.CurrentSaveSlot.RobloxLocked = true
+				game.Players.LocalPlayer.CurrentSaveSlot.Set.RobloxLocked = true
+				for i,v in pairs(game.Workspace.PlayerModels:GetChildren()) do
+					if v:FindFirstChild("TreeClass") and v.TreeClass.Value == Name and v.Owner.Value == game.Players.LocalPlayer then
+						v:MoveTo(Square.Position)
+						v.Name = "TpMe"
+						for i=1,10 do
+							game:GetService("RunService").RenderStepped:wait()
+							for i=1,10 do
+								v.WoodSection.CFrame = (CFrame.new(Vector3.new(Square.Position.X,Square.Position.Y+5,Square.Position.Z))*CFrame.Angles(math.rad(90),0,0))
+								game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(v)
+							end
+						end
+					end
+				end
+				Wait = 0
+				while Wait < 60 do
+				Wait = Wait + 1
+				sendNotice:Fire("Waiting: "..60-Wait,1)
+				wait(1)
+				end
+				local succes, errormessage = game.ReplicatedStorage.LoadSaveRequests.RequestLoad:InvokeServer(game.Players.LocalPlayer.CurrentSaveSlot.Value,game.Players.LocalPlayer)
+				if succes then
+					sendNotice:Fire("Reload success", 0.8)
+					game.Players.LocalPlayer.CurrentSaveSlot.RobloxLocked = false
+					game.Players.LocalPlayer.CurrentSaveSlot.Set.RobloxLocked = false
+					if not DontTPVar then
+					DontTPVar = false
+					for i,v in pairs(game.Workspace.Properties:GetChildren()) do
+						if v.Owner and v.Owner.Value == game.Players.LocalPlayer and v:FindFirstChild("OriginSquare") then
+							Square = v.OriginSquare
+							for i,v in pairs(game.Workspace.PlayerModels:GetChildren()) do
+								if v.Name == "TpMe" then
+									v.Name = "Model"
+									print'Secondary Reload Success'
+									game.Players.LocalPlayer.CurrentSaveSlot.RobloxLocked = false
+									game.Players.LocalPlayer.CurrentSaveSlot.Set.RobloxLocked = false
+									game.ReplicatedStorage.Interaction.ClientRequestOwnership:FireServer(v)
+									v:MoveTo(Square.Position)
+									for i=1,10 do
+									game:GetService("RunService").RenderStepped:wait()
+									for i=1,10 do
+										v.WoodSection.CFrame = (CFrame.new(Vector3.new(Square.Position.X,Square.Position.Y+5,Square.Position.Z))*CFrame.Angles(math.rad(90),0,0))
+										game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(v)
+									end
+									end	
+									Scrolling.Visible = true
+								end
+							end
+						end
+					end
+					end
+				else
+					print('Secondary Reload Error: '..errormessage)
+					sendNotice:Fire(errormessage)
+				end
+			else
+				OOF = true
+				while OOF do
+					wait(0.5)
+					local _,Fail = game.ReplicatedStorage.LoadSaveRequests.RequestLoad:InvokeServer(game.Players.LocalPlayer.CurrentSaveSlot.Value,game.Players.LocalPlayer)
+					print(string.sub(Fail,49,50))
+					if tonumber(string.sub(Fail,49,50)) == 1 then
+						OOF = false
+					end
+					print('Initial Reload Error: '..Fail)
+					Deb = true
+					sendNotice:Fire("Wait "..string.sub(Fail,49,50),1)
+				end
+				if Deb then
+					Deb = false
+					TP(Name)
+				end
+			end
+		end
+	end)
+	game.Players.LocalPlayer.CurrentSaveSlot.RobloxLocked = false
+	game.Players.LocalPlayer.CurrentSaveSlot.Set.RobloxLocked = false
+end
+
+function restartStart()
+
+end
+--game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer()
+--v:MoveTo(game.Players.LocalPlayer.Character.Torso.Position)
+
+--game.Players.LocalPlayer.PlayerGui.ScreenGui:Destroy()
+end)	
+StopDupe.Name = "StopDupe"
+StopDupe.Parent = MainFrame
+StopDupe.BackgroundColor3 = Color3.new(0, 0, 0)
+StopDupe.BorderColor3 = Color3.new(0, 1, 0)
+StopDupe.BorderSizePixel = 5
+StopDupe.Position = UDim2.new(0.00714285718, 0, 0.848623872, 0)
+StopDupe.Size = UDim2.new(0, 97, 0, 28)
+StopDupe.Font = Enum.Font.SciFi
+StopDupe.Text = "StopDupe"
+StopDupe.TextColor3 = Color3.new(0, 1, 0)
+StopDupe.TextScaled = true
+StopDupe.TextSize = 14
+StopDupe.TextWrapped = true
+StopDupe.MouseButton1Down:connect(function()
+option = false
+
+a = game.Players.LocalPlayer.CurrentSaveSlot
+a.RobloxLocked = option
+a.Set.RobloxLocked = option
+print(a.Value)
+
+if a.RobloxLocked == true then
+print("CurrentSaveSlot RobloxLocked = true, save file won't save")
+print("Set RobloxLocked = true, save file won't save")
+
+else
+
+print("CurrentSaveSlot RobloxLocked = false, save file will save")
+print("Set RobloxLocked = false, save file will save")
+end	
+end)
+TpPlanks.Name = "TpPlanks"
+TpPlanks.Parent = MainFrame
+TpPlanks.BackgroundColor3 = Color3.new(0, 0, 0)
+TpPlanks.BorderColor3 = Color3.new(0, 1, 0)
+TpPlanks.BorderSizePixel = 5
+TpPlanks.Position = UDim2.new(0.18928571, 0, 0.848623872, 0)
+TpPlanks.Size = UDim2.new(0, 96, 0, 28)
+TpPlanks.Font = Enum.Font.SciFi
+TpPlanks.Text = "Tp Planks"
+TpPlanks.TextColor3 = Color3.new(0, 1, 0)
+TpPlanks.TextScaled = true
+TpPlanks.TextSize = 14
+TpPlanks.TextWrapped = true
+TpPlanks.MouseButton1Down:connect(function()
+for _, Plank in pairs(service.Workspace.PlayerModels:GetChildren()) do
+		if Plank.Name == "Plank" and Plank.Owner.Value==service.Players.LocalPlayer then
+			Plank:MoveTo(service.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0))
+				for i=1,100 do
+					service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Plank)
+				end
+			end
+		end
+end)	
+SellPlanks.Name = "SellPlanks"
+SellPlanks.Parent = MainFrame
+SellPlanks.BackgroundColor3 = Color3.new(0, 0, 0)
+SellPlanks.BorderColor3 = Color3.new(0, 1, 0)
+SellPlanks.BorderSizePixel = 5
+SellPlanks.Position = UDim2.new(0.5625, 0, 0.646789014, 0)
+SellPlanks.Size = UDim2.new(0, 92, 0, 34)
+SellPlanks.Font = Enum.Font.SciFi
+SellPlanks.Text = "SellPlanks"
+SellPlanks.TextColor3 = Color3.new(0, 1, 0)
+SellPlanks.TextScaled = true
+SellPlanks.TextSize = 14
+SellPlanks.TextWrapped = true
+SellPlanks.MouseButton1Down:connect(function()
+for _, Plank in pairs(service.Workspace.PlayerModels:GetChildren()) do
+		if Plank.Name=="Plank" and Plank.Owner.Value==service.Players.LocalPlayer then
+				for i,v in pairs(Plank:GetChildren()) do
+					if v.Name=="WoodSection" then
+						spawn(function()
+							for i=1,10 do
+								wait()
+								v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+							end
+						end)
+					end
+				end
+				spawn(function()
+					for i=1,20 do
+						wait()
+						service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Plank)
+					end
+				end)
+			end
+		end
+end)	
+BringWood.Name = "BringWood"
+BringWood.Parent = MainFrame
+BringWood.BackgroundColor3 = Color3.new(0, 0, 0)
+BringWood.BorderColor3 = Color3.new(0, 1, 0)
+BringWood.BorderSizePixel = 5
+BringWood.Position = UDim2.new(0.5625, 0, 0.211009175, 0)
+BringWood.Size = UDim2.new(0, 92, 0, 38)
+BringWood.Font = Enum.Font.SciFi
+BringWood.Text = "BringWood"
+BringWood.TextColor3 = Color3.new(0, 1, 0)
+BringWood.TextScaled = true
+BringWood.TextSize = 14
+BringWood.TextWrapped = true
+BringWood.MouseButton1Down:connect(function()
+for _, Log in pairs(game.Workspace.LogModels:GetChildren()) do
+if Log.Name:sub(1,6) == "Loose_" and Log:findFirstChild("Owner") then
+if Log.Owner.Value == game.Players.LocalPlayer then
+Log:MoveTo(game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(0,15,0))
+end
+end
+end	
+end)
+SellWood.Name = "SellWood"
+SellWood.Parent = MainFrame
+SellWood.BackgroundColor3 = Color3.new(0, 0, 0)
+SellWood.BorderColor3 = Color3.new(0, 1, 0)
+SellWood.BorderSizePixel = 5
+SellWood.Position = UDim2.new(0.00714285765, 0, 0.646789014, 0)
+SellWood.Size = UDim2.new(0, 97, 0, 34)
+SellWood.Font = Enum.Font.SciFi
+SellWood.Text = "SellWood"
+SellWood.TextColor3 = Color3.new(0.333333, 1, 0)
+SellWood.TextScaled = true
+SellWood.TextSize = 14
+SellWood.TextWrapped = true
+SellWood.MouseButton1Click:Connect(function()
+	for _, Log in pairs(service.Workspace.LogModels:GetChildren()) do
+		if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+			if Log.Owner.Value == service.Players.LocalPlayer then
+				for i,v in pairs(Log:GetChildren()) do
+					if v.Name=="WoodSection" then
+						spawn(function()
+							for i=1,10 do
+								wait()
+								v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+							end
+						end)
+					end
+				end
+				spawn(function()
+					for i=1,20 do
+						wait()
+						Service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
+					end
+				end)
+			end
+		end
+	end
+end)
+NormalLand.Name = "Normal Land"
+NormalLand.Parent = MainFrame
+NormalLand.BackgroundColor3 = Color3.new(0, 0, 0)
+NormalLand.BorderColor3 = Color3.new(0, 1, 0)
+NormalLand.BorderSizePixel = 5
+NormalLand.Position = UDim2.new(0.18928571, 0, 0.211009175, 0)
+NormalLand.Size = UDim2.new(0, 96, 0, 38)
+NormalLand.Font = Enum.Font.SciFi
+NormalLand.Text = "Normal Land"
+NormalLand.TextColor3 = Color3.new(0, 1, 0)
+NormalLand.TextScaled = true
+NormalLand.TextSize = 14
+NormalLand.TextWrapped = true
+NormalLand.MouseButton1Down:connect(function()
+_G.TPStuff = true
+while _G.TPStuff == true do
+wait(5)
+for i,v in pairs(game.Workspace.Properties:GetChildren()) do
+    if v.Owner.Value == game.Players.LocalPlayer then
+        game.ReplicatedStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(v,CFrame.new(game.Players.LocalPlayer.Character["Left Leg"].Position))
+    end
+end
+end
+end)	
+StopLand.Name = "StopLand"
+StopLand.Parent = MainFrame
+StopLand.BackgroundColor3 = Color3.new(0, 0, 0)
+StopLand.BorderColor3 = Color3.new(0, 1, 0)
+StopLand.BorderSizePixel = 5
+StopLand.Position = UDim2.new(0.375, 0, 0.426605493, 0)
+StopLand.Size = UDim2.new(0, 95, 0, 41)
+StopLand.Font = Enum.Font.SciFi
+StopLand.Text = "StopLand"
+StopLand.TextColor3 = Color3.new(0, 1, 0)
+StopLand.TextScaled = true
+StopLand.TextSize = 14
+StopLand.TextWrapped = true
+StopLand.MouseButton1Down:connect(function()
+_G.TPStuff = false
+while _G.TPStuff == true do
+wait(5)
+for i,v in pairs(game.Workspace.Properties:GetChildren()) do
+    if v.Owner.Value == game.Players.LocalPlayer then
+        game.ReplicatedStorage.PropertyPurchasing.ClientExpandedProperty:FireServer(v,CFrame.new(game.Players.LocalPlayer.Character["Left Leg"].Position))
+    end
+end
+end	
+end)
+WayPoint.Name = "WayPoint"
+WayPoint.Parent = MainFrame
+WayPoint.BackgroundColor3 = Color3.new(0, 0, 0)
+WayPoint.BorderColor3 = Color3.new(0, 1, 0)
+WayPoint.BorderSizePixel = 5
+WayPoint.Position = UDim2.new(0.00714285765, 0, 0.206422016, 0)
+WayPoint.Size = UDim2.new(0, 97, 0, 38)
+WayPoint.Font = Enum.Font.SciFi
+WayPoint.Text = "WayPoints"
+WayPoint.TextColor3 = Color3.new(0, 1, 0)
+WayPoint.TextScaled = true
+WayPoint.TextSize = 14
+WayPoint.TextStrokeColor3 = Color3.new(0, 1, 0)
+WayPoint.TextWrapped = true
+WayPoint.MouseButton1Down:connect(function()
+-- Farewell Infortality.
+-- Version: 2.82
+-- Instances:
+local ScreenGui = Instance.new("ScreenGui")
+local WayPointFrame = Instance.new("Frame")
+local ExitButton = Instance.new("TextButton")
+local MiniMazeButton = Instance.new("TextButton")
+local TopBar = Instance.new("Frame")
+local EndTimes = Instance.new("TextButton")
+local Cave = Instance.new("TextButton")
+local Volcano = Instance.new("TextButton")
+local Palm = Instance.new("TextButton")
+local Swamp = Instance.new("TextButton")
+local bobshack = Instance.new("TextButton")
+local SkiiLodge = Instance.new("TextButton")
+local WoodRus = Instance.new("TextButton")
+local Cars = Instance.new("TextButton")
+local LinksLogic = Instance.new("TextButton")
+local FancyFurnishing = Instance.new("TextButton")
+local StrangeMan = Instance.new("TextButton")
+local Den = Instance.new("TextButton")
+local Spawn = Instance.new("TextButton")
+local FineArt = Instance.new("TextButton")
+local YellowWood = Instance.new("TextButton")
+local IceTree = Instance.new("TextButton")
+local OpenButton = Instance.new("TextButton")
+--Properties:
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+WayPointFrame.Name = "WayPointFrame"
+WayPointFrame.Parent = ScreenGui
+WayPointFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+WayPointFrame.BorderColor3 = Color3.new(0, 1, 0)
+WayPointFrame.BorderSizePixel = 5
+WayPointFrame.Position = UDim2.new(0.774614453, 0, 0.0355731249, 0)
+WayPointFrame.Size = UDim2.new(0, 125, 0, 469)
+WayPointFrame.Active = true 
+WayPointFrame.Draggable = true 
+
+ExitButton.Name = "ExitButton"
+ExitButton.Parent = WayPointFrame
+ExitButton.BackgroundColor3 = Color3.new(0, 0, 0)
+ExitButton.BorderColor3 = Color3.new(0, 1, 0)
+ExitButton.BorderSizePixel = 2
+ExitButton.Position = UDim2.new(0.744000018, 0, 0, 0)
+ExitButton.Size = UDim2.new(0, 32, 0, 12)
+ExitButton.Font = Enum.Font.SciFi
+ExitButton.Text = "x"
+ExitButton.TextColor3 = Color3.new(0, 1, 0)
+ExitButton.TextScaled = true
+ExitButton.TextSize = 14
+ExitButton.TextWrapped = true
+ExitButton.MouseButton1Click:connect(function()
+	WayPointFrame.Visible = false
+	end)
+MiniMazeButton.Name = "MiniMazeButton"
+MiniMazeButton.Parent = WayPointFrame
+MiniMazeButton.BackgroundColor3 = Color3.new(0, 0, 0)
+MiniMazeButton.BorderColor3 = Color3.new(0, 1, 0)
+MiniMazeButton.BorderSizePixel = 2
+MiniMazeButton.Position = UDim2.new(0.495999992, 0, 0, 0)
+MiniMazeButton.Size = UDim2.new(0, 31, 0, 12)
+MiniMazeButton.Font = Enum.Font.SciFi
+MiniMazeButton.Text = "-"
+MiniMazeButton.TextColor3 = Color3.new(0, 1, 0)
+MiniMazeButton.TextScaled = true
+MiniMazeButton.TextSize = 14
+MiniMazeButton.TextWrapped = true
+MiniMazeButton.MouseButton1Click:connect(function()
+	WayPointFrame.Visible = false
+	OpenButton.Visible = true
+end)
+TopBar.Name = "TopBar"
+TopBar.Parent = WayPointFrame
+TopBar.BackgroundColor3 = Color3.new(0, 0, 0)
+TopBar.BorderColor3 = Color3.new(0, 1, 0)
+TopBar.BorderSizePixel = 2
+TopBar.Size = UDim2.new(0, 62, 0, 12)
+
+EndTimes.Name = "EndTimes"
+EndTimes.Parent = WayPointFrame
+EndTimes.BackgroundColor3 = Color3.new(0, 0, 0)
+EndTimes.BorderColor3 = Color3.new(0, 1, 0)
+EndTimes.BorderSizePixel = 2
+EndTimes.Position = UDim2.new(0.0560000017, 0, 0.0538404807, 0)
+EndTimes.Size = UDim2.new(0, 111, 0, 24)
+EndTimes.Font = Enum.Font.SciFi
+EndTimes.Text = "EndTimes"
+EndTimes.TextColor3 = Color3.new(0, 1, 0)
+EndTimes.TextScaled = true
+EndTimes.TextSize = 14
+EndTimes.TextWrapped = true
+EndTimes.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(113, -214, -951))end
+)
+Cave.Name = "Cave"
+Cave.Parent = WayPointFrame
+Cave.BackgroundColor3 = Color3.new(0, 0, 0)
+Cave.BorderColor3 = Color3.new(0, 1, 0)
+Cave.BorderSizePixel = 2
+Cave.Position = UDim2.new(0.0560000017, 0, 0.107635289, 0)
+Cave.Size = UDim2.new(0, 111, 0, 24)
+Cave.Font = Enum.Font.SciFi
+Cave.Text = "Cave"
+Cave.TextColor3 = Color3.new(0, 1, 0)
+Cave.TextScaled = true
+Cave.TextSize = 14
+Cave.TextWrapped = true
+Cave.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(3581,-179,430))end
+)
+Volcano.Name = "Volcano"
+Volcano.Parent = WayPointFrame
+Volcano.BackgroundColor3 = Color3.new(0, 0, 0)
+Volcano.BorderColor3 = Color3.new(0, 1, 0)
+Volcano.BorderSizePixel = 2
+Volcano.Position = UDim2.new(0.0560000017, 0, 0.162899897, 0)
+Volcano.Size = UDim2.new(0, 111, 0, 24)
+Volcano.Font = Enum.Font.SciFi
+Volcano.Text = "Volcano"
+Volcano.TextColor3 = Color3.new(0, 1, 0)
+Volcano.TextScaled = true
+Volcano.TextSize = 14
+Volcano.TextWrapped = true
+Volcano.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1585,622,1140))end
+)
+Palm.Name = "Palm"
+Palm.Parent = WayPointFrame
+Palm.BackgroundColor3 = Color3.new(0, 0, 0)
+Palm.BorderColor3 = Color3.new(0, 1, 0)
+Palm.BorderSizePixel = 2
+Palm.Position = UDim2.new(0.0560000017, 0, 0.216694683, 0)
+Palm.Size = UDim2.new(0, 111, 0, 24)
+Palm.Font = Enum.Font.SciFi
+Palm.Text = "Palm"
+Palm.TextColor3 = Color3.new(0, 1, 0)
+Palm.TextScaled = true
+Palm.TextSize = 14
+Palm.TextWrapped = true
+Palm.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2549, -5, -42))end
+)
+Swamp.Name = "Swamp"
+Swamp.Parent = WayPointFrame
+Swamp.BackgroundColor3 = Color3.new(0, 0, 0)
+Swamp.BorderColor3 = Color3.new(0, 1, 0)
+Swamp.BorderSizePixel = 2
+Swamp.Position = UDim2.new(0.0560000017, 0, 0.270640463, 0)
+Swamp.Size = UDim2.new(0, 111, 0, 24)
+Swamp.Font = Enum.Font.SciFi
+Swamp.Text = "Swamp"
+Swamp.TextColor3 = Color3.new(0, 1, 0)
+Swamp.TextScaled = true
+Swamp.TextSize = 14
+Swamp.TextWrapped = true
+Swamp.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1209,132,-801))end
+)
+bobshack.Name = "bobshack"
+bobshack.Parent = WayPointFrame
+bobshack.BackgroundColor3 = Color3.new(0, 0, 0)
+bobshack.BorderColor3 = Color3.new(0, 1, 0)
+bobshack.BorderSizePixel = 2
+bobshack.Position = UDim2.new(0.0560000017, 0, 0.326247483, 0)
+bobshack.Size = UDim2.new(0, 111, 0, 24)
+bobshack.Font = Enum.Font.SciFi
+bobshack.Text = "Bobshack"
+bobshack.TextColor3 = Color3.new(0, 1, 0)
+bobshack.TextScaled = true
+bobshack.TextSize = 14
+bobshack.TextWrapped = true
+bobshack.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(260, 8, -2542))end
+)
+SkiiLodge.Name = "SkiiLodge"
+SkiiLodge.Parent = WayPointFrame
+SkiiLodge.BackgroundColor3 = Color3.new(0, 0, 0)
+SkiiLodge.BorderColor3 = Color3.new(0, 1, 0)
+SkiiLodge.BorderSizePixel = 2
+SkiiLodge.Position = UDim2.new(0.0560000017, 0, 0.379968107, 0)
+SkiiLodge.Size = UDim2.new(0, 111, 0, 24)
+SkiiLodge.Font = Enum.Font.SciFi
+SkiiLodge.Text = "SkiiLodge"
+SkiiLodge.TextColor3 = Color3.new(0, 1, 0)
+SkiiLodge.TextScaled = true
+SkiiLodge.TextSize = 14
+SkiiLodge.TextWrapped = true
+SkiiLodge.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1244, 62, 2306))end
+)
+WoodRus.Name = "WoodRus"
+WoodRus.Parent = WayPointFrame
+WoodRus.BackgroundColor3 = Color3.new(0, 0, 0)
+WoodRus.BorderColor3 = Color3.new(0, 1, 0)
+WoodRus.BorderSizePixel = 2
+WoodRus.Position = UDim2.new(0.0560000017, 0, 0.435800284, 0)
+WoodRus.Size = UDim2.new(0, 111, 0, 24)
+WoodRus.Font = Enum.Font.SciFi
+WoodRus.Text = "WoodRus"
+WoodRus.TextColor3 = Color3.new(0.333333, 1, 0)
+WoodRus.TextScaled = true
+WoodRus.TextSize = 14
+WoodRus.TextWrapped = true
+WoodRus.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(265,3,57))end
+)
+Cars.Name = "Cars"
+Cars.Parent = WayPointFrame
+Cars.BackgroundColor3 = Color3.new(0, 0, 0)
+Cars.BorderColor3 = Color3.new(0, 1, 0)
+Cars.BorderSizePixel = 2
+Cars.Position = UDim2.new(0.0560000017, 0, 0.491709232, 0)
+Cars.Size = UDim2.new(0, 111, 0, 24)
+Cars.Font = Enum.Font.SciFi
+Cars.Text = "Cars"
+Cars.TextColor3 = Color3.new(0, 1, 0)
+Cars.TextScaled = true
+Cars.TextSize = 14
+Cars.TextWrapped = true
+Cars.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(509, 3, -1463))end
+)
+LinksLogic.Name = "LinksLogic"
+LinksLogic.Parent = WayPointFrame
+LinksLogic.BackgroundColor3 = Color3.new(0, 0, 0)
+LinksLogic.BorderColor3 = Color3.new(0, 1, 0)
+LinksLogic.BorderSizePixel = 2
+LinksLogic.Position = UDim2.new(0.0560000017, 0, 0.545429885, 0)
+LinksLogic.Size = UDim2.new(0, 111, 0, 24)
+LinksLogic.Font = Enum.Font.SciFi
+LinksLogic.Text = "LinksLogic"
+LinksLogic.TextColor3 = Color3.new(0, 1, 0)
+LinksLogic.TextScaled = true
+LinksLogic.TextSize = 14
+LinksLogic.TextWrapped = true
+LinksLogic.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4607,7.5,-798))end
+)
+FancyFurnishing.Name = "FancyFurnishing"
+FancyFurnishing.Parent = WayPointFrame
+FancyFurnishing.BackgroundColor3 = Color3.new(0, 0, 0)
+FancyFurnishing.BorderColor3 = Color3.new(0, 1, 0)
+FancyFurnishing.BorderSizePixel = 2
+FancyFurnishing.Position = UDim2.new(0.0560000017, 0, 0.59899956, 0)
+FancyFurnishing.Size = UDim2.new(0, 111, 0, 24)
+FancyFurnishing.Font = Enum.Font.SciFi
+FancyFurnishing.Text = "FancyFurnishing "
+FancyFurnishing.TextColor3 = Color3.new(0, 1, 0)
+FancyFurnishing.TextScaled = true
+FancyFurnishing.TextSize = 14
+FancyFurnishing.TextWrapped = true
+FancyFurnishing.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(491, 3, -1720))end
+)
+StrangeMan.Name = "StrangeMan"
+StrangeMan.Parent = WayPointFrame
+StrangeMan.BackgroundColor3 = Color3.new(0, 0, 0)
+StrangeMan.BorderColor3 = Color3.new(0, 1, 0)
+StrangeMan.BorderSizePixel = 2
+StrangeMan.Position = UDim2.new(0.0560000017, 0, 0.654606581, 0)
+StrangeMan.Size = UDim2.new(0, 111, 0, 24)
+StrangeMan.Font = Enum.Font.SciFi
+StrangeMan.Text = "StrangeMan"
+StrangeMan.TextColor3 = Color3.new(0, 1, 0)
+StrangeMan.TextScaled = true
+StrangeMan.TextSize = 14
+StrangeMan.TextWrapped = true
+StrangeMan.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1061, 16, 1131))end
+)
+Den.Name = "Den"
+Den.Parent = WayPointFrame
+Den.BackgroundColor3 = Color3.new(0, 0, 0)
+Den.BorderColor3 = Color3.new(0, 1, 0)
+Den.BorderSizePixel = 2
+Den.Position = UDim2.new(0.0560000017, 0, 0.708422065, 0)
+Den.Size = UDim2.new(0, 111, 0, 24)
+Den.Font = Enum.Font.SciFi
+Den.Text = "Den"
+Den.TextColor3 = Color3.new(0, 1, 0)
+Den.TextScaled = true
+Den.TextSize = 14
+Den.TextWrapped = true
+Den.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(331, 45, 1941))
+end)
+Spawn.Name = "Spawn"
+Spawn.Parent = WayPointFrame
+Spawn.BackgroundColor3 = Color3.new(0, 0, 0)
+Spawn.BorderColor3 = Color3.new(0, 1, 0)
+Spawn.BorderSizePixel = 2
+Spawn.Position = UDim2.new(0.0560000017, 0, 0.762471676, 0)
+Spawn.Size = UDim2.new(0, 111, 0, 24)
+Spawn.Font = Enum.Font.SciFi
+Spawn.Text = "Spawn"
+Spawn.TextColor3 = Color3.new(0, 1, 0)
+Spawn.TextScaled = true
+Spawn.TextSize = 14
+Spawn.TextWrapped = true
+Spawn.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(155,3,74))end
+)
+FineArt.Name = "FineArt"
+FineArt.Parent = WayPointFrame
+FineArt.BackgroundColor3 = Color3.new(0, 0, 0)
+FineArt.BorderColor3 = Color3.new(0, 1, 0)
+FineArt.BorderSizePixel = 2
+FineArt.Position = UDim2.new(0.0560000017, 0, 0.815836132, 0)
+FineArt.Size = UDim2.new(0, 111, 0, 24)
+FineArt.Font = Enum.Font.SciFi
+FineArt.Text = "FineArt"
+FineArt.TextColor3 = Color3.new(0, 1, 0)
+FineArt.TextScaled = true
+FineArt.TextSize = 14
+FineArt.TextWrapped = true
+FineArt.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5207, -166, 719))end
+)
+YellowWood.Name = "YellowWood"
+YellowWood.Parent = WayPointFrame
+YellowWood.BackgroundColor3 = Color3.new(0, 0, 0)
+YellowWood.BorderColor3 = Color3.new(0, 1, 0)
+YellowWood.BorderSizePixel = 2
+YellowWood.Position = UDim2.new(0.0560000017, 0, 0.870134771, 0)
+YellowWood.Size = UDim2.new(0, 111, 0, 24)
+YellowWood.Font = Enum.Font.SciFi
+YellowWood.Text = "YellowWood"
+YellowWood.TextColor3 = Color3.new(0, 1, 0)
+YellowWood.TextScaled = true
+YellowWood.TextSize = 14
+YellowWood.TextWrapped = true
+YellowWood.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1049,-5.9 ,-934.7 ))end
+)
+IceTree.Name = "IceTree"
+IceTree.Parent = WayPointFrame
+IceTree.BackgroundColor3 = Color3.new(0, 0, 0)
+IceTree.BorderColor3 = Color3.new(0, 1, 0)
+IceTree.BorderSizePixel = 2
+IceTree.Position = UDim2.new(0.0560000017, 0, 0.92443341, 0)
+IceTree.Size = UDim2.new(0, 111, 0, 24)
+IceTree.Font = Enum.Font.SciFi
+IceTree.Text = "IceTree"
+IceTree.TextColor3 = Color3.new(0, 1, 0)
+IceTree.TextScaled = true
+IceTree.TextSize = 14
+IceTree.TextWrapped = true
+IceTree.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1505.7,412.4 ,3253 ))end
+)
+OpenButton.Name = "OpenButton"
+OpenButton.Parent = ScreenGui
+OpenButton.BackgroundColor3 = Color3.new(0, 0, 0)
+OpenButton.BorderColor3 = Color3.new(0, 1, 0)
+OpenButton.BorderSizePixel = 2
+OpenButton.Position = UDim2.new(0, 0, 0.398740262, 0)
+OpenButton.Size = UDim2.new(0, 82, 0, 19)
+OpenButton.Visible = false
+OpenButton.Font = Enum.Font.SciFi
+OpenButton.Text = "WayPoints"
+OpenButton.TextColor3 = Color3.new(0, 1, 0)
+OpenButton.TextScaled = true
+OpenButton.TextSize = 14
+OpenButton.TextWrapped = true
+OpenButton .MouseButton1Click:connect(function()
+	WayPointFrame.Visible = true 
+	OpenButton.Visible = false
+end)
+
+		
+end)
+WayPoint_2.Name = "WayPoint"
+WayPoint_2.Parent = MainFrame
+WayPoint_2.BackgroundColor3 = Color3.new(0, 0, 0)
+WayPoint_2.BorderColor3 = Color3.new(0, 1, 0)
+WayPoint_2.BorderSizePixel = 5
+WayPoint_2.Position = UDim2.new(0.18928571, 0, 0.646789014, 0)
+WayPoint_2.Size = UDim2.new(0, 96, 0, 34)
+WayPoint_2.Font = Enum.Font.SciFi
+WayPoint_2.Text = "WayPoints"
+WayPoint_2.TextColor3 = Color3.new(0, 1, 0)
+WayPoint_2.TextScaled = true
+WayPoint_2.TextSize = 14
+WayPoint_2.TextWrapped = true
+WayPoint_2.MouseButton1Down:connect(function()
+
+end)
+TpGifts.Name = "Tp Gifts"
+TpGifts.Parent = MainFrame
+TpGifts.BackgroundColor3 = Color3.new(0, 0, 0)
+TpGifts.BorderColor3 = Color3.new(0, 1, 0)
+TpGifts.BorderSizePixel = 5
+TpGifts.Position = UDim2.new(0.5625, 0, 0.426605493, 0)
+TpGifts.Size = UDim2.new(0, 92, 0, 41)
+TpGifts.Font = Enum.Font.SciFi
+TpGifts.Text = "TpGifts"
+TpGifts.TextColor3 = Color3.new(0, 1, 0)
+TpGifts.TextScaled = true
+TpGifts.TextSize = 14
+TpGifts.TextWrapped = true
+TpGifts.MouseButton1Down:connect(function()
+for i,v in next,workspace.PlayerModels:GetChildren() do
+    if v:FindFirstChild("Main") and v.Owner.Value == game.Players.LocalPlayer then
+    for q,p in pairs(v:GetChildren()) do       
+        if p.Name:lower():match("box") or p.Name == "DraggableItem" then
+            wait()
+                v.PrimaryPart = v.Main
+                game.ReplicatedStorage.Interaction.Verify:FireServer('Item owned by player',v)
+                   v:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.Head.CFrame)
+                 game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(v)
+        end
+    end
+    end
+end
+end)
+BringUp.Name = "BringUp"
+BringUp.Parent = MainFrame
+BringUp.BackgroundColor3 = Color3.new(0, 0, 0)
+BringUp.BorderColor3 = Color3.new(0, 1, 0)
+BringUp.BorderSizePixel = 5
+BringUp.Position = UDim2.new(0.375, 0, 0.844036698, 0)
+BringUp.Size = UDim2.new(0, 95, 0, 29)
+BringUp.Font = Enum.Font.SciFi
+BringUp.Text = "BringUp"
+BringUp.TextColor3 = Color3.new(0, 1, 0)
+BringUp.TextScaled = true
+BringUp.TextSize = 14
+BringUp.TextWrapped = true
+BringUp.MouseButton1Down:connect(function()
+loadstring(game:GetObjects("rbxassetid://01925396229")[1].Source)()
+	
+end)
+HailStone.Name = "HailStone"
+HailStone.Parent = MainFrame
+HailStone.BackgroundColor3 = Color3.new(0, 0, 0)
+HailStone.BorderColor3 = Color3.new(0, 1, 0)
+HailStone.BorderSizePixel = 5
+HailStone.Position = UDim2.new(0.18928571, 0, 0.426605493, 0)
+HailStone.Size = UDim2.new(0, 96, 0, 41)
+HailStone.Font = Enum.Font.SciFi
+HailStone.Text = "HailStone"
+HailStone.TextColor3 = Color3.new(0, 1, 0)
+HailStone.TextScaled = true
+HailStone.TextSize = 14
+HailStone.TextWrapped = true
+HailStone.MouseButton1Down:connect(function()
+-- Objects
+
+local Hailstone = Instance.new("ScreenGui")
+local OpenBtn = Instance.new("TextButton")
+local Drag = Instance.new("Frame")
+local AAPressQ = Instance.new("TextLabel")
+local AnimWelcomeScreen = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local Main = Instance.new("Frame")
+local HomeLocal = Instance.new("TextButton")
+local HomeTopBar = Instance.new("TextButton")
+local HomePlayers = Instance.new("TextButton")
+local HomeTeleports = Instance.new("TextButton")
+local HomeWood = Instance.new("TextButton")
+local HomeTools = Instance.new("TextButton")
+local HomeChangelog = Instance.new("TextButton")
+local HomeLogo = Instance.new("ImageLabel")
+local HiName = Instance.new("TextLabel")
+local HomeSepBar = Instance.new("TextButton")
+local X = Instance.new("TextButton")
+local WoodScreen = Instance.new("Frame")
+local TeleportCutWood = Instance.new("TextButton")
+local SellCutWood = Instance.new("TextButton")
+local TeleportEndTimesWood = Instance.new("TextButton")
+local TeleportCaveCrawlerWood = Instance.new("TextButton")
+local TeleportGifts = Instance.new("TextButton")
+local ToolsScreen = Instance.new("Frame")
+local Dupe = Instance.new("TextButton")
+local Move = Instance.new("TextButton")
+local GoldAxe = Instance.new("TextButton")
+local LeakedItems = Instance.new("TextButton")
+local TeleportTool = Instance.new("TextButton")
+local GreyWood = Instance.new("TextButton")
+local DupeLabel = Instance.new("TextLabel")
+local TeleportsScreen = Instance.new("Frame")
+local Spawn = Instance.new("TextButton")
+local Den = Instance.new("TextButton")
+local StrangeMan = Instance.new("TextButton")
+local Swamp = Instance.new("TextButton")
+local Fancy = Instance.new("TextButton")
+local BoxedCars = Instance.new("TextButton")
+local Dropoff = Instance.new("TextButton")
+local GreenBox = Instance.new("TextButton")
+local Cave = Instance.new("TextButton")
+local Palm = Instance.new("TextButton")
+local WoodRUs = Instance.new("TextButton")
+local LinksLogic = Instance.new("TextButton")
+local YourPlot = Instance.new("TextButton")
+local BobsShack = Instance.new("TextButton")
+local EndTimes = Instance.new("TextButton")
+local Volcano = Instance.new("TextButton")
+local Lodge = Instance.new("TextButton")
+local Shrine = Instance.new("TextButton")
+local PlayersScreen = Instance.new("Frame")
+local P1 = Instance.new("TextButton")
+local P2 = Instance.new("TextButton")
+local P4 = Instance.new("TextButton")
+local P3 = Instance.new("TextButton")
+local P6 = Instance.new("TextButton")
+local P5 = Instance.new("TextButton")
+local TpToPlayer = Instance.new("TextButton")
+local TpToPlayerBase = Instance.new("TextButton")
+local PSelected = Instance.new("TextLabel")
+local LocalScreen = Instance.new("Frame")
+local God = Instance.new("TextButton")
+local Noclip = Instance.new("TextButton")
+local Walkspeed = Instance.new("TextButton")
+local Jumppower = Instance.new("TextButton")
+local NoclipLabel = Instance.new("TextLabel")
+local WalkspeedValue = Instance.new("TextBox")
+local JumppowerValue = Instance.new("TextBox")
+local EtoFly = Instance.new("TextLabel")
+local HomeScreen = Instance.new("Frame")
+local WelcomeName = Instance.new("TextLabel")
+local WelcomeMOTD = Instance.new("TextLabel")
+local WelcomeAuthor = Instance.new("TextLabel")
+local ChangelogScreen = Instance.new("Frame")
+local Logs = Instance.new("TextLabel")
+local Logs2 = Instance.new("TextLabel")
+local Logs3 = Instance.new("TextLabel")
+local Log1and2Div = Instance.new("TextButton")
+local Log2and3Div = Instance.new("TextButton")
+
+-- Properties
+
+Hailstone.Name = "Hailstone"
+Hailstone.Parent = game.CoreGui
+Hailstone.ResetOnSpawn = false
+
+OpenBtn.Name = "OpenBtn"
+OpenBtn.Parent = Hailstone
+OpenBtn.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+OpenBtn.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+OpenBtn.BorderSizePixel = 3
+OpenBtn.Position = UDim2.new(0, 0, 0.826086938, 0)
+OpenBtn.Size = UDim2.new(0, 79, 0, 23)
+OpenBtn.Visible = false
+OpenBtn.Font = Enum.Font.SourceSans
+OpenBtn.Text = "Open"
+OpenBtn.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+OpenBtn.TextSize = 14
+OpenBtn.TextWrapped = true
+
+Drag.Name = "Drag"
+Drag.Parent = Hailstone
+Drag.Active = true
+Drag.BackgroundColor3 = Color3.new(1, 1, 1)
+Drag.BackgroundTransparency = 1
+Drag.BorderSizePixel = 0
+Drag.Draggable = true
+Drag.Position = UDim2.new(0.373752683, 0, 0.267786592, 0)
+Drag.Selectable = true
+Drag.Size = UDim2.new(0, 451, 0, 234)
+
+AAPressQ.Name = "AAPressQ"
+AAPressQ.Parent = Hailstone
+AAPressQ.BackgroundColor3 = Color3.new(1, 1, 1)
+AAPressQ.BackgroundTransparency = 1
+AAPressQ.BorderSizePixel = 0
+AAPressQ.Position = UDim2.new(0.283759117, 0, 0.252964437, 0)
+AAPressQ.Size = UDim2.new(0, 573, 0, 257)
+AAPressQ.Font = Enum.Font.SourceSans
+AAPressQ.Text = "Press \"Q\""
+AAPressQ.TextSize = 100
+
+AnimWelcomeScreen.Name = "AnimWelcomeScreen"
+AnimWelcomeScreen.Parent = Drag
+AnimWelcomeScreen.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+AnimWelcomeScreen.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+AnimWelcomeScreen.BorderSizePixel = 3
+AnimWelcomeScreen.Position = UDim2.new(0.328511298, 0, -0.20692715, 0)
+AnimWelcomeScreen.Size = UDim2.new(0, 209, 0, 199)
+AnimWelcomeScreen.Visible = false
+
+ImageLabel.Parent = AnimWelcomeScreen
+ImageLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel.BackgroundTransparency = 1
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Size = UDim2.new(0, 209, 0, 199)
+ImageLabel.Image = "rbxassetid://1393851029"
+
+Main.Name = "Main"
+Main.Parent = Drag
+Main.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Main.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Main.BorderSizePixel = 3
+Main.Position = UDim2.new(-0.00221729279, 0, 0.0128205121, 0)
+Main.Size = UDim2.new(0, 450, 0, 232)
+Main.Visible = false
+
+HomeLocal.Name = "HomeLocal"
+HomeLocal.Parent = Main
+HomeLocal.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HomeLocal.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeLocal.BorderSizePixel = 2
+HomeLocal.Position = UDim2.new(0.0244444441, 0, 0.206896558, 0)
+HomeLocal.Size = UDim2.new(0, 84, 0, 21)
+HomeLocal.Font = Enum.Font.SourceSans
+HomeLocal.Text = "Local"
+HomeLocal.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeLocal.TextSize = 24
+HomeLocal.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomeTopBar.Name = "HomeTopBar"
+HomeTopBar.Parent = Main
+HomeTopBar.BackgroundColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTopBar.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTopBar.Position = UDim2.new(0, 0, 0.159482777, 0)
+HomeTopBar.Size = UDim2.new(0, 450, 0, 1)
+HomeTopBar.Font = Enum.Font.SourceSans
+HomeTopBar.Text = ""
+HomeTopBar.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTopBar.TextSize = 24
+HomeTopBar.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomePlayers.Name = "HomePlayers"
+HomePlayers.Parent = Main
+HomePlayers.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HomePlayers.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomePlayers.BorderSizePixel = 2
+HomePlayers.Position = UDim2.new(0.0244444441, 0, 0.331896544, 0)
+HomePlayers.Size = UDim2.new(0, 84, 0, 21)
+HomePlayers.Font = Enum.Font.SourceSans
+HomePlayers.Text = "Players"
+HomePlayers.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomePlayers.TextSize = 24
+HomePlayers.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomeTeleports.Name = "HomeTeleports"
+HomeTeleports.Parent = Main
+HomeTeleports.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HomeTeleports.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTeleports.BorderSizePixel = 2
+HomeTeleports.Position = UDim2.new(0.0244444441, 0, 0.459051698, 0)
+HomeTeleports.Size = UDim2.new(0, 84, 0, 21)
+HomeTeleports.Font = Enum.Font.SourceSans
+HomeTeleports.Text = "Teleports"
+HomeTeleports.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTeleports.TextSize = 24
+HomeTeleports.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomeWood.Name = "HomeWood"
+HomeWood.Parent = Main
+HomeWood.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HomeWood.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeWood.BorderSizePixel = 2
+HomeWood.Position = UDim2.new(0.0244444441, 0, 0.594827592, 0)
+HomeWood.Size = UDim2.new(0, 84, 0, 21)
+HomeWood.Font = Enum.Font.SourceSans
+HomeWood.Text = "Wood"
+HomeWood.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeWood.TextSize = 24
+HomeWood.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomeTools.Name = "HomeTools"
+HomeTools.Parent = Main
+HomeTools.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HomeTools.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTools.BorderSizePixel = 2
+HomeTools.Position = UDim2.new(0.0244444441, 0, 0.732758641, 0)
+HomeTools.Size = UDim2.new(0, 84, 0, 21)
+HomeTools.Font = Enum.Font.SourceSans
+HomeTools.Text = "Tools"
+HomeTools.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeTools.TextSize = 24
+HomeTools.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomeChangelog.Name = "HomeChangelog"
+HomeChangelog.Parent = Main
+HomeChangelog.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HomeChangelog.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeChangelog.BorderSizePixel = 2
+HomeChangelog.Position = UDim2.new(0.0244444441, 0, 0.875, 0)
+HomeChangelog.Size = UDim2.new(0, 84, 0, 21)
+HomeChangelog.Font = Enum.Font.SourceSans
+HomeChangelog.Text = "Changelog"
+HomeChangelog.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeChangelog.TextSize = 22
+HomeChangelog.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+HomeLogo.Name = "HomeLogo"
+HomeLogo.Parent = Main
+HomeLogo.BackgroundColor3 = Color3.new(1, 1, 1)
+HomeLogo.BackgroundTransparency = 1
+HomeLogo.BorderSizePixel = 0
+HomeLogo.Position = UDim2.new(0.456999987, 0, -0.11896389, 0)
+HomeLogo.Size = UDim2.new(0, 156, 0, 99)
+HomeLogo.Image = "rbxassetid://1393851029"
+
+HiName.Name = "HiName"
+HiName.Parent = Main
+HiName.BackgroundColor3 = Color3.new(1, 1, 1)
+HiName.BackgroundTransparency = 1
+HiName.BorderSizePixel = 0
+HiName.Position = UDim2.new(0.0244444441, 0, 0.0258620698, 0)
+HiName.Size = UDim2.new(0, 189, 0, 25)
+HiName.Font = Enum.Font.SourceSans
+HiName.Text = "Hi"
+HiName.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+HiName.TextScaled = true
+HiName.TextSize = 14
+HiName.TextStrokeColor3 = Color3.new(0.000153787, 0.000246059, 0.000322953)
+HiName.TextStrokeTransparency = 0.64899998903275
+HiName.TextWrapped = true
+HiName.TextXAlignment = Enum.TextXAlignment.Left
+
+HomeSepBar.Name = "HomeSepBar"
+HomeSepBar.Parent = Main
+HomeSepBar.BackgroundColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeSepBar.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeSepBar.Position = UDim2.new(0.24888888, 0, 0.206896558, 0)
+HomeSepBar.Size = UDim2.new(0, 1, 0, 176)
+HomeSepBar.Font = Enum.Font.SourceSans
+HomeSepBar.Text = ""
+HomeSepBar.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+HomeSepBar.TextSize = 24
+HomeSepBar.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+X.Name = "X"
+X.Parent = Main
+X.BackgroundColor3 = Color3.new(1, 1, 1)
+X.BackgroundTransparency = 1
+X.BorderSizePixel = 0
+X.Position = UDim2.new(0.937777758, 0, 0, 0)
+X.Size = UDim2.new(0, 28, 0, 25)
+X.Font = Enum.Font.SourceSans
+X.Text = "X"
+X.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+X.TextScaled = true
+X.TextSize = 14
+X.TextWrapped = true
+
+WoodScreen.Name = "WoodScreen"
+WoodScreen.Parent = Drag
+WoodScreen.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+WoodScreen.BackgroundTransparency = 1
+WoodScreen.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WoodScreen.BorderSizePixel = 0
+WoodScreen.Draggable = true
+WoodScreen.Position = UDim2.new(0.0164813697, 0, -0.000777035952, 0)
+WoodScreen.Size = UDim2.new(0, 444, 0, 230)
+WoodScreen.Visible = false
+
+TeleportCutWood.Name = "Teleport Cut Wood"
+TeleportCutWood.Parent = WoodScreen
+TeleportCutWood.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TeleportCutWood.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportCutWood.BorderSizePixel = 2
+TeleportCutWood.Position = UDim2.new(0.457207203, 0, 0.226086959, 0)
+TeleportCutWood.Size = UDim2.new(0, 147, 0, 21)
+TeleportCutWood.Font = Enum.Font.SourceSans
+TeleportCutWood.Text = "Teleport Cut Wood"
+TeleportCutWood.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportCutWood.TextScaled = true
+TeleportCutWood.TextSize = 24
+TeleportCutWood.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportCutWood.TextWrapped = true
+
+SellCutWood.Name = "Sell Cut Wood"
+SellCutWood.Parent = WoodScreen
+SellCutWood.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+SellCutWood.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+SellCutWood.BorderSizePixel = 2
+SellCutWood.Position = UDim2.new(0.457207203, 0, 0.391304344, 0)
+SellCutWood.Size = UDim2.new(0, 147, 0, 21)
+SellCutWood.Font = Enum.Font.SourceSans
+SellCutWood.Text = "Sell Cut Wood"
+SellCutWood.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+SellCutWood.TextSize = 24
+SellCutWood.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+TeleportEndTimesWood.Name = "Teleport End Times Wood"
+TeleportEndTimesWood.Parent = WoodScreen
+TeleportEndTimesWood.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TeleportEndTimesWood.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportEndTimesWood.BorderSizePixel = 2
+TeleportEndTimesWood.Position = UDim2.new(0.457207203, 0, 0.556521714, 0)
+TeleportEndTimesWood.Size = UDim2.new(0, 147, 0, 21)
+TeleportEndTimesWood.Font = Enum.Font.SourceSans
+TeleportEndTimesWood.Text = "Teleport End Times"
+TeleportEndTimesWood.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportEndTimesWood.TextScaled = true
+TeleportEndTimesWood.TextSize = 24
+TeleportEndTimesWood.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportEndTimesWood.TextWrapped = true
+
+TeleportCaveCrawlerWood.Name = "Teleport Cave Crawler Wood"
+TeleportCaveCrawlerWood.Parent = WoodScreen
+TeleportCaveCrawlerWood.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TeleportCaveCrawlerWood.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportCaveCrawlerWood.BorderSizePixel = 2
+TeleportCaveCrawlerWood.Position = UDim2.new(0.457207203, 0, 0.70869565, 0)
+TeleportCaveCrawlerWood.Size = UDim2.new(0, 147, 0, 21)
+TeleportCaveCrawlerWood.Font = Enum.Font.SourceSans
+TeleportCaveCrawlerWood.Text = "Teleport Cave Crawler"
+TeleportCaveCrawlerWood.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportCaveCrawlerWood.TextScaled = true
+TeleportCaveCrawlerWood.TextSize = 24
+TeleportCaveCrawlerWood.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportCaveCrawlerWood.TextWrapped = true
+
+TeleportGifts.Name = "Teleport Gifts"
+TeleportGifts.Parent = WoodScreen
+TeleportGifts.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TeleportGifts.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportGifts.BorderSizePixel = 2
+TeleportGifts.Position = UDim2.new(0.456081063, 0, 0.869565248, 0)
+TeleportGifts.Size = UDim2.new(0, 147, 0, 21)
+TeleportGifts.Font = Enum.Font.SourceSans
+TeleportGifts.Text = "Teleport Gifts"
+TeleportGifts.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportGifts.TextScaled = true
+TeleportGifts.TextSize = 24
+TeleportGifts.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportGifts.TextWrapped = true
+
+ToolsScreen.Name = "ToolsScreen"
+ToolsScreen.Parent = Drag
+ToolsScreen.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+ToolsScreen.BackgroundTransparency = 1
+ToolsScreen.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+ToolsScreen.BorderSizePixel = 0
+ToolsScreen.Draggable = true
+ToolsScreen.Position = UDim2.new(0.0164813697, 0, -0.000777035952, 0)
+ToolsScreen.Size = UDim2.new(0, 444, 0, 230)
+ToolsScreen.Visible = false
+
+Dupe.Name = "Dupe"
+Dupe.Parent = ToolsScreen
+Dupe.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Dupe.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Dupe.BorderSizePixel = 2
+Dupe.Position = UDim2.new(0.457207203, 0, 0.199999988, 0)
+Dupe.Size = UDim2.new(0, 147, 0, 20)
+Dupe.Font = Enum.Font.SourceSans
+Dupe.Text = "Duplication"
+Dupe.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Dupe.TextScaled = true
+Dupe.TextSize = 24
+Dupe.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Dupe.TextWrapped = true
+
+Move.Name = "Move"
+Move.Parent = ToolsScreen
+Move.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Move.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Move.BorderSizePixel = 2
+Move.Position = UDim2.new(0.457207203, 0, 0.347826093, 0)
+Move.Size = UDim2.new(0, 147, 0, 20)
+Move.Font = Enum.Font.SourceSans
+Move.Text = "Hard Dragger"
+Move.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Move.TextScaled = true
+Move.TextSize = 24
+Move.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Move.TextWrapped = true
+
+GoldAxe.Name = "Gold Axe"
+GoldAxe.Parent = ToolsScreen
+GoldAxe.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+GoldAxe.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GoldAxe.BorderSizePixel = 2
+GoldAxe.Position = UDim2.new(0.457207233, 0, 0.478260875, 0)
+GoldAxe.Size = UDim2.new(0, 147, 0, 20)
+GoldAxe.Font = Enum.Font.SourceSans
+GoldAxe.Text = "Golden Axe"
+GoldAxe.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GoldAxe.TextScaled = true
+GoldAxe.TextSize = 24
+GoldAxe.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GoldAxe.TextWrapped = true
+
+LeakedItems.Name = "Leaked Items"
+LeakedItems.Parent = ToolsScreen
+LeakedItems.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+LeakedItems.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LeakedItems.BorderSizePixel = 2
+LeakedItems.Position = UDim2.new(0.456081092, 0, 0.617391288, 0)
+LeakedItems.Size = UDim2.new(0, 147, 0, 20)
+LeakedItems.Font = Enum.Font.SourceSans
+LeakedItems.Text = "Leaked Items"
+LeakedItems.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LeakedItems.TextScaled = true
+LeakedItems.TextSize = 24
+LeakedItems.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LeakedItems.TextWrapped = true
+
+TeleportTool.Name = "Teleport Tool"
+TeleportTool.Parent = ToolsScreen
+TeleportTool.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TeleportTool.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportTool.BorderSizePixel = 2
+TeleportTool.Position = UDim2.new(0.456081092, 0, 0.756521761, 0)
+TeleportTool.Size = UDim2.new(0, 147, 0, 20)
+TeleportTool.Font = Enum.Font.SourceSans
+TeleportTool.Text = "Ctrl + Click TP"
+TeleportTool.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportTool.TextScaled = true
+TeleportTool.TextSize = 24
+TeleportTool.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportTool.TextWrapped = true
+
+GreyWood.Name = "Grey Wood"
+GreyWood.Parent = ToolsScreen
+GreyWood.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+GreyWood.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GreyWood.BorderSizePixel = 2
+GreyWood.Position = UDim2.new(0.456081092, 0, 0.900000036, 0)
+GreyWood.Size = UDim2.new(0, 147, 0, 20)
+GreyWood.Font = Enum.Font.SourceSans
+GreyWood.Text = "Grey Wood"
+GreyWood.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GreyWood.TextScaled = true
+GreyWood.TextSize = 24
+GreyWood.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GreyWood.TextWrapped = true
+
+DupeLabel.Name = "DupeLabel"
+DupeLabel.Parent = ToolsScreen
+DupeLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+DupeLabel.BackgroundTransparency = 1
+DupeLabel.BorderColor3 = Color3.new(0.666667, 0, 0)
+DupeLabel.BorderSizePixel = 0
+DupeLabel.Position = UDim2.new(0.493243247, 0, 0.286956519, 0)
+DupeLabel.Size = UDim2.new(0, 115, 0, 14)
+DupeLabel.Font = Enum.Font.SciFi
+DupeLabel.Text = "Disabled"
+DupeLabel.TextColor3 = Color3.new(0.666667, 0, 0)
+DupeLabel.TextSize = 14
+
+TeleportsScreen.Name = "TeleportsScreen"
+TeleportsScreen.Parent = Drag
+TeleportsScreen.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+TeleportsScreen.BackgroundTransparency = 1
+TeleportsScreen.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TeleportsScreen.BorderSizePixel = 0
+TeleportsScreen.Draggable = true
+TeleportsScreen.Position = UDim2.new(0.0164813697, 0, -0.000777035952, 0)
+TeleportsScreen.Size = UDim2.new(0, 444, 0, 230)
+TeleportsScreen.Visible = false
+
+Spawn.Name = "Spawn"
+Spawn.Parent = TeleportsScreen
+Spawn.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Spawn.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Spawn.BorderSizePixel = 2
+Spawn.Position = UDim2.new(0.290540546, 0, 0.226086959, 0)
+Spawn.Size = UDim2.new(0, 84, 0, 21)
+Spawn.Font = Enum.Font.SourceSans
+Spawn.Text = "Spawn"
+Spawn.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Spawn.TextSize = 24
+Spawn.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Spawn.TextWrapped = true
+
+Den.Name = "Den"
+Den.Parent = TeleportsScreen
+Den.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Den.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Den.BorderSizePixel = 2
+Den.Position = UDim2.new(0.290540546, 0, 0.352173924, 0)
+Den.Size = UDim2.new(0, 84, 0, 21)
+Den.Font = Enum.Font.SourceSans
+Den.Text = "The Den"
+Den.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Den.TextSize = 24
+Den.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Den.TextWrapped = true
+
+StrangeMan.Name = "Strange Man"
+StrangeMan.Parent = TeleportsScreen
+StrangeMan.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+StrangeMan.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+StrangeMan.BorderSizePixel = 2
+StrangeMan.Position = UDim2.new(0.290540546, 0, 0.482608676, 0)
+StrangeMan.Size = UDim2.new(0, 84, 0, 21)
+StrangeMan.Font = Enum.Font.SourceSans
+StrangeMan.Text = "Strange Man"
+StrangeMan.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+StrangeMan.TextScaled = true
+StrangeMan.TextSize = 24
+StrangeMan.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+StrangeMan.TextWrapped = true
+
+Swamp.Name = "Swamp"
+Swamp.Parent = TeleportsScreen
+Swamp.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Swamp.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Swamp.BorderSizePixel = 2
+Swamp.Position = UDim2.new(0.290540546, 0, 0.617391288, 0)
+Swamp.Size = UDim2.new(0, 84, 0, 21)
+Swamp.Font = Enum.Font.SourceSans
+Swamp.Text = "Swamp"
+Swamp.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Swamp.TextSize = 24
+Swamp.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Swamp.TextWrapped = true
+
+Fancy.Name = "Fancy"
+Fancy.Parent = TeleportsScreen
+Fancy.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Fancy.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Fancy.BorderSizePixel = 2
+Fancy.Position = UDim2.new(0.290540546, 0, 0.747826099, 0)
+Fancy.Size = UDim2.new(0, 84, 0, 21)
+Fancy.Font = Enum.Font.SourceSans
+Fancy.Text = "Fancy"
+Fancy.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Fancy.TextSize = 24
+Fancy.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Fancy.TextWrapped = true
+
+BoxedCars.Name = "Boxed Cars"
+BoxedCars.Parent = TeleportsScreen
+BoxedCars.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+BoxedCars.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+BoxedCars.BorderSizePixel = 2
+BoxedCars.Position = UDim2.new(0.290540546, 0, 0.87391305, 0)
+BoxedCars.Size = UDim2.new(0, 84, 0, 21)
+BoxedCars.Font = Enum.Font.SourceSans
+BoxedCars.Text = "Boxed Cars"
+BoxedCars.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+BoxedCars.TextScaled = true
+BoxedCars.TextSize = 24
+BoxedCars.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+BoxedCars.TextWrapped = true
+
+Dropoff.Name = "Dropoff"
+Dropoff.Parent = TeleportsScreen
+Dropoff.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Dropoff.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Dropoff.BorderSizePixel = 2
+Dropoff.Position = UDim2.new(0.538288295, 0, 0.226086959, 0)
+Dropoff.Size = UDim2.new(0, 84, 0, 21)
+Dropoff.Font = Enum.Font.SourceSans
+Dropoff.Text = "Dropoff"
+Dropoff.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Dropoff.TextSize = 24
+Dropoff.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Dropoff.TextWrapped = true
+
+GreenBox.Name = "Green Box"
+GreenBox.Parent = TeleportsScreen
+GreenBox.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+GreenBox.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GreenBox.BorderSizePixel = 2
+GreenBox.Position = UDim2.new(0.538288295, 0, 0.352173924, 0)
+GreenBox.Size = UDim2.new(0, 84, 0, 21)
+GreenBox.Font = Enum.Font.SourceSans
+GreenBox.Text = "Green Box"
+GreenBox.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GreenBox.TextScaled = true
+GreenBox.TextSize = 24
+GreenBox.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+GreenBox.TextWrapped = true
+
+Cave.Name = "Cave"
+Cave.Parent = TeleportsScreen
+Cave.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Cave.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Cave.BorderSizePixel = 2
+Cave.Position = UDim2.new(0.538288295, 0, 0.482608676, 0)
+Cave.Size = UDim2.new(0, 84, 0, 21)
+Cave.Font = Enum.Font.SourceSans
+Cave.Text = "Cave"
+Cave.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Cave.TextSize = 24
+Cave.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Cave.TextWrapped = true
+
+Palm.Name = "Palm"
+Palm.Parent = TeleportsScreen
+Palm.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Palm.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Palm.BorderSizePixel = 2
+Palm.Position = UDim2.new(0.538288295, 0, 0.617391288, 0)
+Palm.Size = UDim2.new(0, 84, 0, 21)
+Palm.Font = Enum.Font.SourceSans
+Palm.Text = "Palm"
+Palm.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Palm.TextSize = 24
+Palm.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Palm.TextWrapped = true
+
+WoodRUs.Name = "Wood R Us"
+WoodRUs.Parent = TeleportsScreen
+WoodRUs.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+WoodRUs.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WoodRUs.BorderSizePixel = 2
+WoodRUs.Position = UDim2.new(0.538288295, 0, 0.747826099, 0)
+WoodRUs.Size = UDim2.new(0, 84, 0, 21)
+WoodRUs.Font = Enum.Font.SourceSans
+WoodRUs.Text = "Wood R Us"
+WoodRUs.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WoodRUs.TextScaled = true
+WoodRUs.TextSize = 24
+WoodRUs.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WoodRUs.TextWrapped = true
+
+LinksLogic.Name = "Links Logic"
+LinksLogic.Parent = TeleportsScreen
+LinksLogic.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+LinksLogic.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LinksLogic.BorderSizePixel = 2
+LinksLogic.Position = UDim2.new(0.538288295, 0, 0.87391305, 0)
+LinksLogic.Size = UDim2.new(0, 84, 0, 21)
+LinksLogic.Font = Enum.Font.SourceSans
+LinksLogic.Text = "Link's Logic"
+LinksLogic.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LinksLogic.TextScaled = true
+LinksLogic.TextSize = 24
+LinksLogic.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LinksLogic.TextWrapped = true
+
+YourPlot.Name = "Your Plot"
+YourPlot.Parent = TeleportsScreen
+YourPlot.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+YourPlot.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+YourPlot.BorderSizePixel = 2
+YourPlot.Position = UDim2.new(0.77477479, 0, 0.87391305, 0)
+YourPlot.Size = UDim2.new(0, 84, 0, 21)
+YourPlot.Font = Enum.Font.SourceSans
+YourPlot.Text = "Your Plot"
+YourPlot.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+YourPlot.TextSize = 24
+YourPlot.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+YourPlot.TextWrapped = true
+
+BobsShack.Name = "Bobs Shack"
+BobsShack.Parent = TeleportsScreen
+BobsShack.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+BobsShack.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+BobsShack.BorderSizePixel = 2
+BobsShack.Position = UDim2.new(0.77477479, 0, 0.747826099, 0)
+BobsShack.Size = UDim2.new(0, 84, 0, 21)
+BobsShack.Font = Enum.Font.SourceSans
+BobsShack.Text = "Bob's Shack"
+BobsShack.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+BobsShack.TextScaled = true
+BobsShack.TextSize = 24
+BobsShack.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+BobsShack.TextWrapped = true
+
+EndTimes.Name = "End Times"
+EndTimes.Parent = TeleportsScreen
+EndTimes.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+EndTimes.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+EndTimes.BorderSizePixel = 2
+EndTimes.Position = UDim2.new(0.77477479, 0, 0.617391288, 0)
+EndTimes.Size = UDim2.new(0, 84, 0, 21)
+EndTimes.Font = Enum.Font.SourceSans
+EndTimes.Text = "End Times"
+EndTimes.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+EndTimes.TextScaled = true
+EndTimes.TextSize = 24
+EndTimes.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+EndTimes.TextWrapped = true
+
+Volcano.Name = "Volcano"
+Volcano.Parent = TeleportsScreen
+Volcano.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Volcano.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Volcano.BorderSizePixel = 2
+Volcano.Position = UDim2.new(0.77477479, 0, 0.482608676, 0)
+Volcano.Size = UDim2.new(0, 84, 0, 21)
+Volcano.Font = Enum.Font.SourceSans
+Volcano.Text = "Volcano"
+Volcano.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Volcano.TextSize = 24
+Volcano.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Volcano.TextWrapped = true
+
+Lodge.Name = "Lodge"
+Lodge.Parent = TeleportsScreen
+Lodge.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Lodge.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Lodge.BorderSizePixel = 2
+Lodge.Position = UDim2.new(0.77477479, 0, 0.352173924, 0)
+Lodge.Size = UDim2.new(0, 84, 0, 21)
+Lodge.Font = Enum.Font.SourceSans
+Lodge.Text = "Lodge"
+Lodge.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Lodge.TextSize = 24
+Lodge.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Lodge.TextWrapped = true
+
+Shrine.Name = "Shrine"
+Shrine.Parent = TeleportsScreen
+Shrine.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Shrine.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Shrine.BorderSizePixel = 2
+Shrine.Position = UDim2.new(0.77477479, 0, 0.226086959, 0)
+Shrine.Size = UDim2.new(0, 84, 0, 21)
+Shrine.Font = Enum.Font.SourceSans
+Shrine.Text = "Shrine"
+Shrine.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Shrine.TextSize = 24
+Shrine.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Shrine.TextWrapped = true
+
+PlayersScreen.Name = "PlayersScreen"
+PlayersScreen.Parent = Drag
+PlayersScreen.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+PlayersScreen.BackgroundTransparency = 1
+PlayersScreen.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+PlayersScreen.BorderSizePixel = 0
+PlayersScreen.Draggable = true
+PlayersScreen.Position = UDim2.new(0.0164813697, 0, -0.000777035952, 0)
+PlayersScreen.Size = UDim2.new(0, 444, 0, 230)
+PlayersScreen.Visible = false
+
+P1.Name = "P1"
+P1.Parent = PlayersScreen
+P1.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+P1.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P1.BorderSizePixel = 2
+P1.Position = UDim2.new(0.272522509, 0, 0.226086959, 0)
+P1.Size = UDim2.new(0, 147, 0, 21)
+P1.Font = Enum.Font.SourceSans
+P1.Text = " "
+P1.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P1.TextSize = 24
+P1.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+P2.Name = "P2"
+P2.Parent = PlayersScreen
+P2.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+P2.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P2.BorderSizePixel = 2
+P2.Position = UDim2.new(0.628378332, 0, 0.226086974, 0)
+P2.Size = UDim2.new(0, 158, 0, 21)
+P2.Font = Enum.Font.SourceSans
+P2.Text = " "
+P2.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P2.TextSize = 24
+P2.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+P4.Name = "P4"
+P4.Parent = PlayersScreen
+P4.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+P4.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P4.BorderSizePixel = 2
+P4.Position = UDim2.new(0.628378332, 0, 0.352173924, 0)
+P4.Size = UDim2.new(0, 158, 0, 21)
+P4.Font = Enum.Font.SourceSans
+P4.Text = " "
+P4.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P4.TextSize = 24
+P4.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+P3.Name = "P3"
+P3.Parent = PlayersScreen
+P3.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+P3.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P3.BorderSizePixel = 2
+P3.Position = UDim2.new(0.272522509, 0, 0.352173924, 0)
+P3.Size = UDim2.new(0, 147, 0, 21)
+P3.Font = Enum.Font.SourceSans
+P3.Text = " "
+P3.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P3.TextSize = 24
+P3.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+P6.Name = "P6"
+P6.Parent = PlayersScreen
+P6.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+P6.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P6.BorderSizePixel = 2
+P6.Position = UDim2.new(0.628378332, 0, 0.482608706, 0)
+P6.Size = UDim2.new(0, 158, 0, 21)
+P6.Font = Enum.Font.SourceSans
+P6.Text = ""
+P6.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P6.TextSize = 24
+P6.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+P5.Name = "P5"
+P5.Parent = PlayersScreen
+P5.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+P5.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P5.BorderSizePixel = 2
+P5.Position = UDim2.new(0.272522509, 0, 0.482608706, 0)
+P5.Size = UDim2.new(0, 147, 0, 21)
+P5.Font = Enum.Font.SourceSans
+P5.Text = " "
+P5.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+P5.TextSize = 24
+P5.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+TpToPlayer.Name = "TpToPlayer"
+TpToPlayer.Parent = PlayersScreen
+TpToPlayer.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TpToPlayer.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TpToPlayer.BorderSizePixel = 2
+TpToPlayer.Position = UDim2.new(0.405405402, 0, 0.656521738, 0)
+TpToPlayer.Size = UDim2.new(0, 179, 0, 21)
+TpToPlayer.Font = Enum.Font.SourceSans
+TpToPlayer.Text = "Teleport To Player"
+TpToPlayer.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TpToPlayer.TextSize = 24
+TpToPlayer.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+TpToPlayerBase.Name = "TpToPlayerBase"
+TpToPlayerBase.Parent = PlayersScreen
+TpToPlayerBase.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+TpToPlayerBase.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TpToPlayerBase.BorderSizePixel = 2
+TpToPlayerBase.Position = UDim2.new(0.405405402, 0, 0.813043475, 0)
+TpToPlayerBase.Size = UDim2.new(0, 179, 0, 21)
+TpToPlayerBase.Font = Enum.Font.SourceSans
+TpToPlayerBase.Text = "Teleport To Base"
+TpToPlayerBase.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+TpToPlayerBase.TextSize = 24
+TpToPlayerBase.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+PSelected.Name = "PSelected"
+PSelected.Parent = PlayersScreen
+PSelected.BackgroundColor3 = Color3.new(1, 1, 1)
+PSelected.BackgroundTransparency = 1
+PSelected.BorderSizePixel = 0
+PSelected.Position = UDim2.new(0.405405402, 0, 0.904347837, 0)
+PSelected.Size = UDim2.new(0, 179, 0, 22)
+PSelected.Font = Enum.Font.SourceSans
+PSelected.Text = ""
+PSelected.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+PSelected.TextSize = 20
+
+LocalScreen.Name = "LocalScreen"
+LocalScreen.Parent = Drag
+LocalScreen.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+LocalScreen.BackgroundTransparency = 1
+LocalScreen.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+LocalScreen.BorderSizePixel = 0
+LocalScreen.Draggable = true
+LocalScreen.Position = UDim2.new(0.0164813697, 0, -0.000777035952, 0)
+LocalScreen.Size = UDim2.new(0, 444, 0, 230)
+LocalScreen.Visible = false
+
+God.Name = "God"
+God.Parent = LocalScreen
+God.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+God.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+God.BorderSizePixel = 2
+God.Position = UDim2.new(0.457207203, 0, 0.226086944, 0)
+God.Size = UDim2.new(0, 158, 0, 21)
+God.Font = Enum.Font.SourceSans
+God.Text = "God"
+God.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+God.TextSize = 24
+God.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+Noclip.Name = "Noclip"
+Noclip.Parent = LocalScreen
+Noclip.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Noclip.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Noclip.BorderSizePixel = 2
+Noclip.Position = UDim2.new(0.457207203, 0, 0.352173924, 0)
+Noclip.Size = UDim2.new(0, 158, 0, 21)
+Noclip.Font = Enum.Font.SourceSans
+Noclip.Text = "Noclip"
+Noclip.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Noclip.TextSize = 24
+Noclip.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+Walkspeed.Name = "Walkspeed"
+Walkspeed.Parent = LocalScreen
+Walkspeed.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Walkspeed.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Walkspeed.BorderSizePixel = 2
+Walkspeed.Position = UDim2.new(0.457207203, 0, 0.523913026, 0)
+Walkspeed.Size = UDim2.new(0, 158, 0, 21)
+Walkspeed.Font = Enum.Font.SourceSans
+Walkspeed.Text = "Walkspeed"
+Walkspeed.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Walkspeed.TextSize = 24
+Walkspeed.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+Jumppower.Name = "Jumppower"
+Jumppower.Parent = LocalScreen
+Jumppower.BackgroundColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Jumppower.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Jumppower.BorderSizePixel = 2
+Jumppower.Position = UDim2.new(0.457207203, 0, 0.70869565, 0)
+Jumppower.Size = UDim2.new(0, 158, 0, 21)
+Jumppower.Font = Enum.Font.SourceSans
+Jumppower.Text = "Jumppower"
+Jumppower.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Jumppower.TextSize = 24
+Jumppower.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+NoclipLabel.Name = "NoclipLabel"
+NoclipLabel.Parent = LocalScreen
+NoclipLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+NoclipLabel.BackgroundTransparency = 1
+NoclipLabel.BorderColor3 = Color3.new(0.666667, 0, 0)
+NoclipLabel.BorderSizePixel = 0
+NoclipLabel.Position = UDim2.new(0.504504502, 0, 0.443478256, 0)
+NoclipLabel.Size = UDim2.new(0, 115, 0, 19)
+NoclipLabel.Font = Enum.Font.SciFi
+NoclipLabel.Text = "Disabled"
+NoclipLabel.TextColor3 = Color3.new(0.666667, 0, 0)
+NoclipLabel.TextSize = 14
+
+WalkspeedValue.Name = "WalkspeedValue"
+WalkspeedValue.Parent = LocalScreen
+WalkspeedValue.BackgroundColor3 = Color3.new(1, 1, 1)
+WalkspeedValue.BackgroundTransparency = 1
+WalkspeedValue.BorderSizePixel = 0
+WalkspeedValue.Position = UDim2.new(0.457207203, 0, 0.617391288, 0)
+WalkspeedValue.Size = UDim2.new(0, 158, 0, 21)
+WalkspeedValue.Font = Enum.Font.SourceSans
+WalkspeedValue.Text = "Walkspeed Value"
+WalkspeedValue.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+WalkspeedValue.TextSize = 14
+
+JumppowerValue.Name = "JumppowerValue"
+JumppowerValue.Parent = LocalScreen
+JumppowerValue.BackgroundColor3 = Color3.new(1, 1, 1)
+JumppowerValue.BackgroundTransparency = 1
+JumppowerValue.BorderSizePixel = 0
+JumppowerValue.Position = UDim2.new(0.457207203, 0, 0.799999952, 0)
+JumppowerValue.Size = UDim2.new(0, 158, 0, 21)
+JumppowerValue.Font = Enum.Font.SourceSans
+JumppowerValue.Text = "Jumppower Value"
+JumppowerValue.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+JumppowerValue.TextSize = 14
+
+EtoFly.Name = "EtoFly"
+EtoFly.Parent = LocalScreen
+EtoFly.BackgroundColor3 = Color3.new(1, 1, 1)
+EtoFly.BackgroundTransparency = 1
+EtoFly.BorderSizePixel = 0
+EtoFly.Position = UDim2.new(0.409909904, 0, 0.895652175, 0)
+EtoFly.Size = UDim2.new(0, 200, 0, 29)
+EtoFly.Font = Enum.Font.SourceSans
+EtoFly.Text = "Press \"Q\" to Fly"
+EtoFly.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+EtoFly.TextSize = 14
+
+HomeScreen.Name = "HomeScreen"
+HomeScreen.Parent = Drag
+HomeScreen.BackgroundColor3 = Color3.new(1, 1, 1)
+HomeScreen.BackgroundTransparency = 1
+HomeScreen.BorderSizePixel = 0
+HomeScreen.Position = UDim2.new(-0.208425716, 0, -0.273504287, 0)
+HomeScreen.Size = UDim2.new(0, 450, 0, 232)
+HomeScreen.Visible = false
+
+WelcomeName.Name = "WelcomeName"
+WelcomeName.Parent = HomeScreen
+WelcomeName.BackgroundColor3 = Color3.new(1, 1, 1)
+WelcomeName.BackgroundTransparency = 1
+WelcomeName.BorderSizePixel = 0
+WelcomeName.Position = UDim2.new(0.512882888, 0, 0.402361304, 0)
+WelcomeName.Size = UDim2.new(0, 295, 0, 50)
+WelcomeName.Font = Enum.Font.SourceSans
+WelcomeName.Text = "Welcome"
+WelcomeName.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+WelcomeName.TextSize = 26
+WelcomeName.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WelcomeName.TextStrokeTransparency = 0.64999997615814
+WelcomeName.TextWrapped = true
+
+WelcomeMOTD.Name = "WelcomeMOTD"
+WelcomeMOTD.Parent = HomeScreen
+WelcomeMOTD.BackgroundColor3 = Color3.new(1, 1, 1)
+WelcomeMOTD.BackgroundTransparency = 1
+WelcomeMOTD.Position = UDim2.new(0.524598598, 0, 0.615812302, 0)
+WelcomeMOTD.Size = UDim2.new(0, 295, 0, 122)
+WelcomeMOTD.Font = Enum.Font.SourceSans
+WelcomeMOTD.Text = "I heard there are a lot of wild haxors on the lose. Be careful out there."
+WelcomeMOTD.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+WelcomeMOTD.TextSize = 30
+WelcomeMOTD.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WelcomeMOTD.TextStrokeTransparency = 0.64999997615814
+WelcomeMOTD.TextWrapped = true
+
+WelcomeAuthor.Name = "WelcomeAuthor"
+WelcomeAuthor.Parent = HomeScreen
+WelcomeAuthor.BackgroundColor3 = Color3.new(1, 1, 1)
+WelcomeAuthor.BackgroundTransparency = 1
+WelcomeAuthor.BorderSizePixel = 0
+WelcomeAuthor.Position = UDim2.new(0.621117353, 0, 1.14139926, 0)
+WelcomeAuthor.Size = UDim2.new(0, 200, 0, 22)
+WelcomeAuthor.Font = Enum.Font.SourceSans
+WelcomeAuthor.Text = "By Casual#2435"
+WelcomeAuthor.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+WelcomeAuthor.TextSize = 12
+WelcomeAuthor.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+WelcomeAuthor.TextStrokeTransparency = 0.64999997615814
+WelcomeAuthor.TextWrapped = true
+
+ChangelogScreen.Name = "ChangelogScreen"
+ChangelogScreen.Parent = Drag
+ChangelogScreen.BackgroundColor3 = Color3.new(1, 1, 1)
+ChangelogScreen.BackgroundTransparency = 1
+ChangelogScreen.BorderSizePixel = 0
+ChangelogScreen.Position = UDim2.new(0.24833703, 0, 0.17521368, 0)
+ChangelogScreen.Size = UDim2.new(0, 337, 0, 193)
+ChangelogScreen.Visible = false
+
+Logs.Name = "Logs"
+Logs.Parent = ChangelogScreen
+Logs.BackgroundColor3 = Color3.new(1, 1, 1)
+Logs.BackgroundTransparency = 1
+Logs.BorderSizePixel = 0
+Logs.Position = UDim2.new(0.0207715146, 0, 0, 0)
+Logs.Size = UDim2.new(0, 322, 0, 39)
+Logs.Font = Enum.Font.SourceSans
+Logs.Text = "-1.0 Huge Improvement on Look of Gui"
+Logs.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Logs.TextSize = 20
+
+Logs2.Name = "Logs2"
+Logs2.Parent = ChangelogScreen
+Logs2.BackgroundColor3 = Color3.new(1, 1, 1)
+Logs2.BackgroundTransparency = 1
+Logs2.BorderSizePixel = 0
+Logs2.Position = UDim2.new(0.0296735913, 0, 0.160621762, 0)
+Logs2.Size = UDim2.new(0, 322, 0, 85)
+Logs2.Font = Enum.Font.SourceSans
+Logs2.Text = "-1.1 Fixed bug that caused you not to be able to changewalkspeed and made you walk slow when you turned on god mode."
+Logs2.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Logs2.TextSize = 20
+Logs2.TextWrapped = true
+
+Logs3.Name = "Logs3"
+Logs3.Parent = ChangelogScreen
+Logs3.BackgroundColor3 = Color3.new(1, 1, 1)
+Logs3.BackgroundTransparency = 1
+Logs3.BorderSizePixel = 0
+Logs3.Position = UDim2.new(0.0296735913, 0, 0.46632123, 0)
+Logs3.Size = UDim2.new(0, 322, 0, 85)
+Logs3.Font = Enum.Font.SourceSans
+Logs3.Text = "-1.2 Added 3 new features - Hard Dragger, Teleport Gifts and Flight"
+Logs3.TextColor3 = Color3.new(0.117647, 0.501961, 0.639216)
+Logs3.TextSize = 20
+Logs3.TextWrapped = true
+
+Log1and2Div.Name = "Log1and2Div"
+Log1and2Div.Parent = ChangelogScreen
+Log1and2Div.BackgroundColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Log1and2Div.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Log1and2Div.Position = UDim2.new(0.0534124635, 0, 0.196891189, 0)
+Log1and2Div.Size = UDim2.new(0, 306, 0, 1)
+Log1and2Div.Font = Enum.Font.SourceSans
+Log1and2Div.Text = ""
+Log1and2Div.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Log1and2Div.TextSize = 24
+Log1and2Div.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+Log2and3Div.Name = "Log2and3Div"
+Log2and3Div.Parent = ChangelogScreen
+Log2and3Div.BackgroundColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Log2and3Div.BorderColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Log2and3Div.Position = UDim2.new(0.0534124635, 0, 0.569948196, 0)
+Log2and3Div.Size = UDim2.new(0, 306, 0, 1)
+Log2and3Div.Font = Enum.Font.SourceSans
+Log2and3Div.Text = ""
+Log2and3Div.TextColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+Log2and3Div.TextSize = 24
+Log2and3Div.TextStrokeColor3 = Color3.new(0.0392157, 0.0627451, 0.0823529)
+
+--------
+-- Fly
+repeat wait()
+    until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+local mouse = game.Players.LocalPlayer:GetMouse()
+repeat wait() until mouse
+local plr = game.Players.LocalPlayer
+local torso = plr.Character.Torso
+local flying = true
+local deb = true
+local ctrl = {f = 0, b = 0, l = 0, r = 0}
+local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+local maxspeed = 50
+local speed = 0
+ 
+function Fly()
+local bg = Instance.new("BodyGyro", torso)
+bg.P = 9e4
+bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+bg.cframe = torso.CFrame
+local bv = Instance.new("BodyVelocity", torso)
+bv.velocity = Vector3.new(0,0.1,0)
+bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+repeat wait()
+plr.Character.Humanoid.PlatformStand = true
+if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+speed = speed+.5+(speed/maxspeed)
+if speed > maxspeed then
+speed = maxspeed
+end
+elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+speed = speed-1
+if speed < 0 then
+speed = 0
+end
+end
+if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+else
+bv.velocity = Vector3.new(0,0.1,0)
+end
+bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+until not flying
+ctrl = {f = 0, b = 0, l = 0, r = 0}
+lastctrl = {f = 0, b = 0, l = 0, r = 0}
+speed = 0
+bg:Destroy()
+bv:Destroy()
+plr.Character.Humanoid.PlatformStand = false
+end
+mouse.KeyDown:connect(function(key)
+if key:lower() == "q" then
+if flying then flying = false
+AAPressQ.Visible = false
+else
+flying = true
+Fly()
+end
+elseif key:lower() == "w" then
+ctrl.f = 1
+elseif key:lower() == "s" then
+ctrl.b = -1
+elseif key:lower() == "a" then
+ctrl.l = -1
+elseif key:lower() == "d" then
+ctrl.r = 1
+end
+end)
+mouse.KeyUp:connect(function(key)
+if key:lower() == "w" then
+ctrl.f = 0
+elseif key:lower() == "s" then
+ctrl.b = 0
+elseif key:lower() == "a" then
+ctrl.l = 0
+elseif key:lower() == "d" then
+ctrl.r = 0
+end
+end)
+Fly()
+
+AnimWelcomeScreen.Visible = true
+AnimWelcomeScreen:TweenSizeAndPosition(UDim2.new(0, 200, 0, 200), UDim2.new(0.5, -100, 0.5, -100), "Out", "Quad", .25)
+wait(2)
+ImageLabel:Destroy()
+AnimWelcomeScreen:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0),UDim2.new(0.5, 0, 0.5, 0), "Out", "Bounce", 0.5);wait(0.5);AnimWelcomeScreen:Destroy();
+wait(2)
+HomeScreen.Visible = true
+Main.Visible = true
+
+
+HiName.Text = "Hi "..game.Players.LocalPlayer.Name
+WelcomeName.Text = "Welcome "..game.Players.LocalPlayer.Name
+
+--Opening Tabs
+ P1.MouseButton1Down:connect(function()
+      PSelected.Text = P1.Text
+    end)
+ P2.MouseButton1Down:connect(function()
+      PSelected.Text = P2.Text
+    end)
+ P3.MouseButton1Down:connect(function()
+      PSelected.Text = P3.Text
+    end)
+ P4.MouseButton1Down:connect(function()
+      PSelected.Text = P4.Text
+    end)
+ P5.MouseButton1Down:connect(function()
+      PSelected.Text = P5.Text
+    end)
+ P6.MouseButton1Down:connect(function()
+      PSelected.Text = P6.Text
+    end)
+    local buttons = {
+     PlayersScreen.P1,
+     PlayersScreen.P2,
+     PlayersScreen.P3,
+     PlayersScreen.P4,
+     PlayersScreen.P5,
+     PlayersScreen.P6
+    }
+
+for i, v in pairs(game.Players:GetChildren()) do
+      buttons[i].Text = v.Name
+      buttons[i].Visible = true
+    end
+    game.Players.PlayerRemoving:connect(function()
+      for i, v in pairs(game.Players:GetChildren()) do
+        buttons[i].Text = v.Name
+        buttons[i].Visible = true
+      end
+    end)
+    game.Players.PlayerAdded:connect(function()
+      for i, v in pairs(game.Players:GetChildren()) do
+        buttons[i].Text = v.Name
+        buttons[i].Visible = true
+      end
+    end)
+
+if PlayersScreen.P1.text == " " then
+P1.Visible = false
+end
+
+if PlayersScreen.P2.text == " " then
+P2.Visible = false
+end
+
+if PlayersScreen.P3.text == " " then
+P3.Visible = false
+end
+
+if PlayersScreen.P4.text == " " then
+P4.Visible = false
+end
+
+if PlayersScreen.P5.text == " " then
+P5.Visible = false
+end
+
+if PlayersScreen.P6.text == "" then
+P6.Visible = false
+end
+
+TpToPlayer.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[PSelected.Text].HumanoidRootPart.CFrame
+end)
+
+TpToPlayerBase.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.Properties:GetChildren()) do
+		if v.Owner.Value == game.Players[PSelected.Text] then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.OriginSquare.CFrame
+end
+end
+end)
+
+X.MouseButton1Down:connect(function()
+Drag.Visible = false
+OpenBtn.Visible = true
+end)
+
+OpenBtn.MouseButton1Down:connect(function()
+Drag.Visible = true
+OpenBtn.Visible = false
+end)
+
+HomeLocal.MouseButton1Down:connect(function()
+Main.Visible = true
+AnimWelcomeScreen.Visible = false
+HomeScreen.Visible = false
+LocalScreen.Visible = true
+PlayersScreen.Visible = false
+WoodScreen.Visible = false
+TeleportsScreen.Visible = false
+ToolsScreen.Visible = false
+OpenBtn.Visible = false
+ChangelogScreen.Visible = false
+end)
+
+HomePlayers.MouseButton1Down:connect(function()
+Main.Visible = true
+AnimWelcomeScreen.Visible = false
+HomeScreen.Visible = false
+LocalScreen.Visible = false
+PlayersScreen.Visible = true
+WoodScreen.Visible = false
+TeleportsScreen.Visible = false
+ToolsScreen.Visible = false
+OpenBtn.Visible = false
+ChangelogScreen.Visible = false
+end)
+
+HomeWood.MouseButton1Down:connect(function()
+Main.Visible = true
+AnimWelcomeScreen.Visible = false
+HomeScreen.Visible = false
+LocalScreen.Visible = false
+PlayersScreen.Visible = false
+WoodScreen.Visible = true
+TeleportsScreen.Visible = false
+ToolsScreen.Visible = false
+OpenBtn.Visible = false
+ChangelogScreen.Visible = false
+end)
+
+HomeTeleports.MouseButton1Down:connect(function()
+Main.Visible = true
+AnimWelcomeScreen.Visible = false
+HomeScreen.Visible = false
+LocalScreen.Visible = false
+PlayersScreen.Visible = false
+WoodScreen.Visible = false
+TeleportsScreen.Visible = true
+ToolsScreen.Visible = false
+OpenBtn.Visible = false
+ChangelogScreen.Visible = false
+end)
+
+HomeTools.MouseButton1Down:connect(function()
+Main.Visible = true
+AnimWelcomeScreen.Visible = false
+HomeScreen.Visible = false
+LocalScreen.Visible = false
+PlayersScreen.Visible = false
+WoodScreen.Visible = false
+TeleportsScreen.Visible = false
+ToolsScreen.Visible = true
+OpenBtn.Visible = false
+ChangelogScreen.Visible = false
+end)
+
+HomeChangelog.MouseButton1Down:connect(function()
+Main.Visible = true
+AnimWelcomeScreen.Visible = false
+HomeScreen.Visible = false
+LocalScreen.Visible = false
+PlayersScreen.Visible = false
+WoodScreen.Visible = false
+TeleportsScreen.Visible = false
+ToolsScreen.Visible = false
+OpenBtn.Visible = false
+ChangelogScreen.Visible = true
+end)
+
+--Teleports
+Palm.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2570, -5, -32))
+end)
+
+BobsShack.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(259, 8, -2542))
+end)
+
+WoodRUs.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(251, 2, 57))
+end)
+
+Volcano.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1585, 622, 1140))
+end)
+
+Swamp.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1209, 132, -801))
+end)
+
+StrangeMan.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1061, 16, 1130))
+end)
+
+Spawn.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(155, 3, 74))
+end)
+
+Shrine.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1606, 195, 929)) 
+end)
+
+Lodge.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1243, 63, 2305))
+end)
+
+LinksLogic.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4606, 7, -779))
+end)
+
+GreenBox.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1675, 348, 1476))
+end)
+
+Fancy.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(491, 3, -1719))
+end)
+
+EndTimes.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(113, -213, -950))
+end)
+
+Dropoff.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(314, -2, 123))
+end)
+
+Den.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(331, 45, 1941))
+end)
+
+Cave.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(Vector3.new(3581, -179, 430))
+end)
+
+BoxedCars.MouseButton1Down:connect(function() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(508, 3, -1463))
+end)
+
+YourPlot.MouseButton1Down:connect(function()
+	for i, v in pairs(game.Workspace.Properties:GetChildren()) do
+		if v.Owner.Value == game.Players.LocalPlayer then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.OriginSquare.CFrame
+		end
+	end
+end)
+--------------
+--LocalPlayer Commands
+-- God
+God.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.Name = "1"
+	local l = game.Players.LocalPlayer.Character["1"]:Clone()
+	l.Parent = game.Players.LocalPlayer.Character
+	l.Name = "Humanoid"
+	wait(0.1)
+	game.Players.LocalPlayer.Character["1"]:Destroy()
+	game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
+	game.Players.LocalPlayer.Character.Animate.Disabled = true
+	l.Changed:Connect(function()
+		if l then
+			l.WalkSpeed=game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
+			l.JumpPower=game.Players.LocalPlayer.Character.Humanoid.JumpPower
+		end
+	end)
+end)
+-- Noclip
+noclip = false
+game:GetService('RunService').Stepped:connect(function()
+if noclip then
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+NoclipLabel.TextColor3 = Color3.new(0, 1, 0)
+NoclipLabel.Text = "Enabled"
+end
+end)
+Noclip.MouseButton1Down:connect(function()
+noclip = not noclip
+NoclipLabel.TextColor3 = Color3.new(0.7, 0, 0)
+NoclipLabel.Text = "Disabled"
+end)
+-- Walkspeed
+Walkspeed.MouseButton1Down:connect(function()
+while true do
+	wait()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkspeedValue.Text
+end
+end)
+-- Jumppower
+Jumppower.MouseButton1Down:connect(function()
+while true do
+	wait()
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = JumppowerValue.Text
+end
+end)
+--Players Commands
+-- Teleport To Player
+-- teleport To Player Base
+
+--Wood Commands
+-- Teleport Cut Wood
+TeleportCutWood.MouseButton1Down:connect(function()
+for _, Log in pairs(game.Workspace.LogModels:GetChildren()) do
+if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+if Log.Owner.Value == game.Players.LocalPlayer then
+Log:MoveTo(game.Players.LocalPlayer.Character.Torso.Position + Vector3.new(0, 15, 0))
+end
+end
+end
+end)
+
+-- Sell Cut Wood
+SellCutWood.MouseButton1Down:connect(function()
+	        for _, Log in pairs(workspace.LogModels:GetChildren()) do
+        if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+            if Log.Owner.Value == game.Players.LocalPlayer then
+                for i,v in pairs(Log:GetChildren()) do
+                    if v.Name=="WoodSection" then
+                        spawn(function()
+                            for i=1,10 do
+                                wait()
+                                v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+                            end
+                        end)
+                    end
+                end
+                spawn(function()
+                    for i=1,20 do
+                        wait()
+                        game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
+                    end
+                end)
+            end
+        end
+    end
+end)
+-- Teleport End Times Wood
+TeleportEndTimesWood.MouseButton1Down:connect(function()
+	for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "LoneCave")
+end
+end
+end
+end)
+-- Teleport Cave Crawler Wood
+TeleportCaveCrawlerWood.MouseButton1Down:connect(function()
+	for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "CaveCrawler")
+end
+end
+end
+end)
+
+--Tools Commands
+-- Dupe
+Dupe.MouseButton1Down:connect(function()
+plr = game:GetService("Players").LocalPlayer
+slot = plr.CurrentSaveSlot
+if Option == false then
+if slot.Value == -1 then
+Option = true
+slot.RobloxLocked = true
+DupeLabel.TextColor3 = Color3.new(0, 1, 0)
+DupeLabel.Text = "Enabled"
+end
+else
+Option = false
+slot.RobloxLocked = false
+DupeLabel.TextColor3 = Color3.new(0.7, 0, 0)
+DupeLabel.Text = "Disabled"
+end
+end)
+-- Move Tools
+Move.MouseButton1Down:connect(function()
+local player = game.Players.LocalPlayer
+local Character = player.Character or player.CharacterAdded:wait()
+local Humanoid = Character:WaitForChild("Humanoid")
+local walkSpeed = Humanoid.WalkSpeed
+game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.Dragger.Disabled = true
+_G.dragRangeMin = 5
+fivefour = coroutine.wrap(function()
+EKey = false
+QKey = false
+player:GetMouse().KeyDown:connect(function(key)
+	if string.lower(key) == "e" then
+		EKey = true
+	elseif string.lower(key) == "q" then
+		QKey = true
+	end
+end)
+player:GetMouse().KeyUp:connect(function(key)
+	if string.lower(key) == "e" then
+		EKey = false
+	elseif string.lower(key) == "q" then
+		QKey = false
+	end
+end)
+while wait(0.1) do
+	if EKey then
+		F = FVal
+		FVal = FVal + 1000
+		ChangeForce(F+1000)
+		print(F)
+	end
+	if QKey then
+		F = FVal
+		FVal = FVal - 1000
+		ChangeForce(F-1000)
+		print(F)
+	end
+end
+
+end)
+fivefour()
+local dragPart = Instance.new("Part",game.Players.LocalPlayer.PlayerGui)--game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.Dragger.Dragger
+dragPart.Size = Vector3.new(0.2,0.2,0.2)
+dragPart.BrickColor = BrickColor.new("Really red")
+player.CharacterAdded:connect(function()
+	Character = player.Character
+	Humanoid = Character:WaitForChild("Humanoid")
+	Humanoid.Died:connect(function()
+		dragPart.Parent = nil
+	end)
+end)
+
+wait(1)
+local dragRangeMax = 10000
+local dragRangeMin = _G.dragRangeMin
+
+local camera = workspace.CurrentCamera
+local mouse = player:GetMouse()
+
+local button1Down = false
+local dragRange = dragRangeMax
+FVal = 80000
+local bodyPosition = Instance.new("BodyPosition", dragPart)
+bodyPosition.maxForce = Vector3.new(1, 1, 1) * FVal
+bodyPosition.D = 1000
+bodyPosition.P = 4000
+function ChangeForce(F)
+if F > 0 then
+F = bodyPosition.maxForce.X+F
+bodyPosition.maxForce = Vector3.new(1, 1, 1) * F
+else
+F = bodyPosition.maxForce.X-F
+bodyPosition.maxForce = Vector3.new(1, 1, 1) * F
+end
+end
+
+local bodyGyro = Instance.new("BodyGyro", dragPart) 
+bodyGyro.maxTorque = Vector3.new(1, 1, 1) * 200 --4000 -- * 0.000012
+bodyGyro.P = 1200
+bodyGyro.D = 140 --15
+
+--bodyPosition.P = bodyPosition.P * 1/19
+--bodyPosition.D = bodyPosition.D  * 1/19
+--bodyGyro.P = bodyGyro.P * 1/19
+--bodyGyro.D = bodyGyro.D  * 1/19
+
+local rotateCFrame = CFrame.new()
+
+local weld = Instance.new("Weld", dragPart)
+
+--local interactPermission = require(game.ReplicatedStorage.Interaction.InteractionPermission)
+local clientIsDragging = game.ReplicatedStorage.Interaction.ClientIsDragging
+
+local carryAnimationTrack
+
+
+--------------------------------[[ Drag Main ]]------------------------------------
+
+local draggingPart = false
+
+function click()
+	button1Down = true
+
+	local targetObject = game.Players.LocalPlayer:GetMouse().Target
+	if not canDrag(targetObject) then
+		return
+	end
+	
+	local mouseHit = game.Players.LocalPlayer:GetMouse().Hit.p
+	if (mouseHit - Character.Head.Position).magnitude > dragRangeMax then
+		return
+	end
+	
+	initializeDrag(targetObject, mouseHit)
+	rotateCFrame = CFrame.new()
+	
+	carryAnimationTrack:Play(0.1, 1, 1)
+	
+	local dragIsFailing = 0 
+	local dragTime = 0
+	
+	
+	while button1Down and canDrag(targetObject) do
+		local desiredPos = Character.Head.Position + (game.Players.LocalPlayer:GetMouse().Hit.p - Character.Head.Position).unit * dragRange
+		
+		local dragRay = Ray.new(Character.Head.Position, desiredPos - Character.Head.Position)
+		local part, pos = workspace:FindPartOnRayWithIgnoreList(dragRay, {Character, dragPart, targetObject.Parent})
+		
+		if part then
+			desiredPos = pos
+		end
+		
+		if (camera.CoordinateFrame.p - Character.Head.Position).magnitude > 2 then
+			desiredPos = desiredPos + Vector3.new(0, 1.8, 0)
+		end
+		
+		moveDrag(desiredPos)
+		bodyGyro.cframe = CFrame.new(dragPart.Position, camera.CoordinateFrame.p) * rotateCFrame
+		
+		local targParent = findHighestParent(targetObject) or targetObject		
+		
+		local attemptingToSurf  = false
+		for _, check in pairs({{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.7, -2.8, 0)).p, Vector3.new(0, -2, 0))}, 
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.35, -2.8, 0)).p, Vector3.new(0, -2, 0))}, 
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0, -2.8, 0)).p, Vector3.new(0, -2, 0))},
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.35, -2.8, 0)).p, Vector3.new(0, -2, 0))}, 
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(-0.7, -2.8, 0)).p, Vector3.new(0, -2, 0))}, 
+							
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.35, -2.8, 0.6)).p, Vector3.new(0, -2, 0))}, 
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0, -2.8, 0.6)).p, Vector3.new(0, -2, 0))},
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.35, -2.8, 0.6)).p, Vector3.new(0, -2, 0))}, 
+							
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.35, -2.8, -0.6)).p, Vector3.new(0, -2, 0))}, 
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0, -2.8, -0.6)).p, Vector3.new(0, -2, 0))},
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.35, -2.8, -0.6)).p, Vector3.new(0, -2, 0))}, 
+							
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.5, -0.8, 0)).p, Character.HumanoidRootPart.CFrame.lookVector), State = Enum.HumanoidStateType.Climbing},
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(-0.5, -0.8, 0)).p, Character.HumanoidRootPart.CFrame.lookVector), State = Enum.HumanoidStateType.Climbing},
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(0.5, -1.3, 0)).p, Character.HumanoidRootPart.CFrame.lookVector), State = Enum.HumanoidStateType.Climbing},
+							{Ray = Ray.new((Character.HumanoidRootPart.CFrame * CFrame.new(-0.5, -1.3, 0)).p, Character.HumanoidRootPart.CFrame.lookVector), State = Enum.HumanoidStateType.Climbing}
+									
+					}) do
+		
+			local ray = check.Ray
+			local part, _ = workspace:FindPartOnRayWithIgnoreList(ray, {Character})
+			local op = part
+			part = part and findHighestParent(part)
+			
+			if part and (not check.State or Humanoid:GetState() == check.State) then
+				if part == targParent then
+					attemptingToSurf = true
+				else
+					for _, connectedPart in pairs(op:GetConnectedParts(true)) do
+
+						if connectedPart == targetObject--[[targParent]] then
+							attemptingToSurf = true
+							break
+						end
+					end
+				end
+
+				if attemptingToSurf then
+					break
+				end
+			end
+		end
+		
+		
+		
+		
+		
+		local falling = Humanoid:GetState() == Enum.HumanoidStateType.Freefall or Humanoid:GetState() == Enum.HumanoidStateType.FallingDown--not part1 and not part2
+		
+		
+		if attemptingToSurf then
+			dragIsFailing = 0
+		elseif falling then
+			dragIsFailing = 0
+		elseif (dragPart.Position - desiredPos).magnitude > 5 then
+			dragIsFailing = 0
+		else
+			dragIsFailing = 0
+		end
+		if dragIsFailing > 16 then
+			break
+		end
+		
+		
+		if dragTime % 10 == 0 and targParent.Parent:FindFirstChild("BedInfo") and targParent.Parent:FindFirstChild("Main") then
+			game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.Parent.Scripts.VehicleControl.SetVehicleOwnership:Fire(targParent.Parent.Main)
+		end
+		
+		clientIsDragging:FireServer(targParent.Parent)
+		
+		wait()
+		dragTime = 0
+	end
+	
+	carryAnimationTrack:Stop()
+	
+	endDrag()
+end
+
+
+function findHighestParent(child)
+	if not child or not child.Parent or child.Parent == workspace then
+		return nil
+	end
+	
+	local ret = child.Parent:FindFirstChild("Owner") and child
+	return findHighestParent(child.Parent) or ret
+end
+
+
+
+function clickEnded()
+	button1Down = false
+end
+
+function holdDistanceChanged()
+	dragRange = dragRangeMax--[[_G.dragRangeMin + (1 - dist) * (dragRangeMax - _G.dragRangeMin)]]
+end
+
+
+function canDrag(targetObject)
+	
+	
+	if not (targetObject and not targetObject.Anchored and targetObject.Parent and Humanoid.Health > 0) then -- General conditions
+		return false
+	end
+	
+	if targetObject.Name == "LeafPart" then
+		return false
+	end
+	
+	local originTargetObject = targetObject
+	targetObject = findHighestParent(targetObject) or targetObject
+	
+	bodyGyro.Parent = dragPart
+	
+	
+	--[[if not (targetObject.Parent:FindFirstChild("Owner") or targetObject.Parent.Parent:FindFirstChild("Owner")) then
+		return otherDraggable(targetObject, originTargetObject)
+	end]]
+
+	if targetObject.Parent:FindFirstChild("Owner") or targetObject.Parent.Parent:FindFirstChild("Owner") then
+		return true
+	end
+	
+	if targetObject.Parent:FindFirstChild("TreeClass") then -- Wood class
+		return true
+	end
+	if targetObject.Parent:FindFirstChild("BoxItemName") then -- Shop items
+		return true
+	end
+	if targetObject.Parent:FindFirstChild("PurchasedBoxItemName") then -- Purchased box items
+		return true
+	end
+	if targetObject.Parent:FindFirstChild("Handle") then -- Tool items
+		return true
+	end
+	
+	return otherDraggable(targetObject, originTargetObject)
+end
+
+function otherDraggable(targetObject, originTargetObject)
+	local draggable = targetObject and targetObject.Parent and targetObject.Parent:FindFirstChild("DraggableItem") or originTargetObject and originTargetObject.Parent and originTargetObject.Parent:FindFirstChild("DraggableItem")
+	if draggable then -- Other stuff
+		if draggable:FindFirstChild("NoRotate") then
+			bodyGyro.Parent  = nil
+		end
+		return true
+	end
+end
+
+function initializeDrag(targetObject,mouseHit)
+	draggingPart = true
+	mouse.TargetFilter = targetObject and findHighestParent(targetObject) and findHighestParent(targetObject).Parent or targetObject
+
+	dragPart.CFrame = CFrame.new(mouseHit, camera.CoordinateFrame.p)
+
+	weld.Part0 = dragPart
+	weld.Part1 = targetObject
+	weld.C0 =  CFrame.new(mouseHit,camera.CoordinateFrame.p):inverse() * targetObject.CFrame
+	weld.Parent = dragPart
+	
+	dragPart.Parent = workspace
+end
+
+function endDrag()
+	mouse.TargetFilter = nil
+	dragPart.Parent = nil
+	draggingPart = false
+end
+
+--------------------------------[[ Do Prompt ]]------------------------------------
+
+
+local dragGuiState = ""
+function interactLoop()
+	while true do
+		wait()
+		
+		local newState = ""
+		
+		local mouseHit = game.Players.LocalPlayer:GetMouse().Hit.p
+		local targetObject = game.Players.LocalPlayer:GetMouse().Target
+		
+		
+		if draggingPart then
+			newState = "Dragging"
+		elseif canDrag(targetObject) and not button1Down and (mouseHit - Character.Head.Position).magnitude < dragRangeMax then
+			newState = "Mouseover"
+		end
+		
+		if true then-- not (newState == dragGuiState) then
+			dragGuiState = newState
+			setPlatformControls()
+			
+			if dragGuiState == "" then
+				game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanDrag.Visible = false
+				game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanRotate.Visible = false
+			elseif dragGuiState ==  "Mouseover" then
+				game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanDrag.Visible = true
+				game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanRotate.Visible = false
+			elseif dragGuiState ==  "Dragging" then
+				game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanDrag.Visible = false
+				game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanRotate.Visible = not (bodyGyro.Parent == nil) and (not player:FindFirstChild("IsChatting") or player.IsChatting.Value < 1)
+			end
+		end
+		
+	end
+end
+
+
+--------------------------------[[ Drag Moving ]]------------------------------------
+
+
+function moveDrag(pos)
+	bodyPosition.position = pos
+end
+local rotateSpeedReduce = 0.036
+
+local lastRotateTick
+function crotate(amount, speed)
+
+	if not draggingPart then
+		if not player:FindFirstChild("IsChatting") or player.IsChatting.Value < 2 then
+			Humanoid.WalkSpeed = walkSpeed
+		end
+		return
+	end
+	
+	if Humanoid.WalkSpeed > 1 then
+		walkSpeed = Humanoid.WalkSpeed
+		Humanoid.WalkSpeed = 0
+	end
+	
+	lastRotateTick = tick()
+	local thisRotateTick = lastRotateTick
+	
+	while draggingPart and amount.magnitude > 0 and lastRotateTick == thisRotateTick do
+		rotateCFrame = CFrame.Angles(0, -amount.X * rotateSpeedReduce, 0) * CFrame.Angles(amount.Y * rotateSpeedReduce, 0, 0) * rotateCFrame
+		wait()
+	end
+	
+	if amount.magnitude == 0 then
+		if not player:FindFirstChild("IsChatting") or  player.IsChatting.Value < 2 then
+			Humanoid.WalkSpeed = walkSpeed
+		end
+	end
+end
+
+--------------------------------[[ User Input ]]------------------------------------
+
+wait(1)
+
+carryAnimationTrack = Humanoid:LoadAnimation(game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.Dragger:WaitForChild("CarryItem"))
+
+--input = require(game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.Parent:WaitForChild("Scripts"):WaitForChild("UserInput"))
+
+game.Players.LocalPlayer:GetMouse().Button1Down:connect(function()
+	click()
+	holdDistanceChanged()
+end)
+game.Players.LocalPlayer:GetMouse().Button1Up:connect(function()
+	clickEnded()
+end)
+--input.ClickBegan(click, holdDistanceChanged)
+--input.ClickEnded(clickEnded)
+
+--input.Rotate(crotate)
+
+
+function setPlatformControls()
+		game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanDrag.PlatformButton.Image = game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanDrag.PlatformButton.PC.Value
+		game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanDrag.PlatformButton.KeyLabel.Text = "CLICK"
+		game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanRotate.PlatformButton.Image = game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanRotate.PlatformButton.PC.Value
+		game.Players.LocalPlayer.PlayerGui.ItemDraggingGUI.CanRotate.PlatformButton.KeyLabel.Text = "SHIFT + WASD"
+end
+
+
+interactLoop()
+end)
+-- Golden Axe
+GoldAxe.MouseButton1Down:connect(function()
+
+local mouse1 = game:GetService("Players").LocalPlayer:GetMouse()
+mouse1.Button1Down:connect(function(key)
+       Pressing=false
+end)
+
+function GetAxe()
+if game.Players.LocalPlayer.Character:FindFirstChild("Tool") then
+return game.Players.LocalPlayer.Character:FindFirstChild("Tool")
+end
+end
+
+local HitPoints={
+['GoldAxe']= 50;
+['BasicHatchet']= 0.2;
+['Axe1']= 0.55;
+['Axe2']= 0.93;
+['AxeAlphaTesters']= 1.5;
+['Rukiryaxe']= 1.68;
+['Axe3']= 1.45;
+['AxeBetaTesters']= 1.45;
+['FireAxe']= 0.6;
+['SilverAxe']= 1.6;
+['EndTimesAxe']= 10000000;
+['AxeChicken']= 0.1;
+['CandyCaneAxe']= 0;
+}
+
+local Pressing = false
+
+local mouse1 = game:GetService("Players").LocalPlayer:GetMouse()
+mouse1.Button1Down:connect(function(key)
+       Pressing=true
+       poop(GetAxe())
+end)
+
+local mouse1 = game:GetService("Players").LocalPlayer:GetMouse()
+mouse1.Button1Down:connect(function(key)
+       Pressing=false
+end)
+
+function cut(Height,Tool)
+local Tree=game.Players.LocalPlayer:GetMouse().Target
+game.ReplicatedStorage.Interaction.RemoteProxy:FireServer(Tree.Parent.CutEvent,{
+["cuttingClass"] = "Axe",
+["cooldown"] = 0,
+["hitPoints"] = HitPoints[Tool.ToolName.Value],
+["sectionId"] = 1,
+["tool"] = Tool,
+["faceVector"] = Vector3.new(-1,0,0),
+["height"] = Height})
+end
+
+function poop(Tool)
+   while Pressing do
+       for i=1,100 do
+wait()
+cut(_G.SIZE,Tool)
+cut(1,Tool)
+end
+   end
+end
+end)
+-- Leaked Items
+LeakedItems.MouseButton1Down:connect(function() 
+game.ReplicatedStorage.Purchasables:Clone().Parent = game.Workspace.PlayerModels
+end)
+
+-- Ctrl + Click TP
+TeleportTool.MouseButton1Down:connect(function() 
+local Plr = game:GetService("Players").LocalPlayer
+local Mouse = Plr:GetMouse()
+
+Mouse.Button1Down:connect(function()
+if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+if not Mouse.Target then return end
+Plr.Character:MoveTo(Mouse.Hit.p)
+end)
+end)
+-- Grey Wood
+GreyWood.MouseButton1Down:connect(function()
+	for i,v in next,workspace.PlayerModels:GetChildren() do
+	    if v:FindFirstChild("Type") then
+	        if v.Type.Value == "Blueprint" then
+	            v.Type.Value = "Structure"
+	        end
+	    end
+	end
+end)
+-- Teleport Gifts
+TeleportGifts.MouseButton1Down:connect(function()
+	for i,v in next,workspace.PlayerModels:GetChildren() do
+    if v:FindFirstChild("Main") and v.Owner.Value == game.Players.LocalPlayer then
+    for q,p in pairs(v:GetChildren()) do       
+        if p.Name:lower():match("box") or p.Name == "DraggableItem" then
+            wait()
+                v.PrimaryPart = v.Main
+                game.ReplicatedStorage.Interaction.Verify:FireServer('Item owned by player',v)
+                   v:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.Head.CFrame)
+                 game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(v)
+        end
+    end
+    end
+end
+end)	
+end)
+Speed.Name = "Speed"
+Speed.Parent = MainFrame
+Speed.BackgroundColor3 = Color3.new(0, 0, 0)
+Speed.BorderColor3 = Color3.new(0, 1, 0)
+Speed.BorderSizePixel = 5
+Speed.Position = UDim2.new(0.375, 0, 0.211009175, 0)
+Speed.Size = UDim2.new(0, 95, 0, 38)
+Speed.Font = Enum.Font.SciFi
+Speed.Text = "Speed"
+Speed.TextColor3 = Color3.new(0, 1, 0)
+Speed.TextScaled = true
+Speed.TextSize = 14
+Speed.TextWrapped = true
+Speed.MouseButton1Click:connect(function()while wait()do
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed=200 
+end 
+end
+)
+Jpower.Name = "Jpower"
+Jpower.Parent = MainFrame
+Jpower.BackgroundColor3 = Color3.new(0, 0, 0)
+Jpower.BorderColor3 = Color3.new(0, 1, 0)
+Jpower.BorderSizePixel = 5
+Jpower.Position = UDim2.new(0.5625, 0, 0.844036698, 0)
+Jpower.Size = UDim2.new(0, 92, 0, 29)
+Jpower.Font = Enum.Font.SciFi
+Jpower.Text = "Jpower"
+Jpower.TextColor3 = Color3.new(0, 1, 0)
+Jpower.TextScaled = true
+Jpower.TextSize = 14
+Jpower.TextWrapped = true
+Jpower.MouseButton1Click:connect(function()while wait()do
+game.Players.LocalPlayer.Character.Humanoid.JumpPower=100 end end)
+
+GoldAxe.Name = "GoldAxe"
+GoldAxe.Parent = MainFrame
+GoldAxe.BackgroundColor3 = Color3.new(0, 0, 0)
+GoldAxe.BorderColor3 = Color3.new(0, 1, 0)
+GoldAxe.BorderSizePixel = 5
+GoldAxe.Position = UDim2.new(0.375, 0, 0.646789014, 0)
+GoldAxe.Size = UDim2.new(0, 95, 0, 34)
+GoldAxe.Font = Enum.Font.SciFi
+GoldAxe.Text = "GoldAxe"
+GoldAxe.TextColor3 = Color3.new(0, 1, 0)
+GoldAxe.TextScaled = true
+GoldAxe.TextSize = 14
+GoldAxe.TextWrapped = true
+GoldAxe.MouseButton1Down:connect(function()
+-- Objects
+
+local InfoGUI = Instance.new("ScreenGui")
+local TopBar = Instance.new("Frame")
+local MainFrame = Instance.new("Frame")
+local Info = Instance.new("TextLabel")
+local OkayB = Instance.new("TextButton")
+local Credits = Instance.new("TextLabel")
+
+-- Properties
+
+InfoGUI.Name = "InfoGUI"
+InfoGUI.Parent = game.Players.LocalPlayer.PlayerGui
+
+TopBar.Name = "TopBar"
+TopBar.Parent = InfoGUI
+TopBar.BackgroundColor3 = Color3.new(0.266667, 0.247059, 0.313726)
+TopBar.BorderSizePixel = 0
+TopBar.Position = UDim2.new(0.5, -173, 0.5, -74)
+TopBar.Size = UDim2.new(0, 347, 0, 34)
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = TopBar
+MainFrame.BackgroundColor3 = Color3.new(0.356863, 0.333333, 0.423529)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0, 0, 1, 0)
+MainFrame.Size = UDim2.new(0, 347, 0, 114)
+
+Info.Name = "Info"
+Info.Parent = MainFrame
+Info.BackgroundColor3 = Color3.new(0.443137, 0.415686, 0.52549)
+Info.BorderSizePixel = 0
+Info.Size = UDim2.new(0, 347, 0, 78)
+Info.Font = Enum.Font.SourceSansLight
+Info.Text = "All you have to do to make this work, is get any axe and spam click on a tree a few times, ANY DISTANCE!"
+Info.TextColor3 = Color3.new(1, 1, 1)
+Info.TextScaled = true
+Info.TextSize = 14
+Info.TextWrapped = true
+
+OkayB.Name = "OkayB"
+OkayB.Parent = MainFrame
+OkayB.BackgroundColor3 = Color3.new(0.443137, 0.415686, 0.52549)
+OkayB.BorderSizePixel = 0
+OkayB.Position = UDim2.new(0.268000007, 0, 0.709999979, 0)
+OkayB.Size = UDim2.new(0, 161, 0, 29)
+OkayB.Font = Enum.Font.SourceSansLight
+OkayB.Text = "Alright"
+OkayB.TextColor3 = Color3.new(1, 1, 1)
+OkayB.TextScaled = true
+OkayB.TextSize = 14
+OkayB.TextWrapped = true
+
+Credits.Name = "Credits"
+Credits.Parent = MainFrame
+Credits.BackgroundColor3 = Color3.new(0.443137, 0.415686, 0.52549)
+Credits.BackgroundTransparency = 1
+Credits.BorderSizePixel = 0
+Credits.Position = UDim2.new(-0.0028818443, 0, 1.11403513, 0)
+Credits.Size = UDim2.new(0, 347, 0, 78)
+Credits.Font = Enum.Font.SourceSansLight
+Credits.Text = "GUI made by HowToBasic666/Hoofer"
+Credits.TextColor3 = Color3.new(1, 1, 1)
+Credits.TextScaled = true
+Credits.TextSize = 14
+Credits.TextWrapped = true
+
+OkayB.MouseButton1Click:connect(function()
+	InfoGUI.Enabled = false
+end)
+
+local mouse1 = game:GetService("Players").LocalPlayer:GetMouse()
+mouse1.Button1Down:connect(function(key)
+       Pressing=false
+end)
+
+function GetAxe()
+if game.Players.LocalPlayer.Character:FindFirstChild("Tool") then
+return game.Players.LocalPlayer.Character:FindFirstChild("Tool")
+end
+end
+
+local HitPoints={
+['GoldAxe']= 50;
+['BasicHatchet']= 0.2;
+['Axe1']= 0.55;
+['Axe2']= 0.93;
+['AxeAlphaTesters']= 1.5;
+['Rukiryaxe']= 1.68;
+['Axe3']= 1.45;
+['AxeBetaTesters']= 1.45;
+['FireAxe']= 0.6;
+['SilverAxe']= 1.6;
+['EndTimesAxe']= 10000000;
+['AxeChicken']= 0.1;
+['CandyCaneAxe']= 0;
+}
+
+local Pressing = false
+
+local mouse1 = game:GetService("Players").LocalPlayer:GetMouse()
+mouse1.Button1Down:connect(function(key)
+       Pressing=true
+       poop(GetAxe())
+end)
+
+local mouse1 = game:GetService("Players").LocalPlayer:GetMouse()
+mouse1.Button1Down:connect(function(key)
+       Pressing=false
+end)
+
+function cut(Height,Tool)
+local Tree=game.Players.LocalPlayer:GetMouse().Target
+game.ReplicatedStorage.Interaction.RemoteProxy:FireServer(Tree.Parent.CutEvent,{
+["cuttingClass"] = "Axe",
+["cooldown"] = 0,
+["hitPoints"] = HitPoints[Tool.ToolName.Value],
+["sectionId"] = 1,
+["tool"] = Tool,
+["faceVector"] = Vector3.new(-1,0,0),
+["height"] = Height})
+end
+
+function poop(Tool)
+   while Pressing do
+       for i=1,100 do
+wait()
+cut(_G.SIZE,Tool)
+cut(1,Tool)
+end
+   end
+end	
+end)
+TextLabel.Parent = MainFrame
+TextLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+TextLabel.BorderColor3 = Color3.new(0, 1, 0)
+TextLabel.BorderSizePixel = 5
+TextLabel.Position = UDim2.new(0.18928571, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 448, 0, 39)
+TextLabel.Font = Enum.Font.SciFi
+TextLabel.Text = "LUMBER TYCOON 2 GUI"
+TextLabel.TextColor3 = Color3.new(0, 1, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+TextLabel_2.Parent = MainFrame
+TextLabel_2.BackgroundColor3 = Color3.new(0, 0, 0)
+TextLabel_2.BorderColor3 = Color3.new(0, 1, 0)
+TextLabel_2.BorderSizePixel = 5
+TextLabel_2.Position = UDim2.new(0.744642854, 0, 0.637614667, 0)
+TextLabel_2.Size = UDim2.new(0, 94, 0, 74)
+TextLabel_2.Font = Enum.Font.SciFi
+TextLabel_2.Text = "Gui Made By MrIpop "
+TextLabel_2.TextColor3 = Color3.new(0, 1, 0)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14
+TextLabel_2.TextWrapped = true
+
+LT2GUD.Name = "LT2GUD"
+LT2GUD.Parent = MainFrame
+LT2GUD.BackgroundColor3 = Color3.new(0, 0, 0)
+LT2GUD.BorderColor3 = Color3.new(0, 1, 0)
+LT2GUD.BorderSizePixel = 5
+LT2GUD.Position = UDim2.new(0.744642854, 0, 0.403669715, 0)
+LT2GUD.Size = UDim2.new(0, 94, 0, 41)
+LT2GUD.Font = Enum.Font.SciFi
+LT2GUD.Text = "LT2GUD"
+LT2GUD.TextColor3 = Color3.new(0, 1, 0)
+LT2GUD.TextScaled = true
+LT2GUD.TextSize = 14
+LT2GUD.TextWrapped = true
+LT2GUD.MouseButton1Down:connect(function()
+local LT2 = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Close = Instance.new("TextButton")
+local DupeStatus = Instance.new("TextLabel")
+local Dupe = Instance.new("TextButton")
+local SettingsFrame = Instance.new("Frame")
+local WalkspeedLabel = Instance.new("TextLabel")
+local JumpPowerLabel = Instance.new("TextLabel")
+local WalkSpeed = Instance.new("TextBox")
+local JumpPower = Instance.new("TextBox")
+local Settings = Instance.new("TextButton")
+local Greywood = Instance.new("TextButton")
+local Players = Instance.new("TextButton")
+local SellPlanks = Instance.new("TextButton")
+local SellWood = Instance.new("TextButton")
+local Teleport = Instance.new("TextButton")
+local TpBox = Instance.new("TextButton")
+local TpPlank = Instance.new("TextButton")
+local TpWood = Instance.new("TextButton")
+local PlankFrame = Instance.new("Frame")
+local ProcessedWoodList = Instance.new("ScrollingFrame")
+local TpAllPlanks = Instance.new("TextButton")
+local PlayersFrame = Instance.new("Frame")
+local Player1 = Instance.new("TextButton")
+local Player2 = Instance.new("TextButton")
+local Player3 = Instance.new("TextButton")
+local Player4 = Instance.new("TextButton")
+local Player5 = Instance.new("TextButton")
+local Player6 = Instance.new("TextButton")
+local PlayerTp = Instance.new("TextButton")
+local TpBase = Instance.new("TextButton")
+local PlayerSelect = Instance.new("TextLabel")
+local PurchasedFrame = Instance.new("Frame")
+local LastPurchasedList = Instance.new("ScrollingFrame")
+local WaypointFrame = Instance.new("Frame")
+local Waypoints = Instance.new("ScrollingFrame")
+local Stranger = Instance.new("TextButton")
+local BobsShack = Instance.new("TextButton")
+local PlotTp = Instance.new("TextButton")
+local BoxedCars = Instance.new("TextButton")
+local Cave = Instance.new("TextButton")
+local FancyFurnishings = Instance.new("TextButton")
+local FineArtsShop = Instance.new("TextButton")
+local LandStore = Instance.new("TextButton")
+local LinksLogic = Instance.new("TextButton")
+local PalmIsland = Instance.new("TextButton")
+local SpawnPoint = Instance.new("TextButton")
+local Swamp = Instance.new("TextButton")
+local Volcano = Instance.new("TextButton")
+local WoodRUs = Instance.new("TextButton")
+
+LT2.Name = "LT2"
+LT2.Parent = game.CoreGui
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = LT2
+MainFrame.BackgroundColor3 = Color3.new(0.203922, 0.203922, 0.203922)
+MainFrame.BackgroundTransparency = 1
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, -535, 0, -33)
+MainFrame.Size = UDim2.new(0, 955, 0, 30)
+
+Close.Name = "Close"
+Close.Parent = MainFrame
+Close.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Close.BorderColor3 = Color3.new(0, 0, 0)
+Close.BorderSizePixel = 2
+Close.Position = UDim2.new(0, 5, 0, 5)
+Close.Size = UDim2.new(0, 20, 0, 20)
+Close.Font = Enum.Font.Fantasy
+Close.FontSize = Enum.FontSize.Size18
+Close.Text = "X"
+Close.TextColor3 = Color3.new(1, 0, 0)
+Close.TextSize = 16
+Close.TextWrapped = true
+
+DupeStatus.Name = "DupeStatus"
+DupeStatus.Parent = MainFrame
+DupeStatus.BackgroundColor3 = Color3.new(0.203922, 0.203922, 0.203922)
+DupeStatus.BackgroundTransparency = 1
+DupeStatus.BorderColor3 = Color3.new(0, 0, 0)
+DupeStatus.BorderSizePixel = 2
+DupeStatus.Position = UDim2.new(0, 920, 0, 5)
+DupeStatus.Size = UDim2.new(0, 30, 0, 20)
+DupeStatus.ZIndex = 2
+DupeStatus.Font = Enum.Font.Code
+DupeStatus.FontSize = Enum.FontSize.Size18
+DupeStatus.Text = "OFF"
+DupeStatus.TextColor3 = Color3.new(1, 0, 0)
+DupeStatus.TextSize = 16
+
+Dupe.Name = "Dupe"
+Dupe.Parent = MainFrame
+Dupe.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Dupe.BorderColor3 = Color3.new(0, 0, 0)
+Dupe.BorderSizePixel = 2
+Dupe.Position = UDim2.new(0, 865, 0, 5)
+Dupe.Size = UDim2.new(0, 85, 0, 20)
+Dupe.Font = Enum.Font.Fantasy
+Dupe.FontSize = Enum.FontSize.Size18
+Dupe.Text = "DUPE :         "
+Dupe.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Dupe.TextSize = 15
+Dupe.TextStrokeColor3 = Color3.new(1, 1, 1)
+Dupe.TextWrapped = true
+
+SettingsFrame.Name = "SettingsFrame"
+SettingsFrame.Parent = MainFrame
+SettingsFrame.BackgroundColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+SettingsFrame.Position = UDim2.new(0, 750, 0, 35)
+SettingsFrame.Size = UDim2.new(0, 135, 0, 60)
+SettingsFrame.Visible = false
+
+WalkspeedLabel.Name = "WalkspeedLabel"
+WalkspeedLabel.Parent = SettingsFrame
+WalkspeedLabel.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+WalkspeedLabel.BorderColor3 = Color3.new(0, 0, 0)
+WalkspeedLabel.Position = UDim2.new(0, 5, 0, 5)
+WalkspeedLabel.Size = UDim2.new(0, 90, 0, 20)
+WalkspeedLabel.Font = Enum.Font.Fantasy
+WalkspeedLabel.FontSize = Enum.FontSize.Size14
+WalkspeedLabel.Text = "Walkspeed"
+WalkspeedLabel.TextColor3 = Color3.new(0, 0, 0)
+WalkspeedLabel.TextSize = 14
+
+JumpPowerLabel.Name = "JumpPowerLabel"
+JumpPowerLabel.Parent = SettingsFrame
+JumpPowerLabel.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+JumpPowerLabel.BorderColor3 = Color3.new(0, 0, 0)
+JumpPowerLabel.Position = UDim2.new(0, 5, 0, 35)
+JumpPowerLabel.Size = UDim2.new(0, 90, 0, 20)
+JumpPowerLabel.Font = Enum.Font.Fantasy
+JumpPowerLabel.FontSize = Enum.FontSize.Size14
+JumpPowerLabel.Text = "Jump Power"
+JumpPowerLabel.TextColor3 = Color3.new(0, 0, 0)
+JumpPowerLabel.TextSize = 14
+
+WalkSpeed.Name = "WalkSpeed"
+WalkSpeed.Parent = SettingsFrame
+WalkSpeed.BackgroundColor3 = Color3.new(0, 0, 0)
+WalkSpeed.BorderColor3 = Color3.new(0, 0, 0)
+WalkSpeed.Position = UDim2.new(0, 95, 0, 5)
+WalkSpeed.Size = UDim2.new(0, 35, 0, 20)
+WalkSpeed.Font = Enum.Font.Fantasy
+WalkSpeed.FontSize = Enum.FontSize.Size18
+WalkSpeed.Text = "16"
+WalkSpeed.TextColor3 = Color3.new(1, 1, 1)
+WalkSpeed.TextSize = 16
+
+JumpPower.Name = "JumpPower"
+JumpPower.Parent = SettingsFrame
+JumpPower.BackgroundColor3 = Color3.new(0, 0, 0)
+JumpPower.BorderColor3 = Color3.new(0, 0, 0)
+JumpPower.Position = UDim2.new(0, 95, 0, 35)
+JumpPower.Size = UDim2.new(0, 35, 0, 20)
+JumpPower.Font = Enum.Font.Fantasy
+JumpPower.FontSize = Enum.FontSize.Size18
+JumpPower.Text = "50"
+JumpPower.TextColor3 = Color3.new(1, 1, 1)
+JumpPower.TextSize = 16
+
+Settings.Name = "Settings"
+Settings.Parent = MainFrame
+Settings.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Settings.BorderColor3 = Color3.new(0, 0, 0)
+Settings.BorderSizePixel = 2
+Settings.Position = UDim2.new(0, 770, 0, 5)
+Settings.Size = UDim2.new(0, 90, 0, 20)
+Settings.Font = Enum.Font.Fantasy
+Settings.FontSize = Enum.FontSize.Size18
+Settings.Text = "SETTINGS"
+Settings.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Settings.TextSize = 15
+
+Greywood.Name = "Greywood"
+Greywood.Parent = MainFrame
+Greywood.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Greywood.BorderColor3 = Color3.new(0, 0, 0)
+Greywood.BorderSizePixel = 2
+Greywood.Position = UDim2.new(0, 420, 0, 5)
+Greywood.Size = UDim2.new(0, 90, 0, 20)
+Greywood.Font = Enum.Font.Fantasy
+Greywood.FontSize = Enum.FontSize.Size18
+Greywood.Text = "GREYWOOD"
+Greywood.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Greywood.TextSize = 15
+
+Players.Name = "Players"
+Players.Parent = MainFrame
+Players.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Players.BorderColor3 = Color3.new(0, 0, 0)
+Players.BorderSizePixel = 2
+Players.Position = UDim2.new(0, 30, 0, 5)
+Players.Size = UDim2.new(0, 105, 0, 20)
+Players.Font = Enum.Font.Fantasy
+Players.FontSize = Enum.FontSize.Size18
+Players.Text = "TP TO PLAYERS"
+Players.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Players.TextSize = 15
+
+SellPlanks.Name = "SellPlanks"
+SellPlanks.Parent = MainFrame
+SellPlanks.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SellPlanks.BorderColor3 = Color3.new(0, 0, 0)
+SellPlanks.BorderSizePixel = 2
+SellPlanks.Position = UDim2.new(0, 225, 0, 5)
+SellPlanks.Size = UDim2.new(0, 95, 0, 20)
+SellPlanks.Font = Enum.Font.Fantasy
+SellPlanks.FontSize = Enum.FontSize.Size18
+SellPlanks.Text = "SELL PLANKS"
+SellPlanks.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+SellPlanks.TextSize = 15
+
+SellWood.Name = "SellWood"
+SellWood.Parent = MainFrame
+SellWood.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+SellWood.BorderColor3 = Color3.new(0, 0, 0)
+SellWood.BorderSizePixel = 2
+SellWood.Position = UDim2.new(0, 675, 0, 5)
+SellWood.Size = UDim2.new(0, 90, 0, 20)
+SellWood.Font = Enum.Font.Fantasy
+SellWood.FontSize = Enum.FontSize.Size18
+SellWood.Text = "SELL WOOD"
+SellWood.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+SellWood.TextSize = 15
+
+Teleport.Name = "Teleport"
+Teleport.Parent = MainFrame
+Teleport.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+Teleport.BorderColor3 = Color3.new(0, 0, 0)
+Teleport.BorderSizePixel = 2
+Teleport.Position = UDim2.new(0, 325, 0, 5)
+Teleport.Size = UDim2.new(0, 90, 0, 20)
+Teleport.Font = Enum.Font.Fantasy
+Teleport.FontSize = Enum.FontSize.Size18
+Teleport.Text = "WAYPOINTS"
+Teleport.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Teleport.TextSize = 15
+
+TpBox.Name = "TpBox"
+TpBox.Parent = MainFrame
+TpBox.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+TpBox.BorderColor3 = Color3.new(0, 0, 0)
+TpBox.BorderSizePixel = 2
+TpBox.Position = UDim2.new(0, 515, 0, 5)
+TpBox.Size = UDim2.new(0, 75, 0, 20)
+TpBox.Font = Enum.Font.Fantasy
+TpBox.FontSize = Enum.FontSize.Size18
+TpBox.Text = "TP BOXES"
+TpBox.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpBox.TextSize = 15
+
+TpPlank.Name = "TpPlank"
+TpPlank.Parent = MainFrame
+TpPlank.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+TpPlank.BorderColor3 = Color3.new(0, 0, 0)
+TpPlank.BorderSizePixel = 2
+TpPlank.Position = UDim2.new(0, 140, 0, 5)
+TpPlank.Size = UDim2.new(0, 80, 0, 20)
+TpPlank.Font = Enum.Font.Fantasy
+TpPlank.FontSize = Enum.FontSize.Size18
+TpPlank.Text = "TP PLANKS"
+TpPlank.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpPlank.TextSize = 15
+TpPlank.TextStrokeColor3 = Color3.new(1, 1, 1)
+
+TpWood.Name = "TpWood"
+TpWood.Parent = MainFrame
+TpWood.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+TpWood.BorderColor3 = Color3.new(0, 0, 0)
+TpWood.BorderSizePixel = 2
+TpWood.Position = UDim2.new(0, 595, 0, 5)
+TpWood.Size = UDim2.new(0, 75, 0, 20)
+TpWood.Font = Enum.Font.Fantasy
+TpWood.FontSize = Enum.FontSize.Size18
+TpWood.Text = "TP WOOD"
+TpWood.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpWood.TextSize = 15
+
+PlankFrame.Name = "PlankFrame"
+PlankFrame.Parent = MainFrame
+PlankFrame.BackgroundColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+PlankFrame.BorderColor3 = Color3.new(0, 0, 0)
+PlankFrame.Position = UDim2.new(0, 100, 0, 55)
+PlankFrame.Size = UDim2.new(0, 165, 0, 205)
+PlankFrame.Visible = false
+
+ProcessedWoodList.Name = "ProcessedWoodList"
+ProcessedWoodList.Parent = PlankFrame
+ProcessedWoodList.BackgroundColor3 = Color3.new(1, 1, 1)
+ProcessedWoodList.BackgroundTransparency = 1
+ProcessedWoodList.BorderColor3 = Color3.new(0, 0, 0)
+ProcessedWoodList.Size = UDim2.new(0, 165, 0, 205)
+
+TpAllPlanks.Name = "TpAllPlanks"
+TpAllPlanks.Parent = PlankFrame
+TpAllPlanks.BackgroundColor3 = Color3.new(0, 0, 0)
+TpAllPlanks.BorderColor3 = Color3.new(0, 0, 0)
+TpAllPlanks.Position = UDim2.new(0, 0, 0, -20)
+TpAllPlanks.Size = UDim2.new(0, 165, 0, 20)
+TpAllPlanks.Font = Enum.Font.Fantasy
+TpAllPlanks.FontSize = Enum.FontSize.Size18
+TpAllPlanks.Text = "TP ALL PLANKS"
+TpAllPlanks.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpAllPlanks.TextSize = 15
+
+PlayersFrame.Name = "PlayersFrame"
+PlayersFrame.Parent = MainFrame
+PlayersFrame.BackgroundColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+PlayersFrame.BorderColor3 = Color3.new(0, 0, 0)
+PlayersFrame.Position = UDim2.new(0, 0, 0, 35)
+PlayersFrame.Size = UDim2.new(0, 165, 0, 225)
+PlayersFrame.Visible = false
+
+Player1.Name = "Player1"
+Player1.Parent = PlayersFrame
+Player1.BackgroundColor3 = Color3.new(0, 0, 0)
+Player1.Position = UDim2.new(0, 5, 0, 5)
+Player1.Size = UDim2.new(0, 155, 0, 20)
+Player1.Font = Enum.Font.Fantasy
+Player1.FontSize = Enum.FontSize.Size18
+Player1.Text = ""
+Player1.TextColor3 = Color3.new(1, 1, 1)
+Player1.TextSize = 16
+Player1.TextWrapped = true
+
+Player2.Name = "Player2"
+Player2.Parent = PlayersFrame
+Player2.BackgroundColor3 = Color3.new(0, 0, 0)
+Player2.Position = UDim2.new(0, 5, 0, 30)
+Player2.Size = UDim2.new(0, 155, 0, 20)
+Player2.Font = Enum.Font.Fantasy
+Player2.FontSize = Enum.FontSize.Size18
+Player2.Text = ""
+Player2.TextColor3 = Color3.new(1, 1, 1)
+Player2.TextSize = 16
+Player2.TextWrapped = true
+
+Player3.Name = "Player3"
+Player3.Parent = PlayersFrame
+Player3.BackgroundColor3 = Color3.new(0, 0, 0)
+Player3.Position = UDim2.new(0, 5, 0, 55)
+Player3.Size = UDim2.new(0, 155, 0, 20)
+Player3.Font = Enum.Font.Fantasy
+Player3.FontSize = Enum.FontSize.Size18
+Player3.Text = ""
+Player3.TextColor3 = Color3.new(1, 1, 1)
+Player3.TextSize = 16
+Player3.TextWrapped = true
+
+Player4.Name = "Player4"
+Player4.Parent = PlayersFrame
+Player4.BackgroundColor3 = Color3.new(0, 0, 0)
+Player4.Position = UDim2.new(0, 5, 0, 80)
+Player4.Size = UDim2.new(0, 155, 0, 20)
+Player4.Font = Enum.Font.Fantasy
+Player4.FontSize = Enum.FontSize.Size18
+Player4.Text = ""
+Player4.TextColor3 = Color3.new(1, 1, 1)
+Player4.TextSize = 16
+Player4.TextWrapped = true
+
+Player5.Name = "Player5"
+Player5.Parent = PlayersFrame
+Player5.BackgroundColor3 = Color3.new(0, 0, 0)
+Player5.Position = UDim2.new(0, 5, 0, 105)
+Player5.Size = UDim2.new(0, 155, 0, 20)
+Player5.Font = Enum.Font.Fantasy
+Player5.FontSize = Enum.FontSize.Size18
+Player5.Text = ""
+Player5.TextColor3 = Color3.new(1, 1, 1)
+Player5.TextSize = 16
+Player5.TextWrapped = true
+
+Player6.Name = "Player6"
+Player6.Parent = PlayersFrame
+Player6.BackgroundColor3 = Color3.new(0, 0, 0)
+Player6.Position = UDim2.new(0, 5, 0, 130)
+Player6.Size = UDim2.new(0, 155, 0, 20)
+Player6.Font = Enum.Font.Fantasy
+Player6.FontSize = Enum.FontSize.Size18
+Player6.Text = ""
+Player6.TextColor3 = Color3.new(1, 1, 1)
+Player6.TextSize = 16
+Player6.TextWrapped = true
+
+PlayerTp.Name = "PlayerTp"
+PlayerTp.Parent = PlayersFrame
+PlayerTp.BackgroundColor3 = Color3.new(0, 0, 0)
+PlayerTp.Position = UDim2.new(0, 5, 0, 195)
+PlayerTp.Size = UDim2.new(0, 80, 0, 20)
+PlayerTp.Font = Enum.Font.Fantasy
+PlayerTp.FontSize = Enum.FontSize.Size18
+PlayerTp.Text = "Tp to Player"
+PlayerTp.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+PlayerTp.TextSize = 16
+
+TpBase.Name = "TpBase"
+TpBase.Parent = PlayersFrame
+TpBase.BackgroundColor3 = Color3.new(0, 0, 0)
+TpBase.Position = UDim2.new(0, 90, 0, 195)
+TpBase.Size = UDim2.new(0, 70, 0, 20)
+TpBase.Font = Enum.Font.Fantasy
+TpBase.FontSize = Enum.FontSize.Size18
+TpBase.Text = "Tp to Base"
+TpBase.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpBase.TextSize = 16
+
+PlayerSelect.Name = "PlayerSelect"
+PlayerSelect.Parent = PlayersFrame
+PlayerSelect.BackgroundColor3 = Color3.new(0.6, 0.6, 0.6)
+PlayerSelect.BorderColor3 = Color3.new(0, 0, 0)
+PlayerSelect.Position = UDim2.new(0, 10, 0, 160)
+PlayerSelect.Size = UDim2.new(0, 145, 0, 20)
+PlayerSelect.Font = Enum.Font.Code
+PlayerSelect.FontSize = Enum.FontSize.Size18
+PlayerSelect.Text = "Select Player..."
+PlayerSelect.TextColor3 = Color3.new(0, 0, 0)
+PlayerSelect.TextSize = 16
+PlayerSelect.TextWrapped = true
+
+PurchasedFrame.Name = "PurchasedFrame"
+PurchasedFrame.Parent = MainFrame
+PurchasedFrame.BackgroundColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+PurchasedFrame.BorderColor3 = Color3.new(0, 0, 0)
+PurchasedFrame.Position = UDim2.new(0, 450, 0, 35)
+PurchasedFrame.Size = UDim2.new(0, 215, 0, 225)
+PurchasedFrame.Visible = false
+
+LastPurchasedList.Name = "LastPurchasedList"
+LastPurchasedList.Parent = PurchasedFrame
+LastPurchasedList.BackgroundColor3 = Color3.new(1, 1, 1)
+LastPurchasedList.BackgroundTransparency = 1
+LastPurchasedList.BorderColor3 = Color3.new(0, 0, 0)
+LastPurchasedList.Size = UDim2.new(1, 1, 0, 225)
+
+WaypointFrame.Name = "WaypointFrame"
+WaypointFrame.Parent = MainFrame
+WaypointFrame.BackgroundColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+WaypointFrame.BorderColor3 = Color3.new(0, 0, 0)
+WaypointFrame.Position = UDim2.new(0, 295, 0, 35)
+WaypointFrame.Size = UDim2.new(0, 150, 0, 225)
+WaypointFrame.Visible = false
+
+Waypoints.Name = "Waypoints"
+Waypoints.Parent = WaypointFrame
+Waypoints.BackgroundColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+Waypoints.BorderColor3 = Color3.new(0, 0, 0)
+Waypoints.Size = UDim2.new(0, 150, 0, 225)
+Waypoints.CanvasSize = UDim2.new(0, 0, 1.89999998, 0)
+
+Stranger.Name = "Stranger"
+Stranger.Parent = Waypoints
+Stranger.BackgroundColor3 = Color3.new(0, 0, 0)
+Stranger.Position = UDim2.new(0, 5, 0, 330)
+Stranger.Size = UDim2.new(0, 125, 0, 20)
+Stranger.Font = Enum.Font.Fantasy
+Stranger.FontSize = Enum.FontSize.Size18
+Stranger.Text = "Stranger"
+Stranger.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Stranger.TextSize = 16
+
+BobsShack.Name = "BobsShack"
+BobsShack.Parent = Waypoints
+BobsShack.BackgroundColor3 = Color3.new(0, 0, 0)
+BobsShack.Position = UDim2.new(0, 5, 0, 155)
+BobsShack.Size = UDim2.new(0, 125, 0, 20)
+BobsShack.Font = Enum.Font.Fantasy
+BobsShack.FontSize = Enum.FontSize.Size18
+BobsShack.Text = "Bob's Shack"
+BobsShack.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+BobsShack.TextSize = 16
+
+PlotTp.Name = "PlotTp"
+PlotTp.Parent = Waypoints
+PlotTp.BackgroundColor3 = Color3.new(0, 0, 0)
+PlotTp.Position = UDim2.new(0, 5, 0, 30)
+PlotTp.Size = UDim2.new(0, 125, 0, 20)
+PlotTp.Font = Enum.Font.Fantasy
+PlotTp.FontSize = Enum.FontSize.Size18
+PlotTp.Text = "Tp to Plot"
+PlotTp.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+PlotTp.TextSize = 16
+
+BoxedCars.Name = "BoxedCars"
+BoxedCars.Parent = Waypoints
+BoxedCars.BackgroundColor3 = Color3.new(0, 0, 0)
+BoxedCars.Position = UDim2.new(0, 5, 0, 130)
+BoxedCars.Size = UDim2.new(0, 125, 0, 20)
+BoxedCars.Font = Enum.Font.Fantasy
+BoxedCars.FontSize = Enum.FontSize.Size18
+BoxedCars.Text = "Boxed Cars"
+BoxedCars.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+BoxedCars.TextSize = 16
+
+Cave.Name = "Cave"
+Cave.Parent = Waypoints
+Cave.BackgroundColor3 = Color3.new(0, 0, 0)
+Cave.Position = UDim2.new(0, 5, 0, 230)
+Cave.Size = UDim2.new(0, 125, 0, 20)
+Cave.Font = Enum.Font.Fantasy
+Cave.FontSize = Enum.FontSize.Size18
+Cave.Text = "Cave"
+Cave.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Cave.TextSize = 16
+
+FancyFurnishings.Name = "FancyFurnishings"
+FancyFurnishings.Parent = Waypoints
+FancyFurnishings.BackgroundColor3 = Color3.new(0, 0, 0)
+FancyFurnishings.Position = UDim2.new(0, 5, 0, 80)
+FancyFurnishings.Size = UDim2.new(0, 125, 0, 20)
+FancyFurnishings.Font = Enum.Font.Fantasy
+FancyFurnishings.FontSize = Enum.FontSize.Size18
+FancyFurnishings.Text = "Fancy Furnishings"
+FancyFurnishings.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+FancyFurnishings.TextSize = 16
+
+FineArtsShop.Name = "FineArtsShop"
+FineArtsShop.Parent = Waypoints
+FineArtsShop.BackgroundColor3 = Color3.new(0, 0, 0)
+FineArtsShop.Position = UDim2.new(0, 5, 0, 180)
+FineArtsShop.Size = UDim2.new(0, 125, 0, 20)
+FineArtsShop.Font = Enum.Font.Fantasy
+FineArtsShop.FontSize = Enum.FontSize.Size18
+FineArtsShop.Text = "Fine Arts Shop"
+FineArtsShop.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+FineArtsShop.TextSize = 16
+
+LandStore.Name = "LandStore"
+LandStore.Parent = Waypoints
+LandStore.BackgroundColor3 = Color3.new(0, 0, 0)
+LandStore.Position = UDim2.new(0, 5, 0, 205)
+LandStore.Size = UDim2.new(0, 125, 0, 20)
+LandStore.Font = Enum.Font.Fantasy
+LandStore.FontSize = Enum.FontSize.Size18
+LandStore.Text = "Land Store"
+LandStore.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+LandStore.TextSize = 16
+
+LinksLogic.Name = "LinksLogic"
+LinksLogic.Parent = Waypoints
+LinksLogic.BackgroundColor3 = Color3.new(0, 0, 0)
+LinksLogic.Position = UDim2.new(0, 5, 0, 105)
+LinksLogic.Size = UDim2.new(0, 125, 0, 20)
+LinksLogic.Font = Enum.Font.Fantasy
+LinksLogic.FontSize = Enum.FontSize.Size18
+LinksLogic.Text = "Link's Logic"
+LinksLogic.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+LinksLogic.TextSize = 16
+
+PalmIsland.Name = "PalmIsland"
+PalmIsland.Parent = Waypoints
+PalmIsland.BackgroundColor3 = Color3.new(0, 0, 0)
+PalmIsland.Position = UDim2.new(0, 5, 0, 305)
+PalmIsland.Size = UDim2.new(0, 125, 0, 20)
+PalmIsland.Font = Enum.Font.Fantasy
+PalmIsland.FontSize = Enum.FontSize.Size18
+PalmIsland.Text = "Palm Island"
+PalmIsland.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+PalmIsland.TextSize = 16
+
+SpawnPoint.Name = "SpawnPoint"
+SpawnPoint.Parent = Waypoints
+SpawnPoint.BackgroundColor3 = Color3.new(0, 0, 0)
+SpawnPoint.Position = UDim2.new(0, 5, 0, 5)
+SpawnPoint.Size = UDim2.new(0, 125, 0, 20)
+SpawnPoint.Font = Enum.Font.Fantasy
+SpawnPoint.FontSize = Enum.FontSize.Size18
+SpawnPoint.Text = "Spawn"
+SpawnPoint.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+SpawnPoint.TextSize = 16
+
+Swamp.Name = "Swamp"
+Swamp.Parent = Waypoints
+Swamp.BackgroundColor3 = Color3.new(0, 0, 0)
+Swamp.Position = UDim2.new(0, 5, 0, 280)
+Swamp.Size = UDim2.new(0, 125, 0, 20)
+Swamp.Font = Enum.Font.Fantasy
+Swamp.FontSize = Enum.FontSize.Size18
+Swamp.Text = "Swamp"
+Swamp.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Swamp.TextSize = 16
+
+Volcano.Name = "Volcano"
+Volcano.Parent = Waypoints
+Volcano.BackgroundColor3 = Color3.new(0, 0, 0)
+Volcano.Position = UDim2.new(0, 5, 0, 255)
+Volcano.Size = UDim2.new(0, 125, 0, 20)
+Volcano.Font = Enum.Font.Fantasy
+Volcano.FontSize = Enum.FontSize.Size18
+Volcano.Text = "Volcano"
+Volcano.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Volcano.TextSize = 16
+
+WoodRUs.Name = "WoodRUs"
+WoodRUs.Parent = Waypoints
+WoodRUs.BackgroundColor3 = Color3.new(0, 0, 0)
+WoodRUs.Position = UDim2.new(0, 5, 0, 55)
+WoodRUs.Size = UDim2.new(0, 125, 0, 20)
+WoodRUs.Font = Enum.Font.Fantasy
+WoodRUs.FontSize = Enum.FontSize.Size18
+WoodRUs.Text = "Wood R Us"
+WoodRUs.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+WoodRUs.TextSize = 16
+
+	local service = setmetatable({}, {
+	__index = function(t, k)
+		return game:GetService(k)
+	end
+	})
+	
+	function Create(cls,props)
+	local inst = Instance.new(cls)
+	for i,v in pairs(props) do
+		inst[i] = v
+	end
+	return inst
+end
+
+local WoodPlanks={}
+
+function MakeShadow(UI,Index)
+	Create("Frame",{Parent=UI,Size=UDim2.new(1,0,1,0),ZIndex=Index,Position=UDim2.new(0,1,0,1),BackgroundColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Transparency=0.9,Name="Shadow"})
+	Create("Frame",{Parent=UI,Size=UDim2.new(1,0,1,0),ZIndex=Index,Position=UDim2.new(0,2,0,2),BackgroundColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Transparency=0.9,Name="Shadow"})
+	Create("Frame",{Parent=UI,Size=UDim2.new(1,0,1,0),ZIndex=Index,Position=UDim2.new(0,3,0,3),BackgroundColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Transparency=0.9,Name="Shadow"})
+end
+
+local ProcessedWoodList = LT2.MainFrame.PlankFrame.ProcessedWoodList
+local LastPurchasedList = LT2.MainFrame.PurchasedFrame.LastPurchasedList
+
+	local Menus = {
+[Players] = PlayersFrame;
+[Teleport] = WaypointFrame;
+[TpBox] = PurchasedFrame;
+[TpPlank] = PlankFrame;
+[Settings] = SettingsFrame;
+}
+for button,frame in pairs(Menus) do
+	button.MouseButton1Click:connect(function()
+if frame.Visible then
+frame.Visible = false
+return
+end
+for k,v in pairs(Menus) do
+v.Visible = v == frame
+end
+end)
+end
+
+Close.MouseButton1Down:connect(function()
+LT2:Destroy()
+end)
+
+local Walk=16
+local Jump=50
+
+service.Players.LocalPlayer.Character.Humanoid.Changed:Connect(function()
+	if service.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+		service.Players.LocalPlayer.Character.Humanoid.WalkSpeed=Walk
+		service.Players.LocalPlayer.Character.Humanoid.JumpPower=Jump
+	end
+end)
+
+WalkSpeed.Changed:Connect(function()
+	Walk=tonumber(WalkSpeed.Text)
+end)
+
+JumpPower.Changed:Connect(function()
+	Jump=tonumber(JumpPower.Text)
+end)
+
+PlotTp.MouseButton1Down:connect(function()
+	for i,v in pairs(game.Workspace.Properties:GetChildren()) do
+		if v.Owner.Value == game.Players.LocalPlayer then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.OriginSquare.CFrame + Vector3.new(0,10,0)
+		end
+	end
+end)
+
+	Player1.MouseButton1Down:connect(function()
+      PlayerSelect.Text = Player1.Text
+    end)
+    Player2.MouseButton1Down:connect(function()
+      PlayerSelect.Text = Player2.Text
+    end)
+    Player3.MouseButton1Down:connect(function()
+      PlayerSelect.Text = Player3.Text
+    end)
+    Player4.MouseButton1Down:connect(function()
+      PlayerSelect.Text = Player4.Text
+    end)
+    Player5.MouseButton1Down:connect(function()
+      PlayerSelect.Text = Player5.Text
+    end)
+    Player6.MouseButton1Down:connect(function()
+      PlayerSelect.Text = Player6.Text
+    end)
+	
+	PlayerTp.MouseButton1Down:connect(function()
+      if PlayerSelect.Text == "Select a Player" then
+        warn("No Player Selected")
+      else
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[PlayerSelect.Text].HumanoidRootPart.CFrame
+      end
+    end)
+    TpBase.MouseButton1Down:connect(function()
+      for i, v in pairs(game.Workspace.Properties:GetChildren()) do
+        if v.Owner.Value == game.Players[PlayerSelect.Text] then
+          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.OriginSquare.CFrame
+        end
+      end
+    end)
+	
+	    local buttons = {
+      Player1,
+      Player2,
+      Player3,
+      Player4,
+      Player5,
+      Player6
+    }
+    for i, v in pairs(game.Players:GetChildren()) do
+      buttons[i].Text = v.Name
+      buttons[i].Visible = true
+    end
+    game.Players.PlayerRemoving:connect(function()
+      for i, v in pairs(game.Players:GetChildren()) do
+        buttons[i].Text = v.Name
+        buttons[i].Visible = true
+      end
+    end)
+    game.Players.PlayerAdded:connect(function()
+      for i, v in pairs(game.Players:GetChildren()) do
+        buttons[i].Text = v.Name
+        buttons[i].Visible = true
+      end
+    end)
+
+	local WayPoints = {
+["Wood R Us"] = Vector3.new(265, 3, 57),
+["SpawnPoint"] = Vector3.new(155, 3, 74),
+["Land Store"] = Vector3.new(258, 3, -99),
+["Link's Logic"] = Vector3.new(4607, 7.5, -798),
+["Cave"] = Vector3.new(3581, -179, 430),
+["Volcano"] = Vector3.new(-1585, 622, 1140),
+["Swamp"] = Vector3.new(-1209, 132, -801),
+["Palm Island"] = Vector3.new(2549, -5, -42),
+["Fancy Furnishings"] = Vector3.new(491, 3, -1720),
+["Boxed Cars"] = Vector3.new(509, 3, -1463),
+["Fine Arts Shop"] = Vector3.new(5207, -166, 719),
+["Bob's Shack"] = Vector3.new(260, 8, -2542),
+["Strange Man"] = Vector3.new(1061, 16, 1131)
+}
+
+WoodRUs.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Wood R Us"])
+end)
+
+SpawnPoint.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["SpawnPoint"])
+end)
+
+LandStore.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Land Store"])
+end)
+
+LinksLogic.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Link's Logic"])
+end)
+
+Cave.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Cave"])
+end)
+
+Volcano.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Volcano"])
+end)
+
+Swamp.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Swamp"])
+end)
+
+PalmIsland.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Palm Island"])
+end)
+
+FancyFurnishings.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Fancy Furnishings"])
+end)
+
+BoxedCars.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Boxed Cars"])
+end)
+
+FineArtsShop.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Fine Arts Shop"])
+end)
+
+BobsShack.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Bob's Shack"])
+end)
+
+Stranger.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:MoveTo(WayPoints["Strange Man"])
+end)
+
+Option = false
+
+Dupe.MouseButton1Down:connect(function()
+plr = game:GetService("Players").LocalPlayer
+slot = plr.CurrentSaveSlot
+	if Option == false then
+		if slot.Value == -1 then
+Option = true
+slot.RobloxLocked = true
+DupeStatus.Text = "ON"
+DupeStatus.TextColor3 = Color3.new(0, 0.666667, 0)
+	end
+	else
+Option = false
+slot.RobloxLocked = false
+DupeStatus.Text = "OFF"
+DupeStatus.TextColor3 = Color3.new(1, 0, 0)
+	end
+end)
+
+Greywood.MouseButton1Click:Connect(function()
+	for i,v in next,workspace.PlayerModels:GetChildren() do
+        if v:FindFirstChild("Type") then
+            if v.Type.Value == "Blueprint" then
+                v.Type.Value = "Structure"
+            end
+        end
+    end
+end)
+
+TpWood.MouseButton1Click:Connect(function()
+	for _, Log in pairs(service.Workspace.LogModels:GetChildren()) do
+		if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+			if Log.Owner.Value == service.Players.LocalPlayer then
+				Log:MoveTo(service.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0))
+				for i=1,100 do
+					service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
+				end
+			end
+		end
+	end
+end)
+
+local inc = 0
+workspace.PlayerModels.ChildAdded:Connect(function(Item)
+	inc = #LastPurchasedList:GetChildren()
+	if Item:FindFirstChild("Owner") and Item.Owner.Value==service.Players.LocalPlayer then
+		LastPurchasedList.CanvasSize=UDim2.new(0,0,0,25*inc)
+		local SellButton=Create("TextButton",{Parent=LastPurchasedList,Size=UDim2.new(1,-9,0,20),Position=UDim2.new(0,5,0,25*inc),Text=" "..Item.Name,Name=Item.Name,TextXAlignment="Left",ZIndex=3,BorderSizePixel=0})
+		MakeShadow(SellButton,2)
+		SellButton.MouseButton1Click:Connect(function()
+			if Item:IsA("Model") then
+				Item:MoveTo(service.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+				for i=1,100 do
+					service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Item)
+				end
+			end
+		end)
+		inc=inc+1
+	end
+end)
+
+workspace.PlayerModels.ChildRemoved:Connect(function(Item)
+	inc=0
+	if Item:FindFirstChild("Owner") and Item.Owner.Value==service.Players.LocalPlayer then
+		if LastPurchasedList:FindFirstChild(Item.Name) then
+			LastPurchasedList:FindFirstChild(Item.Name):Destroy()
+			for i,v in pairs(LastPurchasedList:GetChildren()) do
+				v.Position=UDim2.new(0,5,0,25*(i-1))
+			end
+		end
+	end
+end)
+
+function UpdatePlanks()
+	local inc = 0
+	WoodPlanks={}
+	for i,v in pairs(service.Workspace.PlayerModels:GetChildren()) do
+		if v.Name=="Plank" and v.Owner.Value==service.Players.LocalPlayer then
+			if v:FindFirstChild("TreeClass") and WoodPlanks[v.TreeClass.Value] then
+				WoodPlanks[v.TreeClass.Value]=WoodPlanks[v.TreeClass.Value]
+				WoodPlanks[v.TreeClass.Value]["Wood"][v]=v
+			elseif v:FindFirstChild("TreeClass") then
+				WoodPlanks[v.TreeClass.Value]={Wood={v.WoodSection}}
+			end
+		end
+	end
+end
+
+function UpdateSellPlanks()
+	local inc=0
+	UpdatePlanks()
+	ProcessedWoodList:ClearAllChildren()
+	for i,v in pairs(WoodPlanks) do
+		ProcessedWoodList.CanvasSize=UDim2.new(0,0,0,25*inc)
+		local SellButton=Create("TextButton",{Parent=ProcessedWoodList,Size=UDim2.new(1,-14,0,20),Position=UDim2.new(0,5,0,35*inc),Text=" "..i,TextXAlignment="Left",ZIndex=3,BorderSizePixel=0})
+		local Color = Create("Frame",{Parent=ProcessedWoodList,Size=UDim2.new(0,5,0,20),Position=UDim2.new(0,0,0,35*inc),BorderSizePixel=0,ZIndex=3,BackgroundColor3=v["Wood"].Color})
+		MakeShadow(SellButton,2)
+		SellButton.MouseButton1Click:Connect(function()
+			for x=1,100 do
+				v["Wood"].CFrame=CFrame.new(service.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0))
+				service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(v["Wood"].Parent)
+			end
+		end)
+		inc=inc+1
+	end
+	inc=0
+end
+
+service.Workspace.PlayerModels.ChildRemoved:Connect(function(thing)
+	if thing.Owner.Value==service.Players.LocalPlayer then
+		UpdateSellPlanks()
+	end
+end)
+
+UpdateSellPlanks()
+
+SellWood.MouseButton1Click:Connect(function()
+	for _, Log in pairs(service.Workspace.LogModels:GetChildren()) do
+		if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+			if Log.Owner.Value == service.Players.LocalPlayer then
+				for i,v in pairs(Log:GetChildren()) do
+					if v.Name=="WoodSection" then
+						spawn(function()
+							for i=1,10 do
+								wait()
+								v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+							end
+						end)
+					end
+				end
+				spawn(function()
+					for i=1,20 do
+						wait()
+						service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
+					end
+				end)
+			end
+		end
+	end
+end)
+
+SellPlanks.MouseButton1Click:Connect(function()
+	for _, Plank in pairs(service.Workspace.PlayerModels:GetChildren()) do
+		if Plank.Name=="Plank" and Plank:findFirstChild("Owner") then
+			if Plank.Owner.Value == service.Players.LocalPlayer then
+				for i,v in pairs(Plank:GetChildren()) do
+					if v.Name=="WoodSection" then
+						spawn(function()
+							for i=1,10 do
+								wait()
+								v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+							end
+						end)
+					end
+				end
+				spawn(function()
+					for i=1,20 do
+						wait()
+						service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Plank)
+					end
+				end)
+			end
+		end
+	end
+end)
+
+TpAllPlanks.MouseButton1Click:Connect(function()
+	for _, Plank in pairs(service.Workspace.PlayerModels:GetChildren()) do
+		if Plank.Name=="Plank" and Plank:findFirstChild("Owner") then
+			if Plank.Owner.Value == service.Players.LocalPlayer then
+				Plank:MoveTo(service.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0))
+				for i=1,100 do
+					service.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Plank)
+				end
+			end
+		end
+	end
+end)
+
+Close.MouseLeave:connect(function()
+Close.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+Close.MouseEnter:connect(function()
+Close.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+Dupe.MouseLeave:connect(function()
+Dupe.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Dupe.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+Dupe.MouseEnter:connect(function()
+Dupe.TextColor3 = Color3.new(0, 0, 0)
+Dupe.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+Greywood.MouseLeave:connect(function()
+Greywood.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Greywood.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+Greywood.MouseEnter:connect(function()
+Greywood.TextColor3 = Color3.new(0, 0, 0)
+Greywood.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+Players.MouseLeave:connect(function()
+Players.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Players.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+Players.MouseEnter:connect(function()
+Players.TextColor3 = Color3.new(0, 0, 0)
+Players.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+SellPlanks.MouseLeave:connect(function()
+SellPlanks.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+SellPlanks.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+SellPlanks.MouseEnter:connect(function()
+SellPlanks.TextColor3 = Color3.new(0, 0, 0)
+SellPlanks.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+SellWood.MouseLeave:connect(function()
+SellWood.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+SellWood.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+SellWood.MouseEnter:connect(function()
+SellWood.TextColor3 = Color3.new(0, 0, 0)
+SellWood.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+Settings.MouseLeave:connect(function()
+Settings.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Settings.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+Settings.MouseEnter:connect(function()
+Settings.TextColor3 = Color3.new(0, 0, 0)
+Settings.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+Teleport.MouseLeave:connect(function()
+Teleport.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+Teleport.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+Teleport.MouseEnter:connect(function()
+Teleport.TextColor3 = Color3.new(0, 0, 0)
+Teleport.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+TpBox.MouseLeave:connect(function()
+TpBox.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpBox.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+TpBox.MouseEnter:connect(function()
+TpBox.TextColor3 = Color3.new(0, 0, 0)
+TpBox.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)
+
+TpWood.MouseLeave:connect(function()
+TpWood.TextColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+TpWood.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
+end)
+TpWood.MouseEnter:connect(function()
+TpWood.TextColor3 = Color3.new(0, 0, 0)
+TpWood.BackgroundColor3 = Color3.new(0.0705882, 0.521569, 0.529412)
+end)	
+end)
+DupeGui.Name = "DupeGui"
+DupeGui.Parent = MainFrame
+DupeGui.BackgroundColor3 = Color3.new(0, 0, 0)
+DupeGui.BorderColor3 = Color3.new(0, 1, 0)
+DupeGui.BorderSizePixel = 5
+DupeGui.Position = UDim2.new(0.744642854, 0, 0.211009175, 0)
+DupeGui.Size = UDim2.new(0, 94, 0, 38)
+DupeGui.Font = Enum.Font.SciFi
+DupeGui.Text = "DupeGui"
+DupeGui.TextColor3 = Color3.new(0, 1, 0)
+DupeGui.TextScaled = true
+DupeGui.TextSize = 14
+DupeGui.TextWrapped = true
+DupeGui.MouseButton1Down:connect(function()
+Option = false
+Found = false
+Tool = "None"
+Down = false
+Mouse = game.Players.LocalPlayer:GetMouse()
+ 
+Client = game.ReplicatedStorage.Interaction.ClientSetListPlayer
+players = game.Players
+for i, v in pairs(players:GetPlayers()) do
+if v.Name ~= players.LocalPlayer.Name then
+Client:InvokeServer(players.LocalPlayer.BlacklistFolder, v, true)
+end
+end
+players.PlayerAdded:connect(function(plr)
+Client:InvokeServer(players.LocalPlayer.BlacklistFolder, plr, true)
+end)
+ 
+function move(object)
+object:MoveTo(game.Players.LocalPlayer.Character.Head.Position + Vector3.new(5, -4, 5))
+object.WoodSection.Anchored = true
+wait(2)
+object.WoodSection.Anchored = false
+end
+ 
+function tree(object, class)
+for i, v in pairs(object:GetChildren()) do
+if v.Name == "TreeClass" then
+if v.Value == class then
+if Found == false then
+move(object)
+Found = true
+end
+end
+end
+end
+end
+ 
+function cut(object, class)
+for i, v in pairs(object:GetChildren()) do
+if v.Name == "TreeClass" then
+if v.Value == class then
+for a, b in pairs(object:GetChildren()) do
+if b.Name == "Owner" then
+for c, d in pairs(b:GetChildren()) do
+if d.Name == "OwnerString" then
+if d.Value == game.Players.LocalPlayer.Name then
+move(object)
+else
+if d.Value == "" then
+move(object)
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+ 
+local Text = Instance.new("TextLabel")
+local Main = Instance.new("Frame")
+local CF = Instance.new("ScreenGui")
+local CG69 = game.CoreGui
+local Tab1 = Instance.new("TextButton")
+local Tab2 = Instance.new("TextButton")
+local Tab3 = Instance.new("TextButton")
+local TTab1 = Instance.new("Frame")
+local TTab2 = Instance.new("Frame")
+local TTab3 = Instance.new("Frame")
+local Close = Instance.new("TextButton")
+local Depart = Instance.new("TextLabel")
+ 
+ 
+local place = UDim2.new(0, 0, 0, 70)
+local size = UDim2.new(0, 300, 0, 100)
+ 
+CF.Name = "GO!!"
+CF.Parent = CG69
+local CGG = CG69["GO!!"]
+ 
+ 
+Main.Name = "Main"
+Main.Parent = CF
+Main.BackgroundColor3 = Color3.new(0.1, 0.6, 0.3)
+Main.BorderColor3 = Color3.new(0, 0, 0)
+Main.Position = UDim2.new(0, 500, 0, 500)
+Main.Size = UDim2.new(0, 300, 0, 75)
+Main.Visible = true
+Main.Draggable = true
+Main.Active = true
+ 
+Text.Name = "Text"
+Text.Parent = Main
+Text.BackgroundColor3 = Color3.new(1, 1, 1)
+Text.BackgroundTransparency = 1
+Text.Position = UDim2.new(0.45, 0, 0, 0)
+Text.Size = UDim2.new(0, 20, 0, 35)
+Text.Font = Enum.Font.SourceSansBold
+Text.FontSize = Enum.FontSize.Size18
+Text.Text = "GUI Not in Use"
+Text.TextColor3 = Color3.new(0.901961, 0.901961, 0.901961)
+Text.TextSize = 18
+ 
+Depart .Name = "Depart"
+Depart .Parent = Main
+Depart .BackgroundColor3 = Color3.new(1, 1, 1)
+Depart .BackgroundTransparency = 1
+Depart .Position = UDim2.new(0, 150, 0, 0)
+Depart .Size = UDim2.new(0, 1, 0, 10)
+Depart .Font = Enum.Font.SourceSansBold
+Depart .FontSize = Enum.FontSize.Size18
+Depart .Text = "Time To Departure: 0"
+Depart .TextColor3 = Color3.new(0.901961, 0.901961, 0.901961)
+Depart .TextSize = 18
+ 
+Tab1.Name = "Basic"
+Tab1.Parent = Main
+Tab1.BackgroundColor3 = Color3.new(0.3, 0.6, 0.9)
+Tab1.Position = UDim2.new(0, 0, 0, 35)
+Tab1.Size = UDim2.new(0, 80, 0, 20)
+Tab1.Font = Enum.Font.Cartoon
+Tab1.FontSize = Enum.FontSize.Size14
+Tab1.Text = "Basic Tab"
+Tab1.TextSize = 18
+ 
+Tab2.Name = "UTrees"
+Tab2.Parent = Main
+Tab2.BackgroundColor3 = Color3.new(1, 0, 0)
+Tab2.Position = UDim2.new(0, 110, 0, 35)
+Tab2.Size = UDim2.new(0, 80, 0, 20)
+Tab2.Font = Enum.Font.Cartoon
+Tab2.FontSize = Enum.FontSize.Size14
+Tab2.Text = "UTrees"
+Tab2.TextSize = 18
+ 
+Tab3.Name = "CTrees"
+Tab3.Parent = Main
+Tab3.BackgroundColor3 = Color3.new(0.5, 0.8, 0.2)
+Tab3.Position = UDim2.new(0, 220, 0, 35)
+Tab3.Size = UDim2.new(0, 80, 0, 20)
+Tab3.Font = Enum.Font.Cartoon
+Tab3.FontSize = Enum.FontSize.Size14
+Tab3.Text = "CTrees"
+Tab3.TextSize = 18
+ 
+TTab1.Name = "GunsTab"
+TTab1.Parent = Main
+TTab1.BackgroundColor3 = Color3.new(0, 0, 0)
+TTab1.BorderColor3 = Color3.new(1, 1, 1)
+TTab1.Position = place
+TTab1.Size = size
+TTab1.Visible = true
+ 
+TTab2.Name = "ItemsTab"
+TTab2.Parent = Main
+TTab2.BackgroundColor3 = Color3.new(1, 1, 1)
+TTab2.BorderColor3 = Color3.new(0, 0, 0)
+TTab2.Position = place
+TTab2.Size = size
+TTab2.Visible = false
+ 
+TTab3.Name = "StatsTab"
+TTab3.Parent = Main
+TTab3.BackgroundColor3 = Color3.new(0, 1, 0)
+TTab3.BorderColor3 = Color3.new(1, 0, 1)
+TTab3.Position = place
+TTab3.Size = size
+TTab3.Visible = false
+ 
+Close.Name = "X"
+Close.Parent = Main
+Close.BackgroundColor3 = Color3.new(1, 0, 0)
+Close.Position = UDim2.new(0, 275, 0, 0)
+Close.Size = UDim2.new(0, 25, 0, 25)
+Close.Font = Enum.Font.Cartoon
+Close.FontSize = Enum.FontSize.Size14
+Close.Text = "X"
+Close.TextSize = 14
+ 
+ 
+-- Tab 1 Buttons --
+Dupe = Instance.new("TextButton")
+DupeLabel = Instance.new("TextLabel")
+Steal = Instance.new("TextButton")
+CopyTool = Instance.new("TextButton")
+DeleteTool = Instance.new("TextButton")
+MoveTool = Instance.new("TextButton")
+ 
+Dupe.Name = "Dupe"
+Dupe.Parent = TTab1
+Dupe.BackgroundColor3 = Color3.new(0.7, 0, 0)
+Dupe.Position = UDim2.new(0, 105, 0, 54)
+Dupe.Size = UDim2.new(0,85, 0, 25)
+Dupe.Font = Enum.Font.Cartoon
+Dupe.FontSize = Enum.FontSize.Size14
+Dupe.Text = "Dupe"
+Dupe.TextSize = 14
+ 
+DupeLabel.Name = "Dupe"
+DupeLabel.Parent = TTab1
+DupeLabel.BackgroundColor3 = Color3.new(0.7, 0, 0)
+DupeLabel.BackgroundTransparency = 1
+DupeLabel.Position = UDim2.new(0, 105, 0, 74)
+DupeLabel.Size = UDim2.new(0,85, 0, 25)
+DupeLabel.Font = Enum.Font.Cartoon
+DupeLabel.FontSize = Enum.FontSize.Size14
+DupeLabel.Text = "Current save Will Save"
+DupeLabel.TextColor3 = Color3.new(255, 255, 255)
+DupeLabel.TextSize = 14
+ 
+Steal.Name = "Dupe"
+Steal.Parent = TTab1
+Steal.BackgroundColor3 = Color3.new(1, 1, 1)
+Steal.Position = UDim2.new(0, 105, 0, 31)
+Steal.Size = UDim2.new(0,85, 0, 25)
+Steal.Font = Enum.Font.Cartoon
+Steal.FontSize = Enum.FontSize.Size14
+Steal.Text = "Steal"
+Steal.TextSize = 14
+ 
+CopyTool.Name = "CopyTool"
+CopyTool.Parent = TTab1
+CopyTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+CopyTool.Position = UDim2.new(0, 1, 0, 1)
+CopyTool.Size = UDim2.new(0,85, 0, 25)
+CopyTool.Font = Enum.Font.Cartoon
+CopyTool.FontSize = Enum.FontSize.Size14
+CopyTool.Text = "Copy"
+CopyTool.TextSize = 14
+ 
+DeleteTool.Name = "DeleteTool"
+DeleteTool.Parent = TTab1
+DeleteTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+DeleteTool.Position = UDim2.new(0, 90, 0, 1)
+DeleteTool.Size = UDim2.new(0,85, 0, 25)
+DeleteTool.Font = Enum.Font.Cartoon
+DeleteTool.FontSize = Enum.FontSize.Size14
+DeleteTool.Text = "Delete"
+DeleteTool.TextSize = 14
+ 
+MoveTool.Name = "MoveTool"
+MoveTool.Parent = TTab1
+MoveTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+MoveTool.Position = UDim2.new(0, 179, 0, 1)
+MoveTool.Size = UDim2.new(0,85, 0, 25)
+MoveTool.Font = Enum.Font.Cartoon
+MoveTool.FontSize = Enum.FontSize.Size14
+MoveTool.Text = "Move"
+MoveTool.TextSize = 14
+ 
+-- end --
+ 
+ 
+ 
+-- Tab 1 Button Functions --
+Dupe.MouseButton1Down:connect(function()
+plr = game:GetService("Players").LocalPlayer
+slot = plr.CurrentSaveSlot
+if Option == false then
+if slot.Value == -1 then
+Option = true
+slot.RobloxLocked = true
+Dupe.BackgroundColor3 = Color3.new(0, 1, 0)
+DupeLabel.Text = "Current save Will  Not Save"
+end
+else
+Option = false
+slot.RobloxLocked = false
+Dupe.BackgroundColor3 = Color3.new(0.7, 0, 0)
+DupeLabel.Text = "Current save Will Save"
+end
+end)
+ 
+Steal.MouseButton1Down:connect(function()
+Owner = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "Owner" then
+Owner = true
+end
+end
+ 
+if Owner == false then
+for i, v in pairs(game.Workspace.PlayerModels:GetChildren()) do
+for a, b in pairs(v:GetChildren()) do
+if b.Name == "Owner" then
+for c, d in pairs(b:GetChildren()) do
+if d:IsA("StringValue") then
+if d.Value == game.Players.LocalPlayer.Name then
+object = b
+end
+end
+end
+end
+end
+end
+ 
+print("Copied")
+ 
+if object then
+Owner = true
+object:clone().Parent = game.Workspace
+end
+end
+wait()
+ 
+if Owner == true then
+print("Copying")
+for i, v in pairs(game.Workspace.PlayerModels:GetChildren()) do
+for a, b in pairs(v:GetChildren()) do
+if b.Name == "Owner" then
+b:remove()
+game.Workspace.Owner:clone().Parent = v
+end
+end
+end
+end
+ 
+end)
+ 
+CopyTool.MouseButton1Down:connect(function()
+if Tool == "Copy" then
+Tool = "None"
+CopyTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+else
+Tool = "Copy"
+CopyTool.BackgroundColor3 = Color3.new(0, 0.7, 0)
+DeleteTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+MoveTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+end
+end)
+ 
+DeleteTool.MouseButton1Down:connect(function()
+if Tool == "Delete" then
+Tool = "Nothing"
+DeleteTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+else
+Tool = "Delete"
+CopyTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+DeleteTool.BackgroundColor3 = Color3.new(0, 0.7, 0)
+MoveTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+end
+end)
+ 
+MoveTool.MouseButton1Down:connect(function()
+if Tool == "Move" then
+Tool = "Nothing"
+MoveTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+else
+Tool = "Move"
+CopyTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+DeleteTool.BackgroundColor3 = Color3.new(0.7, 0, 0)
+MoveTool.BackgroundColor3 = Color3.new(0, 0.7, 0)
+ 
+end
+end)
+ 
+-- end --
+ 
+-- Tab2 Buttons --
+Birch = Instance.new("TextButton")
+CaveCrawler = Instance.new("TextButton")
+Cherry = Instance.new("TextButton")
+Fir = Instance.new("TextButton")
+Generic = Instance.new("TextButton")
+GoldSwampy = Instance.new("TextButton")
+GreenSwampy = Instance.new("TextButton")
+Koa = Instance.new("TextButton")
+LoneCave = Instance.new("TextButton")
+Oak = Instance.new("TextButton")
+Palm = Instance.new("TextButton")
+Pine = Instance.new("TextButton")
+Volcano = Instance.new("TextButton")
+Walnut = Instance.new("TextButton")
+ 
+Birch.Name = "Birch"
+Birch.Parent = TTab2
+Birch.BackgroundColor3 = Color3.new(0, 1, 1)
+Birch.Position = UDim2.new(0, 1, 0, 1)
+Birch.Size = UDim2.new(0,70, 0, 25)
+Birch.Font = Enum.Font.Cartoon
+Birch.FontSize = Enum.FontSize.Size14
+Birch.Text = "Birch"
+Birch.TextSize = 14
+ 
+CaveCrawler.Name = "CaveCrawler"
+CaveCrawler.Parent = TTab2
+CaveCrawler.BackgroundColor3 = Color3.new(0, 1, 1)
+CaveCrawler.Position = UDim2.new(0, 71, 0, 1)
+CaveCrawler.Size = UDim2.new(0,70, 0, 25)
+CaveCrawler.Font = Enum.Font.Cartoon
+CaveCrawler.FontSize = Enum.FontSize.Size14
+CaveCrawler.Text = "CaveCrawler"
+CaveCrawler.TextSize = 14
+ 
+Cherry.Name = "Cherry"
+Cherry.Parent = TTab2
+Cherry.BackgroundColor3 = Color3.new(0, 1, 1)
+Cherry.Position = UDim2.new(0, 141, 0, 1)
+Cherry.Size = UDim2.new(0,70, 0, 25)
+Cherry.Font = Enum.Font.Cartoon
+Cherry.FontSize = Enum.FontSize.Size14
+Cherry.Text = "Cherry"
+Cherry.TextSize = 14
+ 
+Fir.Name = "Fir"
+Fir.Parent = TTab2
+Fir.BackgroundColor3 = Color3.new(0, 1, 1)
+Fir.Position = UDim2.new(0, 211, 0, 1)
+Fir.Size = UDim2.new(0,70, 0, 25)
+Fir.Font = Enum.Font.Cartoon
+Fir.FontSize = Enum.FontSize.Size14
+Fir.Text = "Fir"
+Fir.TextSize = 14
+ 
+Generic.Name = "Generic"
+Generic.Parent = TTab2
+Generic.BackgroundColor3 = Color3.new(0, 1, 1)
+Generic.Position = UDim2.new(0, 1, 0, 26)
+Generic.Size = UDim2.new(0,70, 0, 25)
+Generic.Font = Enum.Font.Cartoon
+Generic.FontSize = Enum.FontSize.Size14
+Generic.Text = "Generic"
+Generic.TextSize = 14
+ 
+GoldSwampy.Name = "GoldSwampy"
+GoldSwampy.Parent = TTab2
+GoldSwampy.BackgroundColor3 = Color3.new(0, 1, 1)
+GoldSwampy.Position = UDim2.new(0, 71, 0, 26)
+GoldSwampy.Size = UDim2.new(0,70, 0, 25)
+GoldSwampy.Font = Enum.Font.Cartoon
+GoldSwampy.FontSize = Enum.FontSize.Size14
+GoldSwampy.Text = "Gold"
+GoldSwampy.TextSize = 14
+ 
+GreenSwampy.Name = "GreenSwampy"
+GreenSwampy.Parent = TTab2
+GreenSwampy.BackgroundColor3 = Color3.new(0, 1, 1)
+GreenSwampy.Position = UDim2.new(0, 141, 0, 26)
+GreenSwampy.Size = UDim2.new(0,70, 0, 25)
+GreenSwampy.Font = Enum.Font.Cartoon
+GreenSwampy.FontSize = Enum.FontSize.Size14
+GreenSwampy.Text = "Green"
+GreenSwampy.TextSize = 14
+ 
+Koa.Name = "Koa"
+Koa.Parent = TTab2
+Koa.BackgroundColor3 = Color3.new(0, 1, 1)
+Koa.Position = UDim2.new(0, 211, 0, 26)
+Koa.Size = UDim2.new(0,70, 0, 25)
+Koa.Font = Enum.Font.Cartoon
+Koa.FontSize = Enum.FontSize.Size14
+Koa.Text = "Koa"
+Koa.TextSize = 14
+ 
+LoneCave.Name = "LoneCave"
+LoneCave.Parent = TTab2
+LoneCave.BackgroundColor3 = Color3.new(0, 1, 1)
+LoneCave.Position = UDim2.new(0, 1, 0, 51)
+LoneCave.Size = UDim2.new(0,70, 0, 25)
+LoneCave.Font = Enum.Font.Cartoon
+LoneCave.FontSize = Enum.FontSize.Size14
+LoneCave.Text = "LoneCave"
+LoneCave.TextSize = 14
+ 
+Oak.Name = "Oak"
+Oak.Parent = TTab2
+Oak.BackgroundColor3 = Color3.new(0, 1, 1)
+Oak.Position = UDim2.new(0, 71, 0, 51)
+Oak.Size = UDim2.new(0,70, 0, 25)
+Oak.Font = Enum.Font.Cartoon
+Oak.FontSize = Enum.FontSize.Size14
+Oak.Text = "Oak"
+Oak.TextSize = 14
+ 
+Palm.Name = "Palm"
+Palm.Parent = TTab2
+Palm.BackgroundColor3 = Color3.new(0, 1, 1)
+Palm.Position = UDim2.new(0, 141, 0, 51)
+Palm.Size = UDim2.new(0,70, 0, 25)
+Palm.Font = Enum.Font.Cartoon
+Palm.FontSize = Enum.FontSize.Size14
+Palm.Text = "Palm"
+Palm.TextSize = 14
+ 
+Pine.Name = "Pine"
+Pine.Parent = TTab2
+Pine.BackgroundColor3 = Color3.new(0, 1, 1)
+Pine.Position = UDim2.new(0, 211, 0, 51)
+Pine.Size = UDim2.new(0,70, 0, 25)
+Pine.Font = Enum.Font.Cartoon
+Pine.FontSize = Enum.FontSize.Size14
+Pine.Text = "Pine"
+Pine.TextSize = 14
+ 
+Volcano.Name = "Volcano"
+Volcano.Parent = TTab2
+Volcano.BackgroundColor3 = Color3.new(0, 1, 1)
+Volcano.Position = UDim2.new(0, 1, 0, 76)
+Volcano.Size = UDim2.new(0,70, 0, 25)
+Volcano.Font = Enum.Font.Cartoon
+Volcano.FontSize = Enum.FontSize.Size14
+Volcano.Text = "Volcano"
+Volcano.TextSize = 14
+ 
+Walnut.Name = "Walnut"
+Walnut.Parent = TTab2
+Walnut.BackgroundColor3 = Color3.new(0, 1, 1)
+Walnut.Position = UDim2.new(0, 71, 0, 76)
+Walnut.Size = UDim2.new(0,70, 0, 25)
+Walnut.Font = Enum.Font.Cartoon
+Walnut.FontSize = Enum.FontSize.Size14
+Walnut.Text = "Walnut"
+Walnut.TextSize = 14
+ 
+-- end --
+ 
+-- Tab2 Button Functions --
+Birch.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Birch")
+end
+end
+end
+end)
+ 
+CaveCrawler.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "CaveCrawler")
+end
+end
+end
+end)
+ 
+Cherry.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Cherry")
+end
+end
+end
+end)
+ 
+Fir.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Fir")
+end
+end
+end
+end)
+ 
+Generic.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Generic")
+end
+end
+end
+end)
+ 
+GoldSwampy.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "GoldSwampy")
+end
+end
+end
+end)
+ 
+GreenSwampy.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "GreenSwampy")
+end
+end
+end
+end)
+ 
+Koa.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Koa")
+end
+end
+end
+end)
+ 
+LoneCave.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "LoneCave")
+end
+end
+end
+end)
+ 
+Oak.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Oak")
+end
+end
+end
+end)
+ 
+Palm.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Palm")
+end
+end
+end
+end)
+ 
+Pine.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Pine")
+end
+end
+end
+end)
+ 
+Volcano.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Volcano")
+end
+end
+end
+end)
+ 
+Walnut.MouseButton1Down:connect(function()
+Found = false
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v.Name == "TreeRegion" then
+for a, b in pairs(v:GetChildren()) do
+tree(b, "Walnut")
+end
+end
+end
+end)
+ 
+-- end --
+ 
+-- Tab3 Buttons --
+Birch2 = Instance.new("TextButton")
+CaveCrawler2 = Instance.new("TextButton")
+Cherry2 = Instance.new("TextButton")
+Fir2 = Instance.new("TextButton")
+Generic2 = Instance.new("TextButton")
+GoldSwampy2 = Instance.new("TextButton")
+GreenSwampy2 = Instance.new("TextButton")
+Koa2 = Instance.new("TextButton")
+LoneCave2 = Instance.new("TextButton")
+Oak2 = Instance.new("TextButton")
+Palm2 = Instance.new("TextButton")
+Pine2 = Instance.new("TextButton")
+Volcano2 = Instance.new("TextButton")
+Walnut2 = Instance.new("TextButton")
+ 
+Birch2.Name = "Birch"
+Birch2.Parent = TTab3
+Birch2.BackgroundColor3 = Color3.new(1, 1, 0)
+Birch2.Position = UDim2.new(0, 1, 0, 1)
+Birch2.Size = UDim2.new(0,70, 0, 25)
+Birch2.Font = Enum.Font.Cartoon
+Birch2.FontSize = Enum.FontSize.Size14
+Birch2.Text = "Birch"
+Birch2.TextSize = 14
+ 
+CaveCrawler2.Name = "CaveCrawler"
+CaveCrawler2.Parent = TTab3
+CaveCrawler2.BackgroundColor3 = Color3.new(1, 1, 0)
+CaveCrawler2.Position = UDim2.new(0, 71, 0, 1)
+CaveCrawler2.Size = UDim2.new(0,70, 0, 25)
+CaveCrawler2.Font = Enum.Font.Cartoon
+CaveCrawler2.FontSize = Enum.FontSize.Size14
+CaveCrawler2.Text = "CaveCrawler"
+CaveCrawler2.TextSize = 14
+ 
+Cherry2.Name = "Cherry"
+Cherry2.Parent = TTab3
+Cherry2.BackgroundColor3 = Color3.new(1, 1, 0)
+Cherry2.Position = UDim2.new(0, 141, 0, 1)
+Cherry2.Size = UDim2.new(0,70, 0, 25)
+Cherry2.Font = Enum.Font.Cartoon
+Cherry2.FontSize = Enum.FontSize.Size14
+Cherry2.Text = "Cherry"
+Cherry2.TextSize = 14
+ 
+Fir2.Name = "Fir"
+Fir2.Parent = TTab3
+Fir2.BackgroundColor3 = Color3.new(1, 1, 0)
+Fir2.Position = UDim2.new(0, 211, 0, 1)
+Fir2.Size = UDim2.new(0,70, 0, 25)
+Fir2.Font = Enum.Font.Cartoon
+Fir2.FontSize = Enum.FontSize.Size14
+Fir2.Text = "Fir"
+Fir2.TextSize = 14
+ 
+Generic2.Name = "Generic"
+Generic2.Parent = TTab3
+Generic2.BackgroundColor3 = Color3.new(1, 1, 0)
+Generic2.Position = UDim2.new(0, 1, 0, 26)
+Generic2.Size = UDim2.new(0,70, 0, 25)
+Generic2.Font = Enum.Font.Cartoon
+Generic2.FontSize = Enum.FontSize.Size14
+Generic2.Text = "Generic"
+Generic2.TextSize = 14
+ 
+GoldSwampy2.Name = "GoldSwampy"
+GoldSwampy2.Parent = TTab3
+GoldSwampy2.BackgroundColor3 = Color3.new(1, 1, 0)
+GoldSwampy2.Position = UDim2.new(0, 71, 0, 26)
+GoldSwampy2.Size = UDim2.new(0,70, 0, 25)
+GoldSwampy2.Font = Enum.Font.Cartoon
+GoldSwampy2.FontSize = Enum.FontSize.Size14
+GoldSwampy2.Text = "Gold"
+GoldSwampy2.TextSize = 14
+ 
+GreenSwampy2.Name = "GreenSwampy"
+GreenSwampy2.Parent = TTab3
+GreenSwampy2.BackgroundColor3 = Color3.new(1, 1, 0)
+GreenSwampy2.Position = UDim2.new(0, 141, 0, 26)
+GreenSwampy2.Size = UDim2.new(0,70, 0, 25)
+GreenSwampy2.Font = Enum.Font.Cartoon
+GreenSwampy2.FontSize = Enum.FontSize.Size14
+GreenSwampy2.Text = "Green"
+GreenSwampy2.TextSize = 14
+ 
+Koa2.Name = "Koa"
+Koa2.Parent = TTab3
+Koa2.BackgroundColor3 = Color3.new(1, 1, 0)
+Koa2.Position = UDim2.new(0, 211, 0, 26)
+Koa2.Size = UDim2.new(0,70, 0, 25)
+Koa2.Font = Enum.Font.Cartoon
+Koa2.FontSize = Enum.FontSize.Size14
+Koa2.Text = "Koa"
+Koa2.TextSize = 14
+ 
+LoneCave2.Name = "LoneCave"
+LoneCave2.Parent = TTab3
+LoneCave2.BackgroundColor3 = Color3.new(1, 1, 0)
+LoneCave2.Position = UDim2.new(0, 1, 0, 51)
+LoneCave2.Size = UDim2.new(0,70, 0, 25)
+LoneCave2.Font = Enum.Font.Cartoon
+LoneCave2.FontSize = Enum.FontSize.Size14
+LoneCave2.Text = "LoneCave"
+LoneCave2.TextSize = 14
+ 
+Oak2.Name = "Oak"
+Oak2.Parent = TTab3
+Oak2.BackgroundColor3 = Color3.new(1, 1, 0)
+Oak2.Position = UDim2.new(0, 71, 0, 51)
+Oak2.Size = UDim2.new(0,70, 0, 25)
+Oak2.Font = Enum.Font.Cartoon
+Oak2.FontSize = Enum.FontSize.Size14
+Oak2.Text = "Oak"
+Oak2.TextSize = 14
+ 
+Palm2.Name = "Palm"
+Palm2.Parent = TTab3
+Palm2.BackgroundColor3 = Color3.new(1, 1, 0)
+Palm2.Position = UDim2.new(0, 141, 0, 51)
+Palm2.Size = UDim2.new(0,70, 0, 25)
+Palm2.Font = Enum.Font.Cartoon
+Palm2.FontSize = Enum.FontSize.Size14
+Palm2.Text = "Palm"
+Palm2.TextSize = 14
+ 
+Pine2.Name = "Pine"
+Pine2.Parent = TTab3
+Pine2.BackgroundColor3 = Color3.new(1, 1, 0)
+Pine2.Position = UDim2.new(0, 211, 0, 51)
+Pine2.Size = UDim2.new(0,70, 0, 25)
+Pine2.Font = Enum.Font.Cartoon
+Pine2.FontSize = Enum.FontSize.Size14
+Pine2.Text = "Pine"
+Pine2.TextSize = 14
+ 
+Volcano2.Name = "Volcano"
+Volcano2.Parent = TTab3
+Volcano2.BackgroundColor3 = Color3.new(1, 1, 0)
+Volcano2.Position = UDim2.new(0, 1, 0, 76)
+Volcano2.Size = UDim2.new(0,70, 0, 25)
+Volcano2.Font = Enum.Font.Cartoon
+Volcano2.FontSize = Enum.FontSize.Size14
+Volcano2.Text = "Volcano"
+Volcano2.TextSize = 14
+ 
+Walnut2.Name = "Walnut"
+Walnut2.Parent = TTab3
+Walnut2.BackgroundColor3 = Color3.new(1, 1, 0)
+Walnut2.Position = UDim2.new(0, 71, 0, 76)
+Walnut2.Size = UDim2.new(0,70, 0, 25)
+Walnut2.Font = Enum.Font.Cartoon
+Walnut2.FontSize = Enum.FontSize.Size14
+Walnut2.Text = "Walnut"
+Walnut2.TextSize = 14
+ 
+-- end --
+ 
+-- Tab3 Button Functions --
+Birch2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Birch")
+end
+end)
+ 
+CaveCrawler2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "CaveCrawler")
+end
+end)
+ 
+Cherry2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Cherry")
+end
+end)
+ 
+Fir2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Fir")
+end
+end)
+ 
+Generic2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Generic")
+end
+end)
+ 
+GoldSwampy2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "GoldSwampy")
+end
+end)
+ 
+GreenSwampy2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "GreenSwampy")
+end
+end)
+ 
+Koa2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Koa")
+end
+end)
+ 
+LoneCave2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "LoneCave")
+end
+end)
+ 
+Oak2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Oak")
+end
+end)
+ 
+Palm2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Palm")
+end
+end)
+ 
+Pine2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Pine")
+end
+end)
+ 
+Volcano2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Volcano")
+end
+end)
+ 
+Pine2.MouseButton1Down:connect(function()
+for i, v in pairs(game.Workspace.LogModels:GetChildren()) do
+cut(v, "Walnut")
+end
+end)
+ 
+ 
+-- end --
+ 
+ 
+-- button function --
+Tab1.MouseButton1Down:connect(function()
+TTab1.Visible = true
+TTab2.Visible = false
+TTab3.Visible = false
+ 
+end)
+ 
+Tab2.MouseButton1Down:connect(function()
+TTab1.Visible = false
+TTab2.Visible = true
+TTab3.Visible = false
+end)
+ 
+Tab3.MouseButton1Down:connect(function()
+TTab1.Visible = false
+TTab2.Visible = false
+TTab3.Visible = true
+end)
+ 
+Close.MouseButton1Down:connect(function()
+CGG:remove()
+end)
+ 
+departure = game.Workspace.Ferry.TimeToDeparture
+game.Workspace.Ferry.TimeToDeparture.Changed:connect(function()
+Depart.Text = "Time To Departure: ".. game.Workspace.Ferry.TimeToDeparture.Value
+end)
+ 
+Mouse.Button1Up:connect(function()
+Down = false
+end)
+ 
+Mouse.Button1Down:connect(function()
+Down = true
+if Tool == "Copy" then
+if Mouse.Target ~= nil then
+Clone = Mouse.Target:clone()
+Clone.Parent = game.Workspace
+end
+end
+ 
+if Tool == "Delete" then
+if Mouse.Target ~= nil then
+Mouse.Target:remove()
+end
+end
+ 
+if Tool == "Move" then
+if Mouse.Target ~= nil then
+MoveObject = Mouse.Target
+end
+end
+ 
+wait()
+if Clone ~= nil then
+Clone.CanCollide = false
+repeat
+wait()
+SubX = Clone.Size.X/2
+SubY = Clone.Size.Y/2
+SubZ = Clone.Size.Z/2
+Clone.Position = Vector3.new(Mouse.Hit.X - SubX, Mouse.Hit.Y - SubY, Mouse.Hit.Z - SubZ)
+until Down == false
+Clone.CanCollide = true
+Clone.Position = Clone.Position + Vector3.new(SubX, SubY, SubZ)
+Clone = nil
+end
+ 
+if MoveObject ~= nil then
+MoveObject.CanCollide = false
+repeat
+wait()
+SubX = MoveObject.Size.X/2
+SubY = MoveObject.Size.Y/2
+SubZ = MoveObject.Size.Z/2
+MoveObject.Position = Vector3.new(Mouse.Hit.X - SubX, Mouse.Hit.Y - SubY, Mouse.Hit.Z - SubZ)
+until Down == false
+MoveObject.CanCollide = true
+MoveObject.Position =  MoveObject.Position + Vector3.new(SubX, SubY, SubZ)
+MoveObject= nil
+end
+end)	
+end)
+OpenButton.Name = "OpenButton"
+OpenButton.Parent = ScreenGui
+OpenButton.BackgroundColor3 = Color3.new(0, 0, 0)
+OpenButton.BorderColor3 = Color3.new(0, 1, 0)
+OpenButton.BorderSizePixel = 2
+OpenButton.Position = UDim2.new(0, 0, 0.436289668, 0)
+OpenButton.Size = UDim2.new(0, 82, 0, 19)
+OpenButton.Visible = false
+OpenButton.Font = Enum.Font.SciFi
+OpenButton.Text = "OPEN"
+OpenButton.TextColor3 = Color3.new(0, 1, 0)
+OpenButton.TextScaled = true
+OpenButton.TextSize = 14
+OpenButton.TextWrapped = true
+OpenButton .MouseButton1Click:connect(function()
+	MainFrame.Visible = true 
+	OpenButton.Visible = false
+end)
+-- Scripts:
+end)
+Section:NewButton("break in", "go v doty?", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RubyBoo4life/break-in-v1/main/.gitignore"))();
+end)
+Section:NewButton("Arsenal", "go v doty?", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+end)
+Section:NewButton("Counter blox protiv chiterov", "go v doty?", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pawel12d/hexagon/main/scripts/CounterBlox.lua', true))()
+end)
